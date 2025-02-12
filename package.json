@@ -1,0 +1,48 @@
+{
+  "name": "configs",
+  "description": "The shareable configuration files of Armand Philippot.",
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": {
+    "name": "Armand Philippot",
+    "email": "git@armand.philippot.eu",
+    "url": "https://armand.philippot.eu/"
+  },
+  "homepage": "https://github.com/ArmandPhilippot/configs#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:ArmandPhilippot/configs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ArmandPhilippot/configs/issues"
+  },
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.0.0+sha512.b8fef5494bd3fe4cbd4edabd0745df2ee5be3e4b0b8b08fa643aa3e4c6702ccc0f00d68fa8a8c9858a735a0032485a44990ed2810526c875e416f001b17df12b",
+  "scripts": {
+    "ci:release": "changeset publish",
+    "ci:version": "changeset version && pnpm install --no-frozen-lockfile",
+    "fix": "pnpm run \"/^fix:.*/\"",
+    "fix:formatting": "prettier . --write",
+    "fix:scripts": "eslint --fix .",
+    "lint": "pnpm run \"/^lint:.*/\"",
+    "lint:formatting": "prettier . --check",
+    "lint:scripts": "eslint .",
+    "lint:spelling": "cspell \"**\" --no-progress",
+    "lint:types": "tsc --noEmit",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.27.12",
+    "@commitlint/cli": "^19.7.1",
+    "@commitlint/config-conventional": "^19.7.1",
+    "@eslint/js": "^9.20.0",
+    "cspell": "^8.17.3",
+    "eslint": "^9.20.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.4.3",
+    "prettier": "3.5.0",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.24.0"
+  }
+}
