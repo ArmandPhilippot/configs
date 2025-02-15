@@ -7,10 +7,24 @@ on:
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
+defaults:
+  run:
+    shell: bash
+
+env:
+  CI: true
+  FORCE_COLOR: true
+
 jobs:
   release:
-    name: Release
+    name: Changelog PR or Release
+    if: ${{ github.repository_owner == 'ArmandPhilippot' }}
+    permissions:
+      contents: write # to create release (changesets/action)
+      issues: write # to post issue comments (changesets/action)
+      pull-requests: write # to create pull request (changesets/action)
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
@@ -23,10 +37,11 @@ jobs:
         uses: changesets/action@v1
         with:
           version: pnpm ci:version
-          commit: "chore: new release"
-          title: "chore: new release candidate"
+          commit: "ci: new release"
+          title: "ci: new release candidate"
           publish: pnpm ci:release
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           # Needs access to push to main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Needs access to publish to npm
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
