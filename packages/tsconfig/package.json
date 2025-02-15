@@ -18,7 +18,7 @@
   "homepage": "https://github.com/ArmandPhilippot/configs/packages/tsconfig#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ArmandPhilippot/configs",
+    "url": "git+https://github.com/ArmandPhilippot/configs.git",
     "directory": "packages/tsconfig"
   },
   "bugs": {
