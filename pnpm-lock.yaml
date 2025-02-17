@@ -8,6 +8,9 @@ importers:
 
   .:
     devDependencies:
+      '@arphi/prettier-config':
+        specifier: workspace:*
+        version: link:packages/prettier-config
       '@arphi/tsconfig':
         specifier: workspace:*
         version: link:packages/tsconfig

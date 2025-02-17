@@ -33,6 +33,7 @@
     "prepare": "husky"
   },
   "devDependencies": {
+    "@arphi/prettier-config": "workspace:*",
     "@arphi/tsconfig": "workspace:*",
     "@changesets/cli": "^2.27.12",
     "@commitlint/cli": "^19.7.1",
