@@ -25,6 +25,7 @@
     "url": "https://github.com/ArmandPhilippot/configs/issues"
   },
   "type": "module",
+  "main": "tsconfig.json",
   "sideEffects": false,
   "files": [
     "tsconfig.json"
