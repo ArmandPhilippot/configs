@@ -30,7 +30,7 @@
     "lint:scripts": "eslint .",
     "lint:spelling": "cspell \"**\" --no-progress",
     "lint:types": "tsc --noEmit",
-    "prepare": "husky"
+    "prepare": "husky && pnpm --filter @arphi/eslint-config build"
   },
   "devDependencies": {
     "@arphi/eslint-config": "workspace:*",
