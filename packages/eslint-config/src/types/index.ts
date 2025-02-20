@@ -3,28 +3,32 @@ import type { FlatConfig } from "@typescript-eslint/utils/ts-eslint";
 
 export type Config = FlatConfig.Config;
 
+type OptionalConfigs = {
+  typescript: boolean;
+};
+
 export type RulesOverrides = Partial<Linter.RulesRecord>;
 
-export type Overrides = {
+type Overrides = {
   /**
    * Override the comments rules.
    */
-  comments?: RulesOverrides;
+  comments: RulesOverrides;
   /**
    * Override the imports rules.
    */
-  imports?: RulesOverrides;
+  imports: RulesOverrides;
   /**
    * Override the JS rules.
    */
-  javascript?: RulesOverrides;
+  javascript: RulesOverrides;
   /**
    * Override the TS rules.
    */
-  typescript?: RulesOverrides;
+  typescript: RulesOverrides;
 };
 
-export type ConfigOptions = {
+export type ConfigOptions = Partial<OptionalConfigs> & {
   /**
    * Define the additional paths to ignore.
    */
@@ -32,5 +36,5 @@ export type ConfigOptions = {
   /**
    * Define the rules to override in each configuration.
    */
-  overrides?: Overrides;
+  overrides?: Partial<Overrides>;
 };

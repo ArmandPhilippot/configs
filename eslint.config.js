@@ -1,3 +1,3 @@
 import arphi from "@arphi/eslint-config";
 
-export default arphi();
+export default arphi({ typescript: true });

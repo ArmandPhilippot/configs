@@ -8,12 +8,18 @@ import type { Config, ConfigOptions } from "./types";
 export default function arphi({
   ignores,
   overrides,
+  typescript: enableTypescript = false,
 }: ConfigOptions = {}): Config[] {
-  return [
+  const configs: Config[] = [
     ignoresConfig(ignores),
     ...javascript(overrides?.javascript),
     comments(overrides?.comments),
     imports(overrides?.imports),
-    ...typescript(overrides?.typescript),
   ];
+
+  if (enableTypescript) {
+    configs.push(...typescript(overrides?.typescript));
+  }
+
+  return configs;
 }
