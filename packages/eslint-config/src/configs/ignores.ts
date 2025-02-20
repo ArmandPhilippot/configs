@@ -6,7 +6,7 @@ import type { Config } from "../types";
  * @param {string[]} [userIgnores] - Additional paths to ignore.
  * @returns {Config} The ignores configuration.
  */
-export default function ignores(userIgnores: string[] = []): Config {
+export function ignores(userIgnores: string[] = []): Config {
   return {
     name: "arphi/ignores",
     ignores: [

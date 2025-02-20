@@ -23,3 +23,5 @@ export default arphiConfig();
 Inspired by the following packages:
 
 - [@antfu/eslint-config](https://github.com/antfu/eslint-config)
+- [@sxzz/eslint-config](https://github.com/sxzz/eslint-config)
+- [@hideoo/eslint-config](https://github.com/HiDeoo/eslint-config)
