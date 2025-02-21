@@ -13,6 +13,10 @@ type OptionalConfigs = {
    */
   jsdoc: boolean;
   /**
+   * Enable Prettier configuration.
+   */
+  prettier: boolean;
+  /**
    * Enable React configuration.
    */
   react: boolean;
@@ -49,6 +53,10 @@ type Overrides = {
    * Override the JSDoc rules.
    */
   jsdoc: RulesOverrides;
+  /**
+   * Override the Prettier rules.
+   */
+  prettier: RulesOverrides;
   /**
    * Override the React rules.
    */

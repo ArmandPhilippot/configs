@@ -10,4 +10,5 @@ This package provides default rules for JavaScript, ESLint comments and imports.
 - Astro
 - React
 - JSDoc
+- Prettier
 - Tests

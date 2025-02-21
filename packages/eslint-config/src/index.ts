@@ -4,6 +4,7 @@ import { ignores as ignoresConfig } from "./configs/ignores";
 import { imports } from "./configs/imports";
 import { javascript } from "./configs/javascript";
 import { jsdoc } from "./configs/jsdoc";
+import { prettier } from "./configs/prettier";
 import { react } from "./configs/react";
 import { tests } from "./configs/tests";
 import { typescript } from "./configs/typescript";
@@ -14,6 +15,7 @@ export default function arphi({
   overrides,
   astro: enableAstro = false,
   jsdoc: enableJSDoc = false,
+  prettier: enablePrettier = false,
   react: enableReact = false,
   tests: enableTests = false,
   typescript: enableTypescript = false,
@@ -43,6 +45,10 @@ export default function arphi({
 
   if (enableTests) {
     configs.push(tests(overrides?.tests));
+  }
+
+  if (enablePrettier) {
+    configs.push(prettier(overrides?.prettier));
   }
 
   return configs;

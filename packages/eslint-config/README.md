@@ -88,6 +88,18 @@ npm i -D eslint-plugin-jsdoc
 
 See also: [Typescript](#typescript)
 
+#### Prettier
+
+If you use Prettier you should pass the following flag:
+
+```js
+import arphi from "@arphi/eslint-config";
+
+export default arphi({ prettier: true });
+```
+
+This will disable some rules that might be conflicting with Prettier.
+
 #### Tests
 
 To enable ESLint for your tests files written with Vitest, you can pass the following flag:

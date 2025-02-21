@@ -9,6 +9,17 @@ declare module "@eslint-community/eslint-plugin-eslint-comments" {
   };
 }
 
+declare module "eslint-config-prettier" {
+  import type { ESLint, Linter } from "eslint";
+
+  export = {
+    config: {
+      recommended: Linter.Config,
+    },
+    rules: NonNullable<ESLint.Plugin["rules"]>,
+  };
+}
+
 declare module "eslint-plugin-no-only-tests" {
   import type { ESLint, Linter } from "eslint";
 
