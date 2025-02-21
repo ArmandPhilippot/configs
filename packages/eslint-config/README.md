@@ -70,6 +70,24 @@ npm i -D @eslint-react/eslint-plugin eslint-plugin-react-hooks
 
 See also: [Typescript](#typescript)
 
+#### Tests
+
+To enable ESLint for you tests files written with Vitest, you can pass the following flag:
+
+```js
+import arphiConfig from "@arphi/eslint-config";
+
+export default arphiConfig({ react: true });
+```
+
+The configuration for tests uses the following plugins, you might need to install them:
+
+```sh
+npm i -D @vitest/eslint-plugin eslint-plugin-no-only-tests
+```
+
+See also: [Typescript](#typescript)
+
 ## Acknowledgments
 
 Inspired by the following packages:

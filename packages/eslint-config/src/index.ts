@@ -4,6 +4,7 @@ import { ignores as ignoresConfig } from "./configs/ignores";
 import { imports } from "./configs/imports";
 import { javascript } from "./configs/javascript";
 import { react } from "./configs/react";
+import { tests } from "./configs/tests";
 import { typescript } from "./configs/typescript";
 import type { Config, ConfigOptions } from "./types";
 
@@ -12,6 +13,7 @@ export default function arphi({
   overrides,
   astro: enableAstro = false,
   react: enableReact = false,
+  tests: enableTests = false,
   typescript: enableTypescript = false,
 }: ConfigOptions = {}): Config[] {
   const configs: Config[] = [
@@ -31,6 +33,10 @@ export default function arphi({
 
   if (enableReact) {
     configs.push(react(overrides?.react));
+  }
+
+  if (enableTests) {
+    configs.push(tests(overrides?.tests));
   }
 
   return configs;

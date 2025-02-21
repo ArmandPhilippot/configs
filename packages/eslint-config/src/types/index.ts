@@ -13,6 +13,10 @@ type OptionalConfigs = {
    */
   react: boolean;
   /**
+   * Enable the configuration for tests written with Vitest.
+   */
+  tests: boolean;
+  /**
    * Enable Typescript configuration.
    */
   typescript: boolean;
@@ -41,6 +45,10 @@ type Overrides = {
    * Override the React rules.
    */
   react: RulesOverrides;
+  /**
+   * Override the rules for tests.
+   */
+  tests: RulesOverrides;
   /**
    * Override the TS rules.
    */
