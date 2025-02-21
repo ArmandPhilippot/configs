@@ -34,6 +34,24 @@ import arphiConfig from "@arphi/eslint-config";
 export default arphiConfig({ typescript: true });
 ```
 
+#### Astro
+
+To enable ESLint for Astro files, you can pass the following flag:
+
+```js
+import arphiConfig from "@arphi/eslint-config";
+
+export default arphiConfig({ astro: true });
+```
+
+The Astro configuration uses the following plugins, you might need to install them:
+
+```sh
+npm i -D eslint-plugin-astro
+```
+
+See also: [Typescript](#typescript)
+
 #### React
 
 To enable ESLint for React files, you can pass the following flag:
@@ -44,7 +62,7 @@ import arphiConfig from "@arphi/eslint-config";
 export default arphiConfig({ react: true });
 ```
 
-The React configurations uses some plugins, some be sure to have them installed:
+The React configuration uses the following plugins, you might need to install them:
 
 ```sh
 npm i -D @eslint-react/eslint-plugin eslint-plugin-react-hooks

@@ -1,3 +1,4 @@
+import { astro } from "./configs/astro";
 import { comments } from "./configs/comments";
 import { ignores as ignoresConfig } from "./configs/ignores";
 import { imports } from "./configs/imports";
@@ -9,6 +10,7 @@ import type { Config, ConfigOptions } from "./types";
 export default function arphi({
   ignores,
   overrides,
+  astro: enableAstro = false,
   react: enableReact = false,
   typescript: enableTypescript = false,
 }: ConfigOptions = {}): Config[] {
@@ -21,6 +23,10 @@ export default function arphi({
 
   if (enableTypescript) {
     configs.push(...typescript(overrides?.typescript));
+  }
+
+  if (enableAstro) {
+    configs.push(...astro(overrides?.astro));
   }
 
   if (enableReact) {

@@ -5,6 +5,10 @@ export type Config = FlatConfig.Config;
 
 type OptionalConfigs = {
   /**
+   * Enable Astro configuration.
+   */
+  astro: boolean;
+  /**
    * Enable React configuration.
    */
   react: boolean;
@@ -17,6 +21,10 @@ type OptionalConfigs = {
 export type RulesOverrides = Partial<Linter.RulesRecord>;
 
 type Overrides = {
+  /**
+   * Override the Astro rules.
+   */
+  astro: RulesOverrides;
   /**
    * Override the comments rules.
    */
