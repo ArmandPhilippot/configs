@@ -3,6 +3,7 @@ import { comments } from "./configs/comments";
 import { ignores as ignoresConfig } from "./configs/ignores";
 import { imports } from "./configs/imports";
 import { javascript } from "./configs/javascript";
+import { jsdoc } from "./configs/jsdoc";
 import { react } from "./configs/react";
 import { tests } from "./configs/tests";
 import { typescript } from "./configs/typescript";
@@ -12,6 +13,7 @@ export default function arphi({
   ignores,
   overrides,
   astro: enableAstro = false,
+  jsdoc: enableJSDoc = false,
   react: enableReact = false,
   tests: enableTests = false,
   typescript: enableTypescript = false,
@@ -33,6 +35,10 @@ export default function arphi({
 
   if (enableReact) {
     configs.push(react(overrides?.react));
+  }
+
+  if (enableJSDoc) {
+    configs.push(jsdoc(overrides?.jsdoc));
   }
 
   if (enableTests) {

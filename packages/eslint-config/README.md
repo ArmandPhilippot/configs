@@ -13,9 +13,9 @@ npm install --save-dev @arphi/eslint-config
 In your ESLint configuration file (ie. `eslint.config.js`):
 
 ```js
-import arphiConfig from "@arphi/eslint-config";
+import arphi from "@arphi/eslint-config";
 
-export default arphiConfig();
+export default arphi();
 ```
 
 This will enable rules for JavaScript, ESLint comments and imports.
@@ -29,9 +29,9 @@ When you enable additional configurations in your ESLint configuration file, you
 To enable ESLint for TypeScript files, you can pass the following flag:
 
 ```js
-import arphiConfig from "@arphi/eslint-config";
+import arphi from "@arphi/eslint-config";
 
-export default arphiConfig({ typescript: true });
+export default arphi({ typescript: true });
 ```
 
 #### Astro
@@ -39,9 +39,9 @@ export default arphiConfig({ typescript: true });
 To enable ESLint for Astro files, you can pass the following flag:
 
 ```js
-import arphiConfig from "@arphi/eslint-config";
+import arphi from "@arphi/eslint-config";
 
-export default arphiConfig({ astro: true });
+export default arphi({ astro: true });
 ```
 
 The Astro configuration uses the following plugins, you might need to install them:
@@ -57,9 +57,9 @@ See also: [Typescript](#typescript)
 To enable ESLint for React files, you can pass the following flag:
 
 ```js
-import arphiConfig from "@arphi/eslint-config";
+import arphi from "@arphi/eslint-config";
 
-export default arphiConfig({ react: true });
+export default arphi({ react: true });
 ```
 
 The React configuration uses the following plugins, you might need to install them:
@@ -70,14 +70,32 @@ npm i -D @eslint-react/eslint-plugin eslint-plugin-react-hooks
 
 See also: [Typescript](#typescript)
 
-#### Tests
+#### JSDoc
 
-To enable ESLint for you tests files written with Vitest, you can pass the following flag:
+To enable ESLint for JSDoc, you can pass the following flag:
 
 ```js
-import arphiConfig from "@arphi/eslint-config";
+import arphi from "@arphi/eslint-config";
 
-export default arphiConfig({ react: true });
+export default arphi({ jsdoc: true });
+```
+
+The configuration for JSDoc uses the following plugins, you might need to install them:
+
+```sh
+npm i -D eslint-plugin-jsdoc
+```
+
+See also: [Typescript](#typescript)
+
+#### Tests
+
+To enable ESLint for your tests files written with Vitest, you can pass the following flag:
+
+```js
+import arphi from "@arphi/eslint-config";
+
+export default arphi({ tests: true });
 ```
 
 The configuration for tests uses the following plugins, you might need to install them:

@@ -9,6 +9,10 @@ type OptionalConfigs = {
    */
   astro: boolean;
   /**
+   * Enable JSDoc configuration.
+   */
+  jsdoc: boolean;
+  /**
    * Enable React configuration.
    */
   react: boolean;
@@ -41,6 +45,10 @@ type Overrides = {
    * Override the JS rules.
    */
   javascript: RulesOverrides;
+  /**
+   * Override the JSDoc rules.
+   */
+  jsdoc: RulesOverrides;
   /**
    * Override the React rules.
    */
