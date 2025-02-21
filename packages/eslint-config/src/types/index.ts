@@ -4,6 +4,13 @@ import type { FlatConfig } from "@typescript-eslint/utils/ts-eslint";
 export type Config = FlatConfig.Config;
 
 type OptionalConfigs = {
+  /**
+   * Enable React configuration.
+   */
+  react: boolean;
+  /**
+   * Enable Typescript configuration.
+   */
   typescript: boolean;
 };
 
@@ -22,6 +29,10 @@ type Overrides = {
    * Override the JS rules.
    */
   javascript: RulesOverrides;
+  /**
+   * Override the React rules.
+   */
+  react: RulesOverrides;
   /**
    * Override the TS rules.
    */

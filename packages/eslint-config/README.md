@@ -34,6 +34,24 @@ import arphiConfig from "@arphi/eslint-config";
 export default arphiConfig({ typescript: true });
 ```
 
+#### React
+
+To enable ESLint for React files, you can pass the following flag:
+
+```js
+import arphiConfig from "@arphi/eslint-config";
+
+export default arphiConfig({ react: true });
+```
+
+The React configurations uses some plugins, some be sure to have them installed:
+
+```sh
+npm i -D @eslint-react/eslint-plugin eslint-plugin-react-hooks
+```
+
+See also: [Typescript](#typescript)
+
 ## Acknowledgments
 
 Inspired by the following packages:
