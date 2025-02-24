@@ -10,6 +10,13 @@ import { tests } from "./configs/tests";
 import { typescript } from "./configs/typescript";
 import type { Config, ConfigOptions } from "./types";
 
+/**
+ * Generate an array of ESLint configurations.
+ *
+ * @param {ConfigOptions} [options] - The configuration options.
+ * @param {Config[]} [userConfigs] - The custom configurations to merge.
+ * @returns {Config[]} The ESLint configuration.
+ */
 export default function arphi(
   {
     ignores,
