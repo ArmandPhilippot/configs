@@ -20,7 +20,7 @@ export default arphi();
 
 This will enable rules for JavaScript, ESLint comments and imports.
 
-### Additional configurations
+### Optional configurations
 
 When you enable additional configurations in your ESLint configuration file, you might need to restart the ESLint server in your editor to be able to see any changes.
 
@@ -117,6 +117,29 @@ npm i -D @vitest/eslint-plugin eslint-plugin-no-only-tests
 ```
 
 See also: [Typescript](#typescript)
+
+### Custom configurations
+
+If you need some configurations not covered by the optional ones, you can pass one or more custom configurations after the first argument:
+
+```js
+import arphi from "@arphi/eslint-config";
+
+export default arphi(
+  {
+    // Optional built-in configurations
+  },
+  {
+    name: "your-custom-test-config",
+    files: ["**/*.test.ts"],
+    rules: {},
+  },
+  {
+    name: "another-custom-config",
+    rules: {},
+  }
+);
+```
 
 ## Acknowledgments
 

@@ -10,16 +10,19 @@ import { tests } from "./configs/tests";
 import { typescript } from "./configs/typescript";
 import type { Config, ConfigOptions } from "./types";
 
-export default function arphi({
-  ignores,
-  overrides,
-  astro: enableAstro = false,
-  jsdoc: enableJSDoc = false,
-  prettier: enablePrettier = false,
-  react: enableReact = false,
-  tests: enableTests = false,
-  typescript: enableTypescript = false,
-}: ConfigOptions = {}): Config[] {
+export default function arphi(
+  {
+    ignores,
+    overrides,
+    astro: enableAstro = false,
+    jsdoc: enableJSDoc = false,
+    prettier: enablePrettier = false,
+    react: enableReact = false,
+    tests: enableTests = false,
+    typescript: enableTypescript = false,
+  }: ConfigOptions = {},
+  ...userConfigs: Config[]
+): Config[] {
   const configs: Config[] = [
     ignoresConfig(ignores),
     ...javascript(overrides?.javascript),
@@ -45,6 +48,10 @@ export default function arphi({
 
   if (enableTests) {
     configs.push(tests(overrides?.tests));
+  }
+
+  if (userConfigs.length) {
+    configs.push(...userConfigs);
   }
 
   if (enablePrettier) {
