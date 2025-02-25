@@ -3,7 +3,7 @@ import type { FlatConfig } from "@typescript-eslint/utils/ts-eslint";
 
 export type Config = FlatConfig.Config;
 
-type OptionalConfigs = {
+export type OptionalConfigs = {
   /**
    * Enable Astro configuration.
    */

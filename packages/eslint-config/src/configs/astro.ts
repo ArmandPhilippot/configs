@@ -1,15 +1,18 @@
 import type { Config, RulesOverrides } from "../types";
-import astroParser from "astro-eslint-parser";
-import astroPlugin from "eslint-plugin-astro";
-import tseslint from "typescript-eslint";
 
 /**
  * Configure the Astro rules
  *
  * @param {RulesOverrides} [rulesOverrides] - The rules to override.
- * @returns {Config[]} The Astro configuration.
+ * @returns {Promise<Config[]>} The Astro configuration.
  */
-export function astro(rulesOverrides: RulesOverrides = {}): Config[] {
+export async function astro(
+  rulesOverrides: RulesOverrides = {}
+): Promise<Config[]> {
+  const astroParser = await import("astro-eslint-parser");
+  const astroPlugin = await import("eslint-plugin-astro");
+  const tseslint = await import("typescript-eslint");
+
   return [
     {
       files: ["**/*.?([cm])[jt]s?(x)"],

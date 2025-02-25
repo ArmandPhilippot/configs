@@ -1,14 +1,17 @@
 import type { Config, RulesOverrides } from "../types";
-import reactPlugin from "@eslint-react/eslint-plugin";
-import reactHooksPlugin from "eslint-plugin-react-hooks";
 
 /**
  * Configure the React rules
  *
  * @param {RulesOverrides} [rulesOverrides] - The rules to override.
- * @returns {Config[]} The React configuration.
+ * @returns {Promise<Config[]>} The React configuration.
  */
-export function react(rulesOverrides: RulesOverrides = {}): Config[] {
+export async function react(
+  rulesOverrides: RulesOverrides = {}
+): Promise<Config[]> {
+  const reactPlugin = await import("@eslint-react/eslint-plugin");
+  const reactHooksPlugin = await import("eslint-plugin-react-hooks");
+
   return [
     {
       files: ["**/*.?([cm])[jt]s?(x)"],
@@ -22,7 +25,7 @@ export function react(rulesOverrides: RulesOverrides = {}): Config[] {
       },
       name: "arphi/react",
       plugins: {
-        react: reactPlugin,
+        react: reactPlugin.default,
         "react-hooks": reactHooksPlugin,
       },
       rules: {

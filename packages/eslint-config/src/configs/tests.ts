@@ -1,6 +1,4 @@
 import type { Config, RulesOverrides } from "../types";
-import noOnlyTestsPlugin from "eslint-plugin-no-only-tests";
-import vitestPlugin from "@vitest/eslint-plugin";
 
 const GLOB_EXT = "?([cm])[jt]s?(x)";
 
@@ -8,9 +6,14 @@ const GLOB_EXT = "?([cm])[jt]s?(x)";
  * Configure the tests rules
  *
  * @param {RulesOverrides} [rulesOverrides] - The rules to override.
- * @returns {Config[]} The tests configuration.
+ * @returns {Promise<Config[]>} The tests configuration.
  */
-export function tests(rulesOverrides: RulesOverrides = {}): Config[] {
+export async function tests(
+  rulesOverrides: RulesOverrides = {}
+): Promise<Config[]> {
+  const noOnlyTestsPlugin = await import("eslint-plugin-no-only-tests");
+  const vitestPlugin = await import("@vitest/eslint-plugin");
+
   return [
     {
       files: [
@@ -23,7 +26,7 @@ export function tests(rulesOverrides: RulesOverrides = {}): Config[] {
       name: "arphi/tests",
       plugins: {
         "no-only-tests": noOnlyTestsPlugin,
-        vitest: vitestPlugin,
+        vitest: vitestPlugin.default,
       },
       rules: {
         ...rulesOverrides,

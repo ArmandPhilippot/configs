@@ -75,7 +75,7 @@ export function javascript(rulesOverrides: RulesOverrides = {}): Config[] {
         "default-case": "error",
         "default-case-last": "error",
         "default-param-last": "error",
-        "dot-notation": ["error", { allowKeywords: false }],
+        "dot-notation": ["error", { allowKeywords: true }],
         eqeqeq: ["error", "always"],
         "for-direction": "error",
         "func-name-matching": [
@@ -377,17 +377,7 @@ export function javascript(rulesOverrides: RulesOverrides = {}): Config[] {
         "require-unicode-regexp": "off",
         "require-yield": "error",
         "sort-imports": "off",
-        "sort-keys": [
-          "error",
-          "asc",
-          {
-            allowLineSeparatedGroups: true,
-            caseSensitive: true,
-            ignoreComputedKeys: false,
-            minKeys: 2,
-            natural: true,
-          },
-        ],
+        "sort-keys": "off",
         "sort-vars": ["error", { ignoreCase: false }],
         strict: "off",
         "symbol-description": "error",
