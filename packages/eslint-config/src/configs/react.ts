@@ -6,26 +6,28 @@ import reactHooksPlugin from "eslint-plugin-react-hooks";
  * Configure the React rules
  *
  * @param {RulesOverrides} [rulesOverrides] - The rules to override.
- * @returns {Config} The React configuration.
+ * @returns {Config[]} The React configuration.
  */
-export function react(rulesOverrides: RulesOverrides = {}): Config {
-  return {
-    name: "arphi/react",
-    files: ["**/*.?([cm])[jt]s?(x)"],
-    languageOptions: {
-      parserOptions: {
-        ecmaFeatures: {
-          jsx: true,
+export function react(rulesOverrides: RulesOverrides = {}): Config[] {
+  return [
+    {
+      files: ["**/*.?([cm])[jt]s?(x)"],
+      languageOptions: {
+        parserOptions: {
+          ecmaFeatures: {
+            jsx: true,
+          },
         },
+        sourceType: "module",
       },
-      sourceType: "module",
+      name: "arphi/react",
+      plugins: {
+        react: reactPlugin,
+        "react-hooks": reactHooksPlugin,
+      },
+      rules: {
+        ...rulesOverrides,
+      },
     },
-    plugins: {
-      react: reactPlugin,
-      "react-hooks": reactHooksPlugin,
-    },
-    rules: {
-      ...rulesOverrides,
-    },
-  };
+  ];
 }

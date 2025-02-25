@@ -7,12 +7,11 @@ import tseslint from "typescript-eslint";
  * Configure the Astro rules
  *
  * @param {RulesOverrides} [rulesOverrides] - The rules to override.
- * @returns {Config} The Astro configuration.
+ * @returns {Config[]} The Astro configuration.
  */
 export function astro(rulesOverrides: RulesOverrides = {}): Config[] {
   return [
     {
-      name: "arphi/astro",
       files: ["**/*.?([cm])[jt]s?(x)"],
       languageOptions: {
         globals: astroPlugin.environments.astro.globals,
@@ -23,6 +22,7 @@ export function astro(rulesOverrides: RulesOverrides = {}): Config[] {
         },
         sourceType: "module",
       },
+      name: "arphi/astro",
       plugins: {
         astro: astroPlugin,
       },

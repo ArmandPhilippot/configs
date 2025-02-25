@@ -5,12 +5,11 @@ import type { Config, RulesOverrides } from "../types";
  * Configure the rules for TypeScript.
  *
  * @param {RulesOverrides} [rulesOverrides] - The rules to override.
- * @returns {Config} The TypeScript configuration.
+ * @returns {Config[]} The TypeScript configuration.
  */
 export function typescript(rulesOverrides: RulesOverrides = {}): Config[] {
   return [
     {
-      name: "arphi/typescript",
       files: ["**/*.?([cm])ts", "**/*.?([cm])tsx"],
       languageOptions: {
         parser: tseslint.parser,
@@ -20,6 +19,7 @@ export function typescript(rulesOverrides: RulesOverrides = {}): Config[] {
           tsconfigRootDir: process.cwd(),
         },
       },
+      name: "arphi/typescript",
       plugins: {
         "@typescript-eslint": tseslint.plugin,
       },

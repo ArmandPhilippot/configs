@@ -1,5 +1,6 @@
 import { astro } from "./configs/astro";
 import { comments } from "./configs/comments";
+import { disables } from "./configs/disables";
 import { ignores as ignoresConfig } from "./configs/ignores";
 import { imports } from "./configs/imports";
 import { javascript } from "./configs/javascript";
@@ -30,40 +31,35 @@ export default function arphi(
   }: ConfigOptions = {},
   ...userConfigs: Config[]
 ): Config[] {
-  const configs: Config[] = [
-    ignoresConfig(ignores),
+  // Define required configs that are always included
+  const requiredConfigs = [
+    ...ignoresConfig(ignores),
     ...javascript(overrides?.javascript),
-    comments(overrides?.comments),
-    imports(overrides?.imports),
+    ...comments(overrides?.comments),
+    ...imports(overrides?.imports),
   ];
 
-  if (enableTypescript) {
-    configs.push(...typescript(overrides?.typescript));
-  }
+  // Define optional configs with their feature flags
+  const optionalConfigs: Array<[boolean, () => Config[]]> = [
+    [enableTypescript, () => typescript(overrides?.typescript)],
+    [enableAstro, () => astro(overrides?.astro)],
+    [enableReact, () => react(overrides?.react)],
+    [enableJSDoc, () => jsdoc(overrides?.jsdoc)],
+    [enableTests, () => tests(overrides?.tests)],
+  ];
 
-  if (enableAstro) {
-    configs.push(...astro(overrides?.astro));
-  }
+  // Define the configs that should appear last
+  const footerConfigs = [
+    ...disables(),
+    ...(enablePrettier ? prettier(overrides?.prettier) : []),
+  ];
 
-  if (enableReact) {
-    configs.push(react(overrides?.react));
-  }
-
-  if (enableJSDoc) {
-    configs.push(jsdoc(overrides?.jsdoc));
-  }
-
-  if (enableTests) {
-    configs.push(tests(overrides?.tests));
-  }
-
-  if (userConfigs.length) {
-    configs.push(...userConfigs);
-  }
-
-  if (enablePrettier) {
-    configs.push(prettier(overrides?.prettier));
-  }
-
-  return configs;
+  return [
+    ...requiredConfigs,
+    ...optionalConfigs
+      .filter(([enabled]) => enabled)
+      .flatMap(([, enableConfig]) => enableConfig()),
+    ...userConfigs,
+    ...footerConfigs,
+  ];
 }
