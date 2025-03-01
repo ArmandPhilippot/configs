@@ -1,4 +1,5 @@
 eslintcache
+funboxteam
 nonconstructor
 nonoctal
 nuxt
