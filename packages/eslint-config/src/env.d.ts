@@ -1,43 +1,24 @@
-declare module "@eslint-community/eslint-plugin-eslint-comments" {
-  import type { ESLint, Linter } from "eslint";
+declare type Config =
+  import("@typescript-eslint/utils/ts-eslint").FlatConfig.Config;
+declare const eslintModuleExport = {
+  config: {
+    recommended: {} as Config,
+  },
+  rules: {} as Partial<import("eslint").Linter.RulesRecord>,
+};
 
-  export = {
-    config: {
-      recommended: Linter.Config,
-    },
-    rules: NonNullable<ESLint.Plugin["rules"]>,
-  };
+declare module "@eslint-community/eslint-plugin-eslint-comments" {
+  export = eslintModuleExport;
 }
 
 declare module "eslint-config-prettier" {
-  import type { ESLint, Linter } from "eslint";
-
-  export = {
-    config: {
-      recommended: Linter.Config,
-    },
-    rules: NonNullable<ESLint.Plugin["rules"]>,
-  };
+  export = eslintModuleExport;
 }
 
 declare module "eslint-plugin-no-only-tests" {
-  import type { ESLint, Linter } from "eslint";
-
-  export = {
-    config: {
-      recommended: Linter.Config,
-    },
-    rules: NonNullable<ESLint.Plugin["rules"]>,
-  };
+  export = eslintModuleExport;
 }
 
 declare module "eslint-plugin-react-hooks" {
-  import type { ESLint, Linter } from "eslint";
-
-  export = {
-    config: {
-      recommended: Linter.Config,
-    },
-    rules: NonNullable<ESLint.Plugin["rules"]>,
-  };
+  export = eslintModuleExport;
 }

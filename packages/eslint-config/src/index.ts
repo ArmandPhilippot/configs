@@ -61,8 +61,8 @@ async function loadOptionalConfigs(
   ];
 
   const configPromises = configLoaders
-    .filter(([key]) => configs[key])
-    .map(([key, loader]) => loader(overrides?.[key]));
+    .filter(([key]) => !!configs[key])
+    .map(async ([key, loader]) => loader(overrides?.[key]));
 
   const results = await Promise.all(configPromises);
   return results.flat();

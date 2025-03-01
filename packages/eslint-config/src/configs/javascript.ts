@@ -323,6 +323,7 @@ export function javascript(rulesOverrides: RulesOverrides = {}): Config[] {
         "no-useless-catch": "error",
         "no-useless-computed-key": ["error", { enforceForClassMembers: true }],
         "no-useless-concat": "error",
+        "no-useless-constructor": "error",
         "no-useless-rename": "error",
         "no-useless-return": "error",
         "no-var": "error",

@@ -2,3 +2,4 @@ eslintcache
 nonconstructor
 nonoctal
 nuxt
+Thenables

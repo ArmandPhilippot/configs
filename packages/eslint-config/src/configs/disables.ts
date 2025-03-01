@@ -12,6 +12,17 @@ export function disables(): Config[] {
       name: "arphi/disables/dts",
       rules: {
         "no-duplicate-imports": "off",
+        "@typescript-eslint/triple-slash-reference": "off",
+      },
+    },
+    {
+      files: ["**/*.js", "**/*.cjs"],
+      name: "arphi/disables/cjs",
+      rules: {
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/explicit-member-accessibility": "off",
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "@typescript-eslint/no-require-imports": "off",
       },
     },
   ];

@@ -1,7 +1,10 @@
 import type { Linter } from "eslint";
-import type { FlatConfig } from "@typescript-eslint/utils/ts-eslint";
+import type { TSESLint } from "@typescript-eslint/utils";
 
-export type Config = FlatConfig.Config;
+export type Config = Omit<TSESLint.FlatConfig.Config, "plugins"> & {
+  // Relax type because some plugins do not have correct type.
+  plugins?: Record<string, unknown>;
+};
 
 export type OptionalConfigs = {
   /**
