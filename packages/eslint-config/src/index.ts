@@ -41,7 +41,7 @@ async function loadRequiredConfigs(
 /**
  * Load the optional configurations.
  *
- * @param {Omit<Partial<OptionalConfigs>, "prettier">} configs - The configs.
+ * @param {Omit<Partial<OptionalConfigs>, "prettier">} configs - Configs to enable.
  * @param {ConfigOptions["overrides"]} overrides - The config overrides.
  * @returns {Promise<Config[]>} The optional configurations.
  */
@@ -71,7 +71,7 @@ async function loadOptionalConfigs(
 /**
  * Load the configs that should appear last.
  *
- * @param {ConfigOptions["prettier"]} enablePrettier - Activate Prettier or not
+ * @param {ConfigOptions["prettier"]} enablePrettier - Activate Prettier or not.
  * @param {ConfigOptions["overrides"]} overrides - The config overrides.
  * @returns {Promise<Config[]>} The footer configurations.
  */

@@ -2,7 +2,7 @@ import type { Config, RulesOverrides } from "../types";
 import commentsPlugin from "@eslint-community/eslint-plugin-eslint-comments";
 
 /**
- * Configure the comments rules
+ * Configure the comments rules.
  *
  * @param {RulesOverrides} [rulesOverrides] - The rules to override.
  * @returns {Config[]} The comments configuration.

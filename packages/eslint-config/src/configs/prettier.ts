@@ -2,7 +2,7 @@ import type { Config, RulesOverrides } from "../types";
 import prettierConfig from "eslint-config-prettier";
 
 /**
- * Configure the Prettier rules
+ * Configure the Prettier rules.
  *
  * @param {RulesOverrides} [rulesOverrides] - The rules to override.
  * @returns {Config[]} The Prettier configuration.

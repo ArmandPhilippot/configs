@@ -3,7 +3,7 @@ import type { Config, RulesOverrides } from "../types";
 const GLOB_EXT = "?([cm])[jt]s?(x)";
 
 /**
- * Configure the tests rules
+ * Configure the tests rules.
  *
  * @param {RulesOverrides} [rulesOverrides] - The rules to override.
  * @returns {Promise<Config[]>} The tests configuration.

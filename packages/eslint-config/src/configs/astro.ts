@@ -1,7 +1,7 @@
 import type { Config, RulesOverrides } from "../types";
 
 /**
- * Configure the Astro rules
+ * Configure the Astro rules.
  *
  * @param {RulesOverrides} [rulesOverrides] - The rules to override.
  * @returns {Promise<Config[]>} The Astro configuration.

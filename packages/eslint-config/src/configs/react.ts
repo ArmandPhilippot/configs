@@ -1,7 +1,7 @@
 import type { Config, RulesOverrides } from "../types";
 
 /**
- * Configure the React rules
+ * Configure the React rules.
  *
  * @param {RulesOverrides} [rulesOverrides] - The rules to override.
  * @returns {Promise<Config[]>} The React configuration.
