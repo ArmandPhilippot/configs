@@ -1,6 +1,9 @@
 eslintcache
 funboxteam
+innerhtml
 nonconstructor
 nonoctal
 nuxt
+setstate
+textnodes
 Thenables
