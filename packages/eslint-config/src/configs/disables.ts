@@ -12,6 +12,8 @@ export function disables(): Config[] {
       name: "arphi/disables/dts",
       rules: {
         "no-duplicate-imports": "off",
+        "import-x/no-unused-modules": "off",
+        "import-x/unambiguous": "off",
         "@typescript-eslint/triple-slash-reference": "off",
       },
     },

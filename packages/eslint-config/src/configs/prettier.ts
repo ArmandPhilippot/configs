@@ -1,5 +1,5 @@
-import type { Config, RulesOverrides } from "../types";
 import prettierConfig from "eslint-config-prettier";
+import type { Config, RulesOverrides } from "../types";
 
 /**
  * Configure the Prettier rules.

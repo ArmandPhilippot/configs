@@ -1,5 +1,5 @@
-import type { Config, RulesOverrides } from "../types";
 import commentsPlugin from "@eslint-community/eslint-plugin-eslint-comments";
+import type { Config, RulesOverrides } from "../types";
 
 /**
  * Configure the comments rules.

@@ -504,6 +504,25 @@ export async function typescript(
         "@typescript-eslint/use-unknown-in-catch-callback-variable": "error",
         ...rulesOverrides,
       },
+      settings: {
+        "import-x/extensions": [
+          ".ts",
+          ".tsx",
+          ".cts",
+          ".mts",
+          ".js",
+          ".jsx",
+          ".cjs",
+          ".mjs",
+        ],
+        "import-x/external-module-folders": [
+          "node_modules",
+          "node_modules/@types",
+        ],
+        "import-x/parsers": {
+          "@typescript-eslint/parser": [".ts", ".tsx", ".cts", ".mts"],
+        },
+      },
     },
   ];
 }
