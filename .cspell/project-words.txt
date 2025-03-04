@@ -1,6 +1,9 @@
+canonicalurl
 chunkname
 eslintcache
+fetchcontent
 funboxteam
+getentrybyslug
 innerhtml
 nonconstructor
 nonoctal

@@ -15,7 +15,7 @@ export async function astro(
 
   return [
     {
-      files: ["**/*.?([cm])[jt]s?(x)"],
+      files: ["**/*.astro"],
       languageOptions: {
         globals: astroPlugin.environments.astro.globals,
         parser: astroParser,
@@ -31,6 +31,24 @@ export async function astro(
       },
       processor: "astro/client-side-ts",
       rules: {
+        "astro/missing-client-only-directive-value": "error",
+        "astro/no-conflict-set-directives": "error",
+        "astro/no-deprecated-astro-canonicalurl": "error",
+        "astro/no-deprecated-astro-fetchcontent": "error",
+        "astro/no-deprecated-getentrybyslug": "error",
+        "astro/no-exports-from-components": "error",
+        "astro/no-set-html-directive": "off",
+        "astro/no-set-text-directive": "error",
+        "astro/no-unused-css-selector": "warn",
+        "astro/no-unused-define-vars-in-style": "error",
+        "astro/prefer-class-list-directive": "off",
+        "astro/prefer-object-class-list": "off",
+        "astro/prefer-split-class-list": "off",
+        "astro/sort-attributes": [
+          "error",
+          { type: "alphabetical", order: "asc", ignoreCase: true },
+        ],
+        "astro/valid-compile": "error",
         ...rulesOverrides,
       },
     },
