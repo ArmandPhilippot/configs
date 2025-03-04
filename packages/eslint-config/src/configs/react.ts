@@ -1,4 +1,5 @@
 import type { Config, RulesOverrides } from "../types";
+import { getJsxA11yRules } from "./rules/jsx-a11y";
 
 /**
  * Configure the React rules.
@@ -9,6 +10,7 @@ import type { Config, RulesOverrides } from "../types";
 export async function react(
   rulesOverrides: RulesOverrides = {}
 ): Promise<Config[]> {
+  const jsxA11yPlugin = await import("eslint-plugin-jsx-a11y");
   const reactPlugin = await import("@eslint-react/eslint-plugin");
   const reactHooksPlugin = await import("eslint-plugin-react-hooks");
 
@@ -27,6 +29,7 @@ export async function react(
       plugins: {
         react: reactPlugin.default,
         "react-hooks": reactHooksPlugin,
+        "jsx-a11y": jsxA11yPlugin,
       },
       rules: {
         "@eslint-react/avoid-shorthand-boolean": "off",
@@ -117,6 +120,7 @@ export async function react(
         "@eslint-react/naming-convention/filename": "off",
         "@eslint-react/naming-convention/filename-extension": "off",
         "@eslint-react/naming-convention/use-state": "error",
+        ...getJsxA11yRules(),
         "react-hooks/exhaustive-deps": "warn",
         "react-hooks/rules-of-hooks": "error",
         ...rulesOverrides,

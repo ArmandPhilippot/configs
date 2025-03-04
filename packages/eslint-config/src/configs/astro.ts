@@ -1,4 +1,5 @@
 import type { Config, RulesOverrides } from "../types";
+import { getJsxA11yRules } from "./rules/jsx-a11y";
 
 /**
  * Configure the Astro rules.
@@ -11,7 +12,15 @@ export async function astro(
 ): Promise<Config[]> {
   const astroParser = await import("astro-eslint-parser");
   const astroPlugin = await import("eslint-plugin-astro");
+  const jsxA11yPlugin = await import("eslint-plugin-jsx-a11y");
   const tseslint = await import("typescript-eslint");
+  const jsxA11yRules = getJsxA11yRules();
+  const astroA11yRules = Object.fromEntries(
+    Object.entries(jsxA11yRules).map(([key, value]) => [
+      key.replace("jsx-a11y", "astro/jsx-a11y"),
+      value,
+    ])
+  );
 
   return [
     {
@@ -27,6 +36,7 @@ export async function astro(
       },
       name: "arphi/astro",
       plugins: {
+        "jsx-a11y": jsxA11yPlugin,
         astro: astroPlugin,
       },
       processor: "astro/client-side-ts",
@@ -49,6 +59,7 @@ export async function astro(
           { type: "alphabetical", order: "asc", ignoreCase: true },
         ],
         "astro/valid-compile": "error",
+        ...astroA11yRules,
         ...rulesOverrides,
       },
     },

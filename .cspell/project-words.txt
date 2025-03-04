@@ -8,6 +8,7 @@ innerhtml
 nonconstructor
 nonoctal
 nuxt
+proptypes
 setstate
 textnodes
 Thenables

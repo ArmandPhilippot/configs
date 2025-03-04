@@ -15,6 +15,10 @@ declare module "eslint-config-prettier" {
   export = eslintModuleExport;
 }
 
+declare module "eslint-plugin-jsx-a11y" {
+  export = eslintModuleExport;
+}
+
 declare module "eslint-plugin-no-only-tests" {
   export = eslintModuleExport;
 }
