@@ -21,7 +21,10 @@ export function comments(rulesOverrides: RulesOverrides = {}): Config[] {
         "@eslint-community/eslint-comments/no-unlimited-disable": "error",
         "@eslint-community/eslint-comments/no-unused-disable": "error",
         "@eslint-community/eslint-comments/no-unused-enable": "error",
-        "@eslint-community/eslint-comments/require-description": "warn",
+        "@eslint-community/eslint-comments/require-description": [
+          "warn",
+          { ignore: ["eslint-enable"] },
+        ],
         ...rulesOverrides,
       },
     },

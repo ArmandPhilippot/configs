@@ -41,6 +41,10 @@ export async function astro(
       },
       processor: "astro/client-side-ts",
       rules: {
+        /* This rule is triggered when defining a function in Props type... but
+         * a function is valid to define the expected type for children for
+         * example so it's best to disable it.  */
+        "no-unused-vars": "off",
         "astro/missing-client-only-directive-value": "error",
         "astro/no-conflict-set-directives": "error",
         "astro/no-deprecated-astro-canonicalurl": "error",
@@ -49,7 +53,8 @@ export async function astro(
         "astro/no-exports-from-components": "error",
         "astro/no-set-html-directive": "off",
         "astro/no-set-text-directive": "error",
-        "astro/no-unused-css-selector": "warn",
+        // It doesn't seem to work with some use cases (e.g. dynamic tags).
+        "astro/no-unused-css-selector": "off",
         "astro/no-unused-define-vars-in-style": "error",
         "astro/prefer-class-list-directive": "off",
         "astro/prefer-object-class-list": "off",
@@ -59,6 +64,8 @@ export async function astro(
           { type: "alphabetical", order: "asc", ignoreCase: true },
         ],
         "astro/valid-compile": "error",
+        // An Astro component doesn't necessarily use import/export.
+        "import-x/unambiguous": "off",
         ...astroA11yRules,
         ...rulesOverrides,
       },
@@ -66,6 +73,7 @@ export async function astro(
     {
       // Configuration for `<script>` tag in `.astro` files.
       files: ["**/*.astro/*.js"],
+      name: "arphi/astro/client-js",
     },
     {
       // Configuration for `<script>` tag using TypeScript in `.astro` files.
@@ -75,6 +83,22 @@ export async function astro(
         parserOptions: {
           project: false,
         },
+      },
+      name: "arphi/astro/client-ts",
+    },
+    {
+      files: ["**/*.ts"],
+      name: "arphi/astro/disables",
+      rules: {
+        /* There is a parser issue (see ota-meshi/eslint-plugin-astro#341 and
+         * ota-meshi/eslint-plugin-astro#348), I guess this affects most of the
+         * `no-unsafe` rules. So when importing an Astro component in a test
+         * file ESLint complains about any. */
+        "@typescript-eslint/no-unsafe-argument": "off",
+        "@typescript-eslint/no-unsafe-assignment": "off",
+        "@typescript-eslint/no-unsafe-call": "off",
+        "@typescript-eslint/no-unsafe-member-access": "off",
+        "@typescript-eslint/no-unsafe-return": "off",
       },
     },
   ];

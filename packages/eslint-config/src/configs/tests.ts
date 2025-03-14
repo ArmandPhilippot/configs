@@ -25,12 +25,12 @@ export async function tests(
       ],
       name: "arphi/tests",
       plugins: {
-        "no-only-tests": noOnlyTestsPlugin,
+        "@funboxteam/no-only-tests": noOnlyTestsPlugin,
         vitest: vitestPlugin.default,
       },
       rules: {
-        "@funboxteam/no-only-tests/no-only": "error",
-        "vitest/assertion-type": ["error", "jest"],
+        ...noOnlyTestsPlugin.rules,
+        "no-param-reassign": "off",
         "vitest/consistent-test-filename": "error",
         "vitest/consistent-test-it": [
           "error",
@@ -43,7 +43,7 @@ export async function tests(
             additionalTestBlockFunctions: [],
           },
         ],
-        "vitest/max-expect": ["error", { max: 5 }],
+        "vitest/max-expects": ["error", { max: 5 }],
         "vitest/max-nested-describe": ["error", { max: 5 }],
         "vitest/no-alias-methods": "off",
         "vitest/no-commented-out-tests": "error",
@@ -61,8 +61,7 @@ export async function tests(
           "error",
           {
             maxSize: 50,
-            inlineMaxSize: 0,
-            allowedSnapshots: [],
+            inlineMaxSize: 50,
           },
         ],
         "vitest/no-mocks-import": "off",
@@ -92,7 +91,15 @@ export async function tests(
         "vitest/prefer-expect-resolves": "error",
         "vitest/prefer-hooks-in-order": "error",
         "vitest/prefer-hooks-on-top": "error",
-        "vitest/prefer-lowercase-title": "error",
+        "vitest/prefer-lowercase-title": [
+          "error",
+          {
+            allowedPrefixes: [],
+            ignore: ["describe"],
+            ignoreTopLevelDescribe: true,
+            lowercaseFirstCharacterOnly: true,
+          },
+        ],
         "vitest/prefer-mock-promise-shorthand": "error",
         "vitest/prefer-snapshot-hint": "error",
         "vitest/prefer-spy-on": "error",
@@ -112,7 +119,8 @@ export async function tests(
         "vitest/require-to-throw-message": "warn",
         "vitest/require-top-level-describe": "off",
         "@typescript-eslint/unbound-method": "off",
-        "vitest/unbound-method": "error",
+        // The rule is not yet available: vitest-dev/eslint-plugin-vitest#591
+        "vitest/unbound-method": "off",
         "vitest/valid-describe-callback": "error",
         "vitest/valid-expect-in-promise": "off",
         "vitest/valid-expect": [
@@ -128,10 +136,8 @@ export async function tests(
           "error",
           {
             allowArguments: false,
-            disallowedWords: ["skip", "only"],
+            disallowedWords: [],
             ignoreTypeOfDescribeName: false,
-            mustNotMatch: ["^\\s+$", "^\\s*\\d+\\s*$"],
-            mustMatch: ["^\\s*\\w+\\s*$"],
           },
         ],
         ...rulesOverrides,

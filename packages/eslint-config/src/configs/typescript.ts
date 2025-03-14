@@ -10,6 +10,9 @@ export async function typescript(
   rulesOverrides: RulesOverrides = {}
 ): Promise<Config[]> {
   const tseslint = await import("typescript-eslint");
+  const { createTypeScriptImportResolver } = await import(
+    "eslint-import-resolver-typescript"
+  );
 
   return [
     {
@@ -210,7 +213,7 @@ export async function typescript(
           {
             detectObjects: false,
             enforceConst: true,
-            ignore: [1],
+            ignore: [-1, 0, 1],
             ignoreArrayIndexes: false,
             ignoreClassFieldInitialValues: true,
             ignoreDefaultValues: true,
@@ -256,7 +259,15 @@ export async function typescript(
         "@typescript-eslint/no-shadow": [
           "error",
           {
-            allow: [],
+            allow: [
+              "cb",
+              "done",
+              "event",
+              "name",
+              "reject",
+              "resolve",
+              "status",
+            ],
             builtinGlobals: true,
             hoist: "functions-and-types",
             ignoreFunctionTypeParameterNameValueShadow: false,
@@ -298,7 +309,8 @@ export async function typescript(
         "@typescript-eslint/no-unsafe-function-type": "error",
         "@typescript-eslint/no-unsafe-member-access": "error",
         "@typescript-eslint/no-unsafe-return": "error",
-        "@typescript-eslint/no-unsafe-type-assertion": "error",
+        // Too restrictive...
+        "@typescript-eslint/no-unsafe-type-assertion": "off",
         "@typescript-eslint/no-unsafe-unary-minus": "error",
         "no-unused-expressions": "off",
         "@typescript-eslint/no-unused-expressions": [
@@ -318,7 +330,7 @@ export async function typescript(
             argsIgnorePattern: "^_",
             caughtErrors: "all",
             destructuredArrayIgnorePattern: "^_",
-            ignoreRestSiblings: false,
+            ignoreRestSiblings: true,
             vars: "all",
             varsIgnorePattern: "^_",
           },
@@ -461,11 +473,11 @@ export async function typescript(
           {
             allow: [{ name: ["Error", "URL", "URLSearchParams"], from: "lib" }],
             allowAny: false,
-            allowBoolean: false,
+            allowBoolean: true,
             allowNever: false,
-            allowNullish: false,
-            allowNumber: false,
-            allowRegExp: false,
+            allowNullish: true,
+            allowNumber: true,
+            allowRegExp: true,
           },
         ],
         "@typescript-eslint/return-await": ["error", "in-try-catch"],
@@ -473,13 +485,12 @@ export async function typescript(
           "error",
           {
             allowAny: false,
-            allowNullableBoolean: true,
+            allowNullableBoolean: false,
             allowNullableEnum: false,
             allowNullableNumber: false,
-            allowNullableObject: true,
+            allowNullableObject: false,
             allowNullableString: false,
             allowNumber: true,
-            allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing: false,
             allowString: true,
           },
         ],
@@ -505,23 +516,11 @@ export async function typescript(
         ...rulesOverrides,
       },
       settings: {
-        "import-x/extensions": [
-          ".ts",
-          ".tsx",
-          ".cts",
-          ".mts",
-          ".js",
-          ".jsx",
-          ".cjs",
-          ".mjs",
+        "import-x/resolver-next": [
+          createTypeScriptImportResolver({
+            alwaysTryTypes: true,
+          }),
         ],
-        "import-x/external-module-folders": [
-          "node_modules",
-          "node_modules/@types",
-        ],
-        "import-x/parsers": {
-          "@typescript-eslint/parser": [".ts", ".tsx", ".cts", ".mts"],
-        },
       },
     },
   ];

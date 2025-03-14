@@ -15,10 +15,8 @@ export function imports(rulesOverrides: RulesOverrides = {}): Config[] {
         "import-x": importPlugin,
       },
       rules: {
-        "import-x/consistent-type-specifier-style": [
-          "error",
-          "prefer-top-level",
-        ],
+        // I'd prefer a smarter option: prefer top-level unless...
+        "import-x/consistent-type-specifier-style": "off",
         "import-x/default": "error",
         "import-x/dynamic-import-chunkname": "off",
         "import-x/export": "error",
@@ -32,14 +30,15 @@ export function imports(rulesOverrides: RulesOverrides = {}): Config[] {
           { considerComments: true, count: 1, exactCount: true },
         ],
         "import-x/named": "error",
-        "import-x/namespace": "error",
+        // Too slow.
+        "import-x/namespace": "off",
         "import-x/no-absolute-path": "error",
         "import-x/no-amd": "error",
         "import-x/no-anonymous-default-export": "off",
         "import-x/no-commonjs": "off",
         "import-x/no-cycle": "error",
         "import-x/no-default-export": "off",
-        "import-x/no-deprecated": "warn",
+        "import-x/no-deprecated": "off",
         "import-x/no-duplicates": [
           "error",
           { considerQueryString: true, "prefer-inline": true },
@@ -66,13 +65,13 @@ export function imports(rulesOverrides: RulesOverrides = {}): Config[] {
         "import-x/no-nodejs-modules": "off",
         "import-x/no-relative-packages": "error",
         "import-x/no-relative-parent-imports": "off",
-        "import-x/no-rename-default": "error",
+        // Too restrictive with third-party modules
+        "import-x/no-rename-default": "off",
         "import-x/no-restricted-paths": "off",
         "import-x/no-self-import": "error",
         "import-x/no-unassigned-import": ["error", { allow: ["**/*.css"] }],
-        // Can't make it works properly with Typescript...
+        // Can't make it works properly (virtual modules, mjs...)
         "import-x/no-unresolved": "off",
-        // Can't make it works properly with Typescript...
         "import-x/no-unused-modules": "off",
         "import-x/no-useless-path-segments": "warn",
         "import-x/no-webpack-loader-syntax": "error",
@@ -85,6 +84,9 @@ export function imports(rulesOverrides: RulesOverrides = {}): Config[] {
         "import-x/prefer-default-export": "off",
         "import-x/unambiguous": "warn",
         ...rulesOverrides,
+      },
+      settings: {
+        "import-x/ignore": ["node_modules"],
       },
     },
   ];

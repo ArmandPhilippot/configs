@@ -55,16 +55,8 @@ export function getJsxA11yRules(): RulesOverrides {
       },
     ],
     "jsx-a11y/click-events-have-key-events": "error",
-    "jsx-a11y/control-has-associated-label": [
-      "error",
-      {
-        labelAttributes: ["label"],
-        controlComponents: ["Field", "FormField", "Input", "TextField"],
-        ignoreElements: [],
-        ignoreRoles: [],
-        depth: 2,
-      },
-    ],
+    // Doesn't seem to work as expected at least with Astro
+    "jsx-a11y/control-has-associated-label": "off",
     "jsx-a11y/heading-has-content": [
       "error",
       {
@@ -94,16 +86,8 @@ export function getJsxA11yRules(): RulesOverrides {
         ],
       },
     ],
-    "jsx-a11y/label-has-associated-control": [
-      "error",
-      {
-        labelComponents: ["Label"],
-        labelAttributes: ["label"],
-        controlComponents: ["Field", "FormField", "Input", "TextField"],
-        assert: "both",
-        depth: 2,
-      },
-    ],
+    // Doesn't seem to work as expected at least with Astro
+    "jsx-a11y/label-has-associated-control": "off",
     "jsx-a11y/lang": "error",
     "jsx-a11y/media-has-caption": [
       "error",

@@ -62,8 +62,8 @@ export function javascript(rulesOverrides: RulesOverrides = {}): Config[] {
           "always",
           {
             ignoreConsecutiveComments: true,
-            ignoreInlineComments: false,
-            ignorePattern: "cspell",
+            ignoreInlineComments: true,
+            ignorePattern: "cSpell",
           },
         ],
         "class-methods-use-this": ["error", { enforceForClassFields: true }],
@@ -129,7 +129,8 @@ export function javascript(rulesOverrides: RulesOverrides = {}): Config[] {
           { checkLoops: "allExceptWhileTrue" },
         ],
         "no-constructor-return": "error",
-        "no-continue": "error",
+        // I think it's more readable using continue than wrapping with if.
+        "no-continue": "off",
         "no-control-regex": "error",
         "no-debugger": "error",
         "no-delete-var": "error",
@@ -205,7 +206,7 @@ export function javascript(rulesOverrides: RulesOverrides = {}): Config[] {
           {
             detectObjects: false,
             enforceConst: true,
-            ignore: [1],
+            ignore: [-1, 0, 1],
             ignoreArrayIndexes: false,
             ignoreClassFieldInitialValues: true,
             ignoreDefaultValues: true,
@@ -244,7 +245,15 @@ export function javascript(rulesOverrides: RulesOverrides = {}): Config[] {
         "no-shadow": [
           "error",
           {
-            allow: [],
+            allow: [
+              "cb",
+              "done",
+              "event",
+              "name",
+              "reject",
+              "resolve",
+              "status",
+            ],
             builtinGlobals: true,
             hoist: "all",
             ignoreOnInitialization: false,
@@ -258,10 +267,13 @@ export function javascript(rulesOverrides: RulesOverrides = {}): Config[] {
         "no-throw-literal": "error",
         "no-undef": ["error", { typeof: false }],
         "no-undef-init": "error",
-        "no-undefined": "error",
+        // Too restrictive with third-party modules types
+        "no-undefined": "off",
         "no-underscore-dangle": [
           "error",
           {
+            // Useful in rehype plugins.
+            allow: ["_mdxExplicitJsx"],
             allowAfterSuper: false,
             allowAfterThis: false,
             allowAfterThisConstructor: false,
