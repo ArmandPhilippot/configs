@@ -88,7 +88,7 @@ export async function astro(
     },
     {
       files: ["**/*.ts"],
-      name: "arphi/astro/disables",
+      name: "arphi/astro/disables-ts",
       rules: {
         /* There is a parser issue (see ota-meshi/eslint-plugin-astro#341 and
          * ota-meshi/eslint-plugin-astro#348), I guess this affects most of the
@@ -99,6 +99,14 @@ export async function astro(
         "@typescript-eslint/no-unsafe-call": "off",
         "@typescript-eslint/no-unsafe-member-access": "off",
         "@typescript-eslint/no-unsafe-return": "off",
+      },
+    },
+    {
+      files: ["**/*.test.ts"],
+      name: "arphi/astro/disables-tests",
+      rules: {
+        /* It seems there is parser issue with this one too. While using Astro generic types, well-typed values are inferred as `any` by this rule. */
+        "@typescript-eslint/restrict-template-expressions": "off",
       },
     },
   ];
