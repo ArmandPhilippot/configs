@@ -216,7 +216,8 @@ export function javascript(rulesOverrides: RulesOverrides = {}): Config[] {
         "no-multi-assign": ["error", { ignoreNonDeclaration: false }],
         "no-multi-str": "error",
         "no-negated-condition": "error",
-        "no-nested-ternary": "error",
+        // Prefer the version provided with unicorn plugin
+        "no-nested-ternary": "off",
         "no-new": "error",
         "no-new-func": "error",
         "no-new-native-nonconstructor": "error",
@@ -367,6 +368,7 @@ export function javascript(rulesOverrides: RulesOverrides = {}): Config[] {
         "prefer-destructuring": [
           "error",
           {
+            // Might need to disable this because of unicorn/no-unreadable-array-destructuring
             array: true,
             object: true,
           },

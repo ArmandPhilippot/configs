@@ -371,6 +371,7 @@ export async function typescript(
         "@typescript-eslint/prefer-destructuring": [
           "error",
           {
+            // Might need to disable this because of unicorn/no-unreadable-array-destructuring
             array: true,
             object: true,
           },

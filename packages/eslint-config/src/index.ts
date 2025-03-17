@@ -9,6 +9,7 @@ import { prettier } from "./configs/prettier";
 import { react } from "./configs/react";
 import { tests } from "./configs/tests";
 import { typescript } from "./configs/typescript";
+import { unicorn } from "./configs/unicorn";
 import type {
   Config,
   ConfigOptions,
@@ -27,15 +28,22 @@ async function loadRequiredConfigs(
   ignores: ConfigOptions["ignores"],
   overrides: ConfigOptions["overrides"]
 ): Promise<Config[]> {
-  const [ignoreResult, jsResult, commentResult, importResult] =
+  const [ignoreResult, jsResult, commentResult, importResult, unicornResult] =
     await Promise.all([
       ignoresConfig(ignores),
       javascript(overrides?.javascript),
       comments(overrides?.comments),
       imports(overrides?.imports),
+      unicorn(overrides?.unicorn),
     ]);
 
-  return [...ignoreResult, ...jsResult, ...commentResult, ...importResult];
+  return [
+    ...ignoreResult,
+    ...jsResult,
+    ...commentResult,
+    ...importResult,
+    ...unicornResult,
+  ];
 }
 
 /**

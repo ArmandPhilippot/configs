@@ -14,6 +14,7 @@ export function disables(): Config[] {
         "no-duplicate-imports": "off",
         "import-x/no-unused-modules": "off",
         "import-x/unambiguous": "off",
+        "@typescript-eslint/consistent-type-definitions": "off",
         "@typescript-eslint/triple-slash-reference": "off",
       },
     },

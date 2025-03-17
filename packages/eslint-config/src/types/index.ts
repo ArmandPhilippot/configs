@@ -72,6 +72,10 @@ type Overrides = {
    * Override the TS rules.
    */
   typescript: RulesOverrides;
+  /**
+   * Override the unicorn rules.
+   */
+  unicorn: RulesOverrides;
 };
 
 export type ConfigOptions = Partial<OptionalConfigs> & {
