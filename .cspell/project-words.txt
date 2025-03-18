@@ -1,1 +1,14 @@
+canonicalurl
+chunkname
 eslintcache
+fetchcontent
+funboxteam
+getentrybyslug
+innerhtml
+nonconstructor
+nonoctal
+nuxt
+proptypes
+setstate
+textnodes
+Thenables

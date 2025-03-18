@@ -30,15 +30,17 @@
     "lint:scripts": "eslint .",
     "lint:spelling": "cspell \"**\" --no-progress",
     "lint:types": "tsc --noEmit",
-    "prepare": "husky"
+    "prepare": "husky && pnpm --filter @arphi/eslint-config build"
   },
   "devDependencies": {
+    "@arphi/eslint-config": "workspace:*",
     "@arphi/prettier-config": "workspace:*",
     "@arphi/tsconfig": "workspace:*",
     "@changesets/cli": "^2.27.12",
     "@commitlint/cli": "^19.7.1",
     "@commitlint/config-conventional": "^19.7.1",
     "@eslint/js": "^9.20.0",
+    "@types/node": "^22.13.4",
     "cspell": "^8.17.3",
     "eslint": "^9.20.1",
     "husky": "^9.1.7",
