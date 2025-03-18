@@ -5,10 +5,12 @@ fetchcontent
 funboxteam
 getentrybyslug
 innerhtml
+longhands
 nonconstructor
 nonoctal
 nuxt
 proptypes
 setstate
 textnodes
-Thenables
+thenables
+unspaced
