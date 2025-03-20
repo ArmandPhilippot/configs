@@ -1,7 +1,6 @@
 import { RuleConfigSeverity } from "@commitlint/types";
 
 const MAX_LENGTH = 72;
-const HEADER_MAX_LENGTH = 50;
 
 /**
  * @type {import('@commitlint/types').UserConfig}
@@ -23,11 +22,7 @@ export default {
     "footer-min-length": [RuleConfigSeverity.Disabled],
     "header-case": [RuleConfigSeverity.Error, "always", "lower-case"],
     "header-full-stop": [RuleConfigSeverity.Error, "never"],
-    "header-max-length": [
-      RuleConfigSeverity.Error,
-      "always",
-      HEADER_MAX_LENGTH,
-    ],
+    "header-max-length": [RuleConfigSeverity.Error, "always", MAX_LENGTH],
     "header-min-length": [RuleConfigSeverity.Disabled],
     "header-trim": [RuleConfigSeverity.Error, "always"],
     "references-empty": [RuleConfigSeverity.Disabled],
