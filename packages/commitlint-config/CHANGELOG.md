@@ -1,5 +1,17 @@
 # @arphi/commitlint-config
 
+## 1.0.1
+
+### Patch Changes
+
+- 34fef6c: Relaxes the header case.
+
+  When using function or properties name in the header we need capital letters. So the header case can't be set to `lower-case`. Since we can control `type-case` and `subject-case` separately, `header-case` is now disabled and the `subject-case` has been relaxed to allow capital letters.
+
+- 34fef6c: Increases the header max length.
+
+  The header max length was set to 50. This seems a bit too restrictive so the value has been increased to match the max length of the body (72 characters).
+
 ## 1.0.0
 
 ### Major Changes
