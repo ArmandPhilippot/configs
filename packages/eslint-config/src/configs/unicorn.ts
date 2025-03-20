@@ -121,10 +121,8 @@ export function unicorn(rulesOverrides: RulesOverrides = {}): Config[] {
         "unicorn/no-useless-switch-case": "error",
         "unicorn/no-useless-undefined": "off",
         "unicorn/no-zero-fractions": "error",
-        "unicorn/number-literal-case": [
-          "error",
-          { hexadecimalValue: "uppercase" },
-        ],
+        /* This rule should accept an option but the rule validation fails... Since we're using the default value it should be safe to remove the option.*/
+        "unicorn/number-literal-case": "error",
         "unicorn/numeric-separators-style": [
           "error",
           {
