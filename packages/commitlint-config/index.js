@@ -1,7 +1,6 @@
 import { RuleConfigSeverity } from "@commitlint/types";
 
 const MAX_LENGTH = 72;
-const HEADER_MAX_LENGTH = 50;
 
 /**
  * @type {import('@commitlint/types').UserConfig}
@@ -21,13 +20,9 @@ export default {
     "footer-max-length": [RuleConfigSeverity.Disabled],
     "footer-max-line-length": [RuleConfigSeverity.Error, "always", MAX_LENGTH],
     "footer-min-length": [RuleConfigSeverity.Disabled],
-    "header-case": [RuleConfigSeverity.Error, "always", "lower-case"],
+    "header-case": [RuleConfigSeverity.Disabled],
     "header-full-stop": [RuleConfigSeverity.Error, "never"],
-    "header-max-length": [
-      RuleConfigSeverity.Error,
-      "always",
-      HEADER_MAX_LENGTH,
-    ],
+    "header-max-length": [RuleConfigSeverity.Error, "always", MAX_LENGTH],
     "header-min-length": [RuleConfigSeverity.Disabled],
     "header-trim": [RuleConfigSeverity.Error, "always"],
     "references-empty": [RuleConfigSeverity.Disabled],
@@ -37,7 +32,11 @@ export default {
     "scope-max-length": [RuleConfigSeverity.Disabled],
     "scope-min-length": [RuleConfigSeverity.Disabled],
     "signed-off-by": [RuleConfigSeverity.Disabled],
-    "subject-case": [RuleConfigSeverity.Error, "always", "lower-case"],
+    "subject-case": [
+      RuleConfigSeverity.Error,
+      "always",
+      ["camel-case", "lower-case", "sentence-case"],
+    ],
     "subject-empty": [RuleConfigSeverity.Error, "never"],
     "subject-full-stop": [RuleConfigSeverity.Error, "never", "."],
     "subject-max-length": [RuleConfigSeverity.Disabled],
