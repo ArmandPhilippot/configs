@@ -92,7 +92,7 @@ async function loadFooterConfigs(
     enablePrettier ? prettier(overrides?.prettier) : [],
   ]);
 
-  return [...disableConfig, ...(enablePrettier ? prettierConfig : [])];
+  return [...disableConfig, ...prettierConfig];
 }
 
 /**
