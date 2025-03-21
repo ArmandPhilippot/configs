@@ -32,11 +32,7 @@ export default {
     "scope-max-length": [RuleConfigSeverity.Disabled],
     "scope-min-length": [RuleConfigSeverity.Disabled],
     "signed-off-by": [RuleConfigSeverity.Disabled],
-    "subject-case": [
-      RuleConfigSeverity.Error,
-      "always",
-      ["camel-case", "lower-case", "sentence-case"],
-    ],
+    "subject-case": [RuleConfigSeverity.Disabled],
     "subject-empty": [RuleConfigSeverity.Error, "never"],
     "subject-full-stop": [RuleConfigSeverity.Error, "never", "."],
     "subject-max-length": [RuleConfigSeverity.Disabled],
