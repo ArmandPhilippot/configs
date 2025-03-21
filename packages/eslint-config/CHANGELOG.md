@@ -4,7 +4,7 @@
 
 ### Patch Changes
 
-- c8a5a2e: Fixes an issue where the `eslint-config-prettier` package were loaded even when Prettier is not enabled.
+- c8a5a2e: Fixes an issue where the `eslint-config-prettier` package was loaded even when Prettier is not enabled.
 
 ## 1.0.1
 
