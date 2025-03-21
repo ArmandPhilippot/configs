@@ -4,6 +4,9 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  '@arphi/eslint-config': link:packages/eslint-config
+
 importers:
 
   .:
@@ -12,7 +15,7 @@ importers:
         specifier: workspace:*
         version: link:packages/commitlint-config
       '@arphi/eslint-config':
-        specifier: workspace:*
+        specifier: link:packages/eslint-config
         version: link:packages/eslint-config
       '@arphi/prettier-config':
         specifier: workspace:*
