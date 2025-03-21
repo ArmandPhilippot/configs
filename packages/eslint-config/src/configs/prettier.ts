@@ -9,7 +9,7 @@ import type { Config, RulesOverrides } from "../types";
 export async function prettier(
   rulesOverrides: RulesOverrides = {}
 ): Promise<Config[]> {
-  const prettierConfig = await import("eslint-config-prettier");
+  const { default: prettierConfig } = await import("eslint-config-prettier");
 
   return [
     {
