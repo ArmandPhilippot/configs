@@ -88,7 +88,7 @@ npm i -D eslint-plugin-jsdoc
 
 #### Prettier
 
-If you use Prettier you should pass the following flag to disable some rules that might be conflicting with Prettier:
+Some rules might be conflicting with Prettier. If you're using Prettier and notice some conflicts, instead of overriding the rules manually you can enable the Prettier flag:
 
 ```js
 import arphi from "@arphi/eslint-config";
