@@ -86,11 +86,9 @@ The configuration for JSDoc uses the following plugins, you might need to instal
 npm i -D eslint-plugin-jsdoc
 ```
 
-See also: [Typescript](#typescript)
-
 #### Prettier
 
-If you use Prettier you should pass the following flag:
+Some rules might be conflicting with Prettier. If you're using Prettier and notice some conflicts, instead of overriding the rules manually you can enable the Prettier flag:
 
 ```js
 import arphi from "@arphi/eslint-config";
@@ -98,7 +96,11 @@ import arphi from "@arphi/eslint-config";
 export default arphi({ prettier: true });
 ```
 
-This will disable some rules that might be conflicting with Prettier.
+The configuration for Prettier uses the following plugin, you might need to install it:
+
+```sh
+npm i -D eslint-config-prettier
+```
 
 #### Tests
 

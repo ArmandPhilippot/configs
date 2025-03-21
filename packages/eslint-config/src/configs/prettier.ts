@@ -1,13 +1,16 @@
-import prettierConfig from "eslint-config-prettier";
 import type { Config, RulesOverrides } from "../types";
 
 /**
  * Configure the Prettier rules.
  *
  * @param {RulesOverrides} [rulesOverrides] - The rules to override.
- * @returns {Config[]} The Prettier configuration.
+ * @returns {Promise<Config[]>} The Prettier configuration.
  */
-export function prettier(rulesOverrides: RulesOverrides = {}): Config[] {
+export async function prettier(
+  rulesOverrides: RulesOverrides = {}
+): Promise<Config[]> {
+  const { default: prettierConfig } = await import("eslint-config-prettier");
+
   return [
     {
       ...prettierConfig,
