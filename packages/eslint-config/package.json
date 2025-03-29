@@ -36,31 +36,31 @@
   "files": [
     "dist"
   ],
-  "packageManager": "pnpm@10.6.5+sha512.cdf928fca20832cd59ec53826492b7dc25dc524d4370b6b4adbf65803d32efaa6c1c88147c0ae4e8d579a6c9eec715757b50d4fa35eea179d868eada4ed043af",
+  "packageManager": "pnpm@10.7.0+sha512.6b865ad4b62a1d9842b61d674a393903b871d9244954f652b8842c2b553c72176b278f64c463e52d40fff8aba385c235c8c9ecf5cc7de4fd78b8bb6d49633ab6",
   "scripts": {
     "build": "tsup --clean --dts",
     "watch": "tsup --watch"
   },
   "dependencies": {
     "@eslint-community/eslint-plugin-eslint-comments": "^4.4.1",
-    "@eslint-react/eslint-plugin": "^1.36.1",
-    "@eslint/js": "^9.22.0",
-    "@typescript-eslint/parser": "^8.26.1",
-    "@typescript-eslint/utils": "^8.26.1",
+    "@eslint-react/eslint-plugin": "^1.38.4",
+    "@eslint/js": "^9.23.0",
+    "@typescript-eslint/parser": "^8.28.0",
+    "@typescript-eslint/utils": "^8.28.0",
     "@vitest/eslint-plugin": "1.1.38",
-    "eslint-import-resolver-typescript": "^4.2.2",
-    "eslint-plugin-import-x": "^4.9.0",
+    "eslint-import-resolver-typescript": "^4.3.1",
+    "eslint-plugin-import-x": "^4.9.4",
     "eslint-plugin-unicorn": "^57.0.0",
     "globals": "^16.0.0",
-    "typescript-eslint": "^8.26.1"
+    "typescript-eslint": "^8.28.0"
   },
   "devDependencies": {
-    "@types/node": "^22.13.10",
-    "astro-eslint-parser": "^1.2.1",
-    "eslint": "^9.22.0",
+    "@types/node": "^22.13.14",
+    "astro-eslint-parser": "^1.2.2",
+    "eslint": "^9.23.0",
     "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-astro": "^1.3.1",
-    "eslint-plugin-jsdoc": "^50.6.8",
+    "eslint-plugin-jsdoc": "^50.6.9",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-no-only-tests": "^3.3.0",
     "eslint-plugin-react-hooks": "^5.2.0",
@@ -68,11 +68,11 @@
     "typescript": "^5.8.2"
   },
   "peerDependencies": {
-    "astro-eslint-parser": "^1.2.1",
-    "eslint": ">=9.22.0",
+    "astro-eslint-parser": "^1.2.2",
+    "eslint": ">=9.23.0",
     "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-astro": "^1.3.1",
-    "eslint-plugin-jsdoc": "^50.6.8",
+    "eslint-plugin-jsdoc": "^50.6.9",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-no-only-tests": "^3.3.0",
     "eslint-plugin-react-hooks": "^5.2.0"
