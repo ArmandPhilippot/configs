@@ -36,28 +36,28 @@
   "files": [
     "dist"
   ],
-  "packageManager": "pnpm@10.7.0+sha512.6b865ad4b62a1d9842b61d674a393903b871d9244954f652b8842c2b553c72176b278f64c463e52d40fff8aba385c235c8c9ecf5cc7de4fd78b8bb6d49633ab6",
+  "packageManager": "pnpm@10.8.0+sha512.0e82714d1b5b43c74610193cb20734897c1d00de89d0e18420aebc5977fa13d780a9cb05734624e81ebd81cc876cd464794850641c48b9544326b5622ca29971",
   "scripts": {
     "build": "tsup --clean --dts",
     "watch": "tsup --watch"
   },
   "dependencies": {
     "@eslint-community/eslint-plugin-eslint-comments": "^4.4.1",
-    "@eslint-react/eslint-plugin": "^1.38.4",
-    "@eslint/js": "^9.23.0",
-    "@typescript-eslint/parser": "^8.28.0",
-    "@typescript-eslint/utils": "^8.28.0",
-    "@vitest/eslint-plugin": "1.1.38",
-    "eslint-import-resolver-typescript": "^4.3.1",
-    "eslint-plugin-import-x": "^4.9.4",
+    "@eslint-react/eslint-plugin": "^1.42.1",
+    "@eslint/js": "^9.24.0",
+    "@typescript-eslint/parser": "^8.29.1",
+    "@typescript-eslint/utils": "^8.29.1",
+    "@vitest/eslint-plugin": "1.1.39",
+    "eslint-import-resolver-typescript": "^4.3.2",
+    "eslint-plugin-import-x": "^4.10.2",
     "eslint-plugin-unicorn": "^58.0.0",
     "globals": "^16.0.0",
-    "typescript-eslint": "^8.28.0"
+    "typescript-eslint": "^8.29.1"
   },
   "devDependencies": {
-    "@types/node": "^22.13.14",
+    "@types/node": "^22.14.0",
     "astro-eslint-parser": "^1.2.2",
-    "eslint": "^9.23.0",
+    "eslint": "^9.24.0",
     "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-astro": "^1.3.1",
     "eslint-plugin-jsdoc": "^50.6.9",
@@ -65,11 +65,11 @@
     "eslint-plugin-no-only-tests": "^3.3.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "tsup": "^8.4.0",
-    "typescript": "^5.8.2"
+    "typescript": "^5.8.3"
   },
   "peerDependencies": {
     "astro-eslint-parser": "^1.2.2",
-    "eslint": ">=9.23.0",
+    "eslint": ">=9.24.0",
     "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-astro": "^1.3.1",
     "eslint-plugin-jsdoc": "^50.6.9",
