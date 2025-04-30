@@ -1,5 +1,22 @@
 # @arphi/eslint-config
 
+## 2.0.0
+
+### Major Changes
+
+- a8ded2e: Drops support to Node v18.
+
+  Node v18 reaches end of life today (2025-04-30) and one of the new unicorn rules requires Node v20. While supported engines wasn't defined before, now this package explicitly requires a Node version greater or equal to Node v20.
+
+### Minor Changes
+
+- a8ded2e: Adds 3 new rules from `unicorn` plugin: `prefer-import-meta-properties`, `no-unnecessary-array-flat-depth` and `no-unnecessary-array-splice-count`.
+
+### Patch Changes
+
+- a8ded2e: Replaces the deprecated `unicorn/no-array-push-push` rule with `unicorn/prefer-single-call`.
+- a8ded2e: Replaces the deprecated `unicorn/no-length-as-slice-end` rule with `unicorn/no-unnecessary-slice-end`.
+
 ## 1.0.2
 
 ### Patch Changes
