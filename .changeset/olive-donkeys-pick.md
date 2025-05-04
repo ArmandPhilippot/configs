@@ -2,7 +2,7 @@
 "@arphi/eslint-config": patch
 ---
 
-Fixes the name of some `@eslint-react/eslint-plugin` rules.
+Fixes the name of some `@eslint-react/eslint-plugin` rules used in the React config.
 
 The following rules have been renamed in a previous version of `@eslint-react/eslint-plugin`:
 
