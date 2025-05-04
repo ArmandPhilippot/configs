@@ -16,7 +16,7 @@ export async function react(
 
   return [
     {
-      files: ["**/*.?([cm])[jt]s?(x)"],
+      files: ["**/*.?([cm])[jt]sx"],
       languageOptions: {
         parserOptions: {
           ecmaFeatures: {
@@ -39,7 +39,7 @@ export async function react(
         "@eslint-react/web-api":
           reactPlugin.default.configs.all.plugins["@eslint-react/web-api"],
         "react-hooks": reactHooksPlugin,
-        "jsx-a11y": jsxA11yPlugin,
+        "jsx-a11y": jsxA11yPlugin.default,
       },
       rules: {
         "@eslint-react/avoid-shorthand-boolean": "off",
