@@ -27,7 +27,17 @@ export async function react(
       },
       name: "arphi/react",
       plugins: {
-        react: reactPlugin.default,
+        "@eslint-react": reactPlugin.default,
+        "@eslint-react/dom":
+          reactPlugin.default.configs.all.plugins["@eslint-react/dom"],
+        "@eslint-react/hooks-extra":
+          reactPlugin.default.configs.all.plugins["@eslint-react/hooks-extra"],
+        "@eslint-react/naming-convention":
+          reactPlugin.default.configs.all.plugins[
+            "@eslint-react/naming-convention"
+          ],
+        "@eslint-react/web-api":
+          reactPlugin.default.configs.all.plugins["@eslint-react/web-api"],
         "react-hooks": reactHooksPlugin,
         "jsx-a11y": jsxA11yPlugin,
       },
