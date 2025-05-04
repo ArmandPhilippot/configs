@@ -1,5 +1,24 @@
 # @arphi/eslint-config
 
+## 2.0.1
+
+### Patch Changes
+
+- 866c10d: Fixes an issue where React rules was used on regular JS files.
+
+  Since Create React App is now deprecated, there is no reasons to keep supporting `.js` files: React files should use `.jsx` or `.tsx` extension.
+
+- 866c10d: Fixes the name of some `@eslint-react/eslint-plugin` rules used in the React config.
+
+  The following rules have been renamed in a previous version of `@eslint-react/eslint-plugin`:
+
+  - `@eslint-react/ensure-forward-ref-using-ref`
+  - `@eslint-react/no-nested-components`
+  - `@eslint-react/use-jsx-vars`
+  - `@eslint-react/hooks-extra/no-useless-custom-hooks`
+
+- 866c10d: Fixes an issue where the `@eslint-react` rules was not resolved correctly in React config.
+
 ## 2.0.0
 
 ### Major Changes
