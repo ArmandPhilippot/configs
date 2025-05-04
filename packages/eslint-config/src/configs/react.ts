@@ -16,7 +16,7 @@ export async function react(
 
   return [
     {
-      files: ["**/*.?([cm])[jt]s?(x)"],
+      files: ["**/*.?([cm])[jt]sx"],
       languageOptions: {
         parserOptions: {
           ecmaFeatures: {
@@ -27,14 +27,24 @@ export async function react(
       },
       name: "arphi/react",
       plugins: {
-        react: reactPlugin.default,
+        "@eslint-react": reactPlugin.default,
+        "@eslint-react/dom":
+          reactPlugin.default.configs.all.plugins["@eslint-react/dom"],
+        "@eslint-react/hooks-extra":
+          reactPlugin.default.configs.all.plugins["@eslint-react/hooks-extra"],
+        "@eslint-react/naming-convention":
+          reactPlugin.default.configs.all.plugins[
+            "@eslint-react/naming-convention"
+          ],
+        "@eslint-react/web-api":
+          reactPlugin.default.configs.all.plugins["@eslint-react/web-api"],
         "react-hooks": reactHooksPlugin,
-        "jsx-a11y": jsxA11yPlugin,
+        "jsx-a11y": jsxA11yPlugin.default,
       },
       rules: {
         "@eslint-react/avoid-shorthand-boolean": "off",
         "@eslint-react/avoid-shorthand-fragment": "off",
-        "@eslint-react/ensure-forward-ref-using-ref": "error",
+        "@eslint-react/jsx-uses-vars": "error",
         "@eslint-react/no-access-state-in-setstate": "error",
         "@eslint-react/no-array-index-key": "error",
         "@eslint-react/no-children-count": "error",
@@ -62,7 +72,7 @@ export async function react(
         "@eslint-react/no-missing-component-display-name": "error",
         "@eslint-react/no-missing-context-display-name": "error",
         "@eslint-react/no-missing-key": "error",
-        "@eslint-react/no-nested-components": "error",
+        "@eslint-react/no-nested-component-definitions": "error",
         "@eslint-react/no-prop-types": "error",
         "@eslint-react/no-redundant-should-component-update": "error",
         "@eslint-react/no-set-state-in-component-did-mount": "error",
@@ -77,13 +87,13 @@ export async function react(
         "@eslint-react/no-unused-class-component-members": "error",
         "@eslint-react/no-unused-state": "error",
         "@eslint-react/no-use-context": "error",
+        "@eslint-react/no-useless-forward-ref": "error",
         "@eslint-react/no-useless-fragment": "error",
         "@eslint-react/prefer-destructuring-assignment": "error",
         "@eslint-react/prefer-react-namespace-import": "error",
         "@eslint-react/prefer-read-only-props": "error",
         "@eslint-react/prefer-shorthand-boolean": "off",
         "@eslint-react/prefer-shorthand-fragment": "off",
-        "@eslint-react/use-jsx-vars": "error",
         "@eslint-react/dom/no-dangerously-set-innerhtml": "error",
         "@eslint-react/dom/no-dangerously-set-innerhtml-with-children": "error",
         "@eslint-react/dom/no-find-dom-node": "error",
@@ -109,7 +119,7 @@ export async function react(
           "error",
         "@eslint-react/hooks-extra/no-unnecessary-use-callback": "error",
         "@eslint-react/hooks-extra/no-unnecessary-use-memo": "error",
-        "@eslint-react/hooks-extra/no-useless-custom-hooks": "error",
+        "@eslint-react/hooks-extra/no-unnecessary-use-prefix": "error",
         "@eslint-react/hooks-extra/prefer-use-state-lazy-initialization":
           "error",
         "@eslint-react/naming-convention/component-name": [
