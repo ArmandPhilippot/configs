@@ -9,6 +9,7 @@ longhands
 nonconstructor
 nonoctal
 nuxt
+pnpmDedupe
 proptypes
 setstate
 textnodes
