@@ -408,8 +408,7 @@ export async function typescript(
         "@typescript-eslint/prefer-optional-chain": [
           "error",
           {
-            allowPotentiallyUnsafeFixesThatModifyTheReturnTypeIKnowWhatImDoing:
-              false,
+            allowPotentiallyUnsafeFixesThatModifyTheReturnTypeIKnowWhatImDoing: false,
             checkAny: true,
             checkBigInt: true,
             checkBoolean: true,
