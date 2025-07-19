@@ -78,6 +78,11 @@ export function imports(rulesOverrides: RulesOverrides = {}): Config[] {
         "import-x/order": [
           "error",
           {
+            alphabetize: {
+              order: "asc",
+              orderImportKind: "asc",
+              caseInsensitive: true,
+            },
             groups: ["builtin", "external", "parent", "sibling", "index"],
           },
         ],
