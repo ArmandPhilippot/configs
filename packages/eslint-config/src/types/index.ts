@@ -1,5 +1,5 @@
-import type { Linter } from "eslint";
 import type { TSESLint } from "@typescript-eslint/utils";
+import type { Linter } from "eslint";
 
 export type Config = Omit<TSESLint.FlatConfig.Config, "plugins"> & {
   // Relax type because some plugins do not have correct type.
