@@ -1,5 +1,11 @@
 # @arphi/commitlint-config
 
+## 1.0.3
+
+### Patch Changes
+
+- 28dcc42: Bump dependencies.
+
 ## 1.0.2
 
 ### Patch Changes

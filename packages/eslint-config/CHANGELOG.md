@@ -1,5 +1,31 @@
 # @arphi/eslint-config
 
+## 2.1.0
+
+### Minor Changes
+
+- 436d355: Enables ascending alphabetical sorting for imports.
+
+  Imports sorted in ascending alphabetical order are often easier to visually analyze, as sibling modules would be side by side in a long list of imports.
+
+  Previously, the following order wasn't an issue:
+
+  ```ts
+  import type { Linter } from "eslint";
+  import type { TSESLint } from "@typescript-eslint/utils";
+  ```
+
+  Now, it will be reported as an auto-fixable error and the fixed order will be:
+
+  ```ts
+  import type { TSESLint } from "@typescript-eslint/utils";
+  import type { Linter } from "eslint";
+  ```
+
+### Patch Changes
+
+- 28dcc42: Bump dependencies.
+
 ## 2.0.1
 
 ### Patch Changes
@@ -11,7 +37,6 @@
 - 866c10d: Fixes the name of some `@eslint-react/eslint-plugin` rules used in the React config.
 
   The following rules have been renamed in a previous version of `@eslint-react/eslint-plugin`:
-
   - `@eslint-react/ensure-forward-ref-using-ref`
   - `@eslint-react/no-nested-components`
   - `@eslint-react/use-jsx-vars`
@@ -57,7 +82,6 @@
 - e2f7394: Releases the first version of my shareable ESLint configuration.
 
   This package provides default rules for JavaScript, ESLint comments and imports. Some additional configurations can be activated using a flag:
-
   - TypeScript
   - Astro
   - React
