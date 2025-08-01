@@ -152,8 +152,8 @@ importers:
   packages/tsconfig:
     devDependencies:
       typescript:
-        specifier: ^5.9.2
-        version: 5.9.2
+        specifier: ~5.8.3
+        version: 5.8.3
 
 packages:
 
@@ -6676,7 +6676,8 @@ snapshots:
 
   typescript@5.8.3: {}
 
-  typescript@5.9.2: {}
+  typescript@5.9.2:
+    optional: true
 
   ufo@1.6.1: {}
 
