@@ -352,7 +352,7 @@ export function javascript(rulesOverrides: RulesOverrides = {}): Config[] {
             ignoreConstructors: false,
           },
         ],
-        "one-var": ["error", { initialized: "never", uninitialized: "always" }],
+        "one-var": "off",
         "operator-assignment": "off",
         "prefer-arrow-callback": [
           "error",
