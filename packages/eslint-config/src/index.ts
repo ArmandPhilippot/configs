@@ -22,20 +22,19 @@ import type {
  *
  * @param {ConfigOptions["ignores"]} ignores - The additional paths to ignore.
  * @param {ConfigOptions["overrides"]} overrides - The config overrides.
- * @returns {Promise<Config[]>} The required configurations.
+ * @returns {Config[]} The required configurations.
  */
-async function loadRequiredConfigs(
+function loadRequiredConfigs(
   ignores: ConfigOptions["ignores"],
   overrides: ConfigOptions["overrides"]
-): Promise<Config[]> {
-  const [ignoreResult, jsResult, commentResult, importResult, unicornResult] =
-    await Promise.all([
-      ignoresConfig(ignores),
-      javascript(overrides?.javascript),
-      comments(overrides?.comments),
-      imports(overrides?.imports),
-      unicorn(overrides?.unicorn),
-    ]);
+): Config[] {
+  const [ignoreResult, jsResult, commentResult, importResult, unicornResult] = [
+    ignoresConfig(ignores),
+    javascript(overrides?.javascript),
+    comments(overrides?.comments),
+    imports(overrides?.imports),
+    unicorn(overrides?.unicorn),
+  ];
 
   return [
     ...ignoreResult,
@@ -87,12 +86,11 @@ async function loadFooterConfigs(
   enablePrettier: boolean,
   overrides: ConfigOptions["overrides"]
 ): Promise<Config[]> {
-  const [disableConfig, prettierConfig] = await Promise.all([
-    disables(),
-    enablePrettier ? prettier(overrides?.prettier) : [],
-  ]);
+  const prettierConfig = enablePrettier
+    ? await prettier(overrides?.prettier)
+    : [];
 
-  return [...disableConfig, ...prettierConfig];
+  return [...disables(), ...prettierConfig];
 }
 
 /**
@@ -111,14 +109,13 @@ export default async function arphi(
   }: ConfigOptions = {},
   ...userConfigs: Config[]
 ): Promise<Config[]> {
-  const [requiredConfigs, optionalConfigs, footerConfigs] = await Promise.all([
-    loadRequiredConfigs(ignores, overrides),
+  const [optionalConfigs, footerConfigs] = await Promise.all([
     loadOptionalConfigs(optional, overrides),
     loadFooterConfigs(enablePrettier, overrides),
   ]);
 
   return [
-    ...requiredConfigs,
+    ...loadRequiredConfigs(ignores, overrides),
     ...optionalConfigs,
     ...userConfigs,
     ...footerConfigs,
