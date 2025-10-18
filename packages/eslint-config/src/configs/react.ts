@@ -13,6 +13,13 @@ export async function react(
   const jsxA11yPlugin = await import("eslint-plugin-jsx-a11y");
   const reactPlugin = await import("@eslint-react/eslint-plugin");
   const reactHooksPlugin = await import("eslint-plugin-react-hooks");
+  /*
+   * The package is not properly typed, but the `plugins` property exists.
+   * @see https://github.com/Rel1cx/eslint-react/blob/d8a5b5b5ac192ba714162a8f646bad54f7c4b843/packages/plugins/eslint-plugin/src/configs/all.ts#L108-L114
+   */
+  const { plugins } = reactPlugin.default.configs.all as {
+    plugins: Record<string, unknown>;
+  };
 
   return [
     {
@@ -28,16 +35,11 @@ export async function react(
       name: "arphi/react",
       plugins: {
         "@eslint-react": reactPlugin.default,
-        "@eslint-react/dom":
-          reactPlugin.default.configs.all.plugins["@eslint-react/dom"],
-        "@eslint-react/hooks-extra":
-          reactPlugin.default.configs.all.plugins["@eslint-react/hooks-extra"],
+        "@eslint-react/dom": plugins["@eslint-react/dom"],
+        "@eslint-react/hooks-extra": plugins["@eslint-react/hooks-extra"],
         "@eslint-react/naming-convention":
-          reactPlugin.default.configs.all.plugins[
-            "@eslint-react/naming-convention"
-          ],
-        "@eslint-react/web-api":
-          reactPlugin.default.configs.all.plugins["@eslint-react/web-api"],
+          plugins["@eslint-react/naming-convention"],
+        "@eslint-react/web-api": plugins["@eslint-react/web-api"],
         "react-hooks": reactHooksPlugin,
         "jsx-a11y": jsxA11yPlugin.default,
       },
