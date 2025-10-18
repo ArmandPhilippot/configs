@@ -1,5 +1,11 @@
 # @arphi/commitlint-config
 
+## 1.0.5
+
+### Patch Changes
+
+- 17f5b79: This package is now published using [OIDC trusted publishing](https://docs.npmjs.com/trusted-publishers).
+
 ## 1.0.4
 
 ### Patch Changes
