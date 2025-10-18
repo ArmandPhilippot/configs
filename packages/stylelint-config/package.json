@@ -1,7 +1,7 @@
 {
   "name": "@arphi/stylelint-config",
   "description": "The shared Stylelint configuration for my projects.",
-  "version": "1.0.2",
+  "version": "1.0.1",
   "license": "MIT",
   "keywords": [
     "stylelint",
