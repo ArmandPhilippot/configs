@@ -1,5 +1,36 @@
 # @arphi/eslint-config
 
+## 2.3.0
+
+### Minor Changes
+
+- 67baf5f: Adds new rules to the `jsdoc` preset.
+
+  The `eslint-plugin-jsdoc` has been bumped to `61.1.4`. The `v61` brings some new rules which has been added to this package and configured to raised an error:
+  - [`jsdoc/ts-method-signature-style`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/ts-method-signature-style.md#readme)
+  - [`jsdoc/ts-no-empty-object-type`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/ts-no-empty-object-type.md#readme)
+  - [`jsdoc/ts-no-unnecessary-template-expression`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/ts-no-unnecessary-template-expression.md#readme)
+  - [`jsdoc/ts-prefer-function-type`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/ts-prefer-function-type.md#readme)
+
+  #### What you need to do
+
+  If you're not using the `jsdoc` preset, no updates are required.
+
+  If you're using the `jsdoc` preset, you might need to fix new errors in your codebase or to disable those rules in your configuration file.
+
+### Patch Changes
+
+- 97450e5: This package is now published using [OIDC trusted publishing](https://docs.npmjs.com/trusted-publishers).
+- 0b820b6: Updates dependencies.
+  - `@eslint-react/eslint-plugin` to `2.2`
+  - `@eslint/js` to `9.38.0`
+  - `@types/node` `24.8.1`
+  - `@typescript-eslint/parser` to `8.46.1`
+  - `@typescript-eslint/utils` to `8.46.1`
+  - `@vitest/eslint-plugin` to `1.3.23`
+  - `eslint` to `9.38.0`
+  - `typescript-eslint` to `8.46.1`
+
 ## 2.2.1
 
 ### Patch Changes
