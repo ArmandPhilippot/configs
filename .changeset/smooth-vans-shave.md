@@ -6,4 +6,4 @@
 "@arphi/tsconfig": patch
 ---
 
-These packages are now published using [OIDC trusted publishing](https://docs.npmjs.com/trusted-publishers).
+This package is now published using [OIDC trusted publishing](https://docs.npmjs.com/trusted-publishers).
