@@ -10,9 +10,8 @@ export async function typescript(
   rulesOverrides: RulesOverrides = {}
 ): Promise<Config[]> {
   const tseslint = await import("typescript-eslint");
-  const { createTypeScriptImportResolver } = await import(
-    "eslint-import-resolver-typescript"
-  );
+  const { createTypeScriptImportResolver } =
+    await import("eslint-import-resolver-typescript");
 
   return [
     {
