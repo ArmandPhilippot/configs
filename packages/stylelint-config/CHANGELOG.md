@@ -1,5 +1,11 @@
 # @arphi/stylelint-config
 
+## 1.0.3
+
+### Patch Changes
+
+- 09ab7b0: Bumps `stylelint` from `>=16.25.0` to `>=16.26.1`.
+
 ## 1.0.2
 
 ### Patch Changes

@@ -1,7 +1,7 @@
 {
   "name": "@arphi/eslint-config",
   "description": "The shared ESLint configuration for my projects.",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "license": "MIT",
   "keywords": [
     "eslint",

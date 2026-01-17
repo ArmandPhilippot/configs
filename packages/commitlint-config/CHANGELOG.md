@@ -1,5 +1,13 @@
 # @arphi/commitlint-config
 
+## 1.0.6
+
+### Patch Changes
+
+- 09ab7b0: Bumps dependencies
+  - `@commitlint/cli`: >=20.1.0 -> >=20.3.1
+  - `@commitlint/config-conventional`: ^20.0.0 -> ^20.3.1
+
 ## 1.0.5
 
 ### Patch Changes
