@@ -1,5 +1,12 @@
 # @arphi/prettier-config
 
+## 1.0.4
+
+### Patch Changes
+
+- abf91ad: Bumps dependencies
+  - `prettier`: >=3.7.4 → >=3.8.1
+
 ## 1.0.3
 
 ### Patch Changes
