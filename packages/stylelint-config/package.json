@@ -35,9 +35,9 @@
     "index.js"
   ],
   "devDependencies": {
-    "stylelint": "^16.26.1"
+    "stylelint": "^17.1.1"
   },
   "peerDependencies": {
-    "stylelint": ">=16.26.1"
+    "stylelint": ">=16.26.1 || ^17.0.0"
   }
 }
