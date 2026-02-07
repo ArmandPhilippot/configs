@@ -212,7 +212,6 @@ const config = {
       // eslint-disable-next-line no-magic-numbers -- Self explanatory (but might need to be adjusted)
       5,
       {
-        checkContextFunctionalPseudoClasses: [],
         ignoreContextFunctionalPseudoClasses: [],
       },
     ],
