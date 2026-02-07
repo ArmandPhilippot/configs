@@ -1,7 +1,7 @@
 {
   "name": "@arphi/renovate-config",
   "description": "The shared Renovate configuration files for my projects",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "license": "MIT",
   "private": true,
   "keywords": [
