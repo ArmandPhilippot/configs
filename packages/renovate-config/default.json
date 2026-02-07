@@ -1,0 +1,84 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    ":configMigration",
+    ":disableDependencyDashboard",
+    ":docker",
+    ":maintainLockFilesWeekly",
+    ":semanticCommits",
+    ":semanticCommitType(ci)",
+    ":separateMultipleMajorReleases",
+    ":widenPeerDependencies",
+    "docker:pinDigests",
+    "group:drupal-core",
+    "group:linters",
+    "group:react",
+    "group:remark",
+    "group:symfony",
+    "group:test",
+    "group:vite",
+    "helpers:pinGitHubActionDigestsToSemver",
+    "mergeConfidence:all-badges",
+    "schedule:weekly",
+    "security:minimumReleaseAgeNpm",
+    "workarounds:all"
+  ],
+  "rangeStrategy": "bump",
+  "minimumReleaseAge": "3 days",
+  "labels": ["dependencies"],
+  "postUpdateOptions": ["pnpmDedupe"],
+  "ignorePaths": ["**/node_modules/**"],
+  "packageRules": [
+    {
+      "groupName": "github-actions",
+      "matchManagers": ["github-actions"]
+    },
+    {
+      "groupName": "astro",
+      "description": "Group updates for Astro (https://astro.build/) packages",
+      "matchDatasources": ["npm"],
+      "matchPackageNames": ["astro", "@astrojs/**", "prettier-plugin-astro"]
+    },
+    {
+      "groupName": "changesets",
+      "matchDatasources": ["npm"],
+      "matchPackageNames": ["@changesets/**"]
+    },
+    {
+      "groupName": "Unified",
+      "description": "Group updates for the unified ecosystem (https://unifiedjs.com/) packages",
+      "matchDatasources": ["npm"],
+      "matchSourceUrls": [
+        "https://github.com/mdx-js/**",
+        "https://github.com/micromark/**",
+        "https://github.com/rehypejs/**",
+        "https://github.com/remarkjs/**",
+        "https://github.com/retextjs/**",
+        "https://github.com/syntax-tree/**",
+        "https://github.com/unifiedjs/**",
+        "https://github.com/vfile/**",
+        "https://github.com/wooorm/parse-english",
+        "https://github.com/wooorm/parse-latin"
+      ]
+    },
+    {
+      "groupName": "Unified",
+      "description": "Adds relevant types to the Unified group",
+      "matchDatasources": ["npm"],
+      "matchPackageNames": [
+        "@types/unist",
+        "@types/hast",
+        "@types/mdast",
+        "@types/mdx"
+      ]
+    },
+    {
+      "description": "Prevent rangeStrategy to apply to Node.js engines field",
+      "matchPackageNames": ["node"],
+      "matchManagers": ["npm"],
+      "matchDepTypes": ["engines"],
+      "enabled": false
+    }
+  ]
+}

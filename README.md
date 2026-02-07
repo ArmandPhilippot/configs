@@ -7,6 +7,7 @@ My shareable configuration files.
 - [Commitlint](./packages/commitlint-config/)
 - [ESLint](./packages/eslint-config/)
 - [Prettier](./packages/prettier-config/)
+- [Renovate](./packages/renovate-config/)
 - [Stylelint](./packages/stylelint-config/)
 - [Typescript](./packages/tsconfig/)
 

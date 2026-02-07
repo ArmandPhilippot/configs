@@ -13,6 +13,7 @@ nuxt
 pnpmDedupe
 proptypes
 setstate
+symfony
 textnodes
 thenables
 unrs
