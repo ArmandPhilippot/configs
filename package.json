@@ -30,6 +30,8 @@
     "lint:scripts": "eslint .",
     "lint:spelling": "cspell \"**\" --no-progress",
     "lint:types": "tsc --noEmit",
+    "test": "pnpm run \"/^test:.*/\"",
+    "test:renovate": "pnpm --filter @arphi/renovate-config test",
     "prepare": "husky && pnpm --filter @arphi/eslint-config build"
   },
   "devDependencies": {

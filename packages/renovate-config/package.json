@@ -1,0 +1,33 @@
+{
+  "name": "@arphi/renovate-config",
+  "description": "The shared Renovate configuration files for my projects",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": true,
+  "keywords": [
+    "renovate",
+    "config",
+    "configuration"
+  ],
+  "author": {
+    "name": "Armand Philippot",
+    "email": "git@armand.philippot.eu",
+    "url": "https://armand.philippot.eu/"
+  },
+  "homepage": "https://github.com/ArmandPhilippot/configs/packages/renovate-config#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArmandPhilippot/configs.git",
+    "directory": "packages/renovate-config"
+  },
+  "bugs": {
+    "url": "https://github.com/ArmandPhilippot/configs/issues"
+  },
+  "main": "default.json",
+  "scripts": {
+    "test": "renovate-config-validator --strict default.json"
+  },
+  "devDependencies": {
+    "renovate": "^43.3.0"
+  }
+}
