@@ -25,7 +25,7 @@
   },
   "main": "default.json",
   "scripts": {
-    "test": "renovate-config-validator --strict default.json"
+    "test": "renovate-config-validator --strict default.json ../../.github/renovate.json"
   },
   "devDependencies": {
     "renovate": "^43.3.0"
