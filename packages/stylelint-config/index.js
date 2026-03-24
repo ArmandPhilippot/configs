@@ -106,10 +106,7 @@ const config = {
       true,
       { ignoreKeywords: [] },
     ],
-    "declaration-property-value-no-unknown": [
-      true,
-      { ignoreProperties: {}, propertiesSyntax: {}, typesSyntax: {} },
-    ],
+    "declaration-property-value-no-unknown": [true, { ignoreProperties: {} }],
     "font-family-name-quotes": "always-where-recommended",
     "font-family-no-duplicate-names": [true, { ignoreFontFamilyNames: [] }],
     "font-family-no-missing-generic-family-keyword": [

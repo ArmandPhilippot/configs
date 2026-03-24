@@ -41,14 +41,14 @@
     "@arphi/tsconfig": "workspace:*",
     "@changesets/cli": "^2.30.0",
     "@commitlint/cli": "^20.5.0",
-    "@eslint/js": "^9.39.2",
+    "@eslint/js": "^9.39.4",
     "@types/node": "^25.5.0",
     "cspell": "^9.7.0",
-    "eslint": "^9.39.2",
+    "eslint": "^9.39.4",
     "husky": "^9.1.7",
     "lint-staged": "^16.4.0",
     "prettier": "3.8.1",
     "typescript": "~5.9.3",
-    "typescript-eslint": "^8.54.0"
+    "typescript-eslint": "^8.57.1"
   }
 }

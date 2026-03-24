@@ -24,6 +24,9 @@ export async function typescript(
           tsconfigRootDir: process.cwd(),
         },
       },
+      linterOptions: {
+        reportUnusedDisableDirectives: true,
+      },
       name: "arphi/typescript",
       plugins: {
         "@typescript-eslint": tseslint.plugin,
