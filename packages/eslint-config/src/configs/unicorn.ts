@@ -65,6 +65,7 @@ export function unicorn(rulesOverrides: RulesOverrides = {}): Config[] {
             },
           },
         ],
+        "unicorn/isolated-functions": "error",
         "unicorn/new-for-builtins": "error",
         "unicorn/no-abusive-eslint-disable": "error",
         "unicorn/no-accessor-recursion": "error",
