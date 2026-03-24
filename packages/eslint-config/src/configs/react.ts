@@ -121,8 +121,6 @@ export async function react(
           { allowAllCaps: false, excepts: [], rule: "PascalCase" },
         ],
         "@eslint-react/naming-convention/context-name": "error",
-        "@eslint-react/naming-convention/filename": "off",
-        "@eslint-react/naming-convention/filename-extension": "off",
         "@eslint-react/naming-convention/use-state": "error",
         ...getJsxA11yRules(),
         "react-hooks/exhaustive-deps": "warn",
