@@ -40,8 +40,8 @@
     "node": ">=20.19.1"
   },
   "scripts": {
-    "build": "tsup --clean --dts",
-    "watch": "tsup --watch"
+    "build": "tsdown --clean --dts",
+    "watch": "tsdown --watch"
   },
   "dependencies": {
     "@eslint-community/eslint-plugin-eslint-comments": "^4.7.1",
@@ -66,7 +66,7 @@
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-no-only-tests": "^3.3.0",
     "eslint-plugin-react-hooks": "^7.0.1",
-    "tsup": "^8.5.1",
+    "tsdown": "^0.21.4",
     "typescript": "~5.9.3"
   },
   "peerDependencies": {
