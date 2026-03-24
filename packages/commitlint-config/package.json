@@ -35,11 +35,11 @@
     "index.js"
   ],
   "dependencies": {
-    "@commitlint/config-conventional": "^20.4.1"
+    "@commitlint/config-conventional": "^20.5.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^20.4.1",
-    "@commitlint/types": "^20.4.0"
+    "@commitlint/cli": "^20.5.0",
+    "@commitlint/types": "^20.5.0"
   },
   "peerDependencies": {
     "@commitlint/cli": ">=20.4.1"
