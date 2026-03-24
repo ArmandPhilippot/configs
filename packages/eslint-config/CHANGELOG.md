@@ -1,5 +1,31 @@
 # @arphi/eslint-config
 
+## 2.4.1
+
+### Patch Changes
+
+- 0c6b3e5: Unpins `@vitest/eslint-plugin`.
+
+  The `tests` preset was using a pinned version of `@vitest/eslint-plugin`. This was accidental and there are no reasons to use a pin version here. This package now uses a [caret range](https://github.com/npm/node-semver#caret-ranges-123-025-004).
+
+- d43caeb: Enables the [`unicorn/isolated-functions`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/isolated-functions.md) rule from `eslint-plugin-unicorn`.
+- 0c6b3e5: Removes the `eslint-comments/no-unused-disable` rule.
+
+  The `@eslint-community/eslint-comments/no-unused-disable` rule is now deprecated because [ESLint provides a built-in rule](https://eslint.org/docs/latest/use/configure/configuration-files#report-unused-disable-directives) to check unused disable directives since v6.3.0.
+
+  `reportUnusedDisableDirectives` was already enabled explicitly for JS files and implicitly in Typescript since `'warn'` is the default value in ESLint. This shouldn't change anything in your setup.
+
+- 3e36a75: Bumps dependencies.
+  - `@eslint-community/eslint-plugin-eslint-comments`: `^4.6.0` → `^4.7.1`
+  - `@vitest/eslint-plugin`: `1.6.6` → `^1.6.12`
+  - `eslint-plugin-import-x`: `^4.16.1` → `^4.16.2`
+  - `eslint-plugin-unicorn`: `^62.0.0"` → `^63.0.0"`
+  - `typescript-eslint`: `^8.54.0` → `^8.57.1`
+
+- 0c6b3e5: Removes two deprecated rules from the React preset.
+
+  The `@eslint-react/naming-convention/filename` and `@eslint-react/naming-convention/filename-extension` rules were previously disabled in the React preset. These rules are now [deprecated in the ESLint React plugin](https://beta.eslint-react.xyz/docs/removed#rules) and have been removed from the preset.
+
 ## 2.4.0
 
 ### Minor Changes

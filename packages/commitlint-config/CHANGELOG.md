@@ -1,5 +1,11 @@
 # @arphi/commitlint-config
 
+## 1.0.8
+
+### Patch Changes
+
+- 58d3bc2: Bumps commitlint to v20.5.0.
+
 ## 1.0.7
 
 ### Patch Changes
