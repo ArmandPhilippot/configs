@@ -28,6 +28,6 @@
     "test": "renovate-config-validator --strict default.json ../../.github/renovate.json"
   },
   "devDependencies": {
-    "renovate": "^43.31.1"
+    "renovate": "^43.84.2"
   }
 }
