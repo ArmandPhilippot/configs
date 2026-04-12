@@ -1,5 +1,28 @@
 # @arphi/eslint-config
 
+## 2.5.0
+
+### Minor Changes
+
+- fcbca37: Enables new `eslint-plugin-unicorn` rules.
+
+  The `eslint-plugin-unicorn` v64.0.0 offers new rules that have been enabled in this update:
+  - [`unicorn/consistent-template-literal-escape`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/consistent-template-literal-escape.md)
+  - [`unicorn/no-useless-iterator-to-array`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-useless-iterator-to-array.md)
+  - [`unicorn/prefer-simple-condition-first`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-simple-condition-first.md)
+  - [`unicorn/switch-case-break-position`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/switch-case-break-position.md)
+
+### Patch Changes
+
+- 9855a6a: Bumps dependencies.
+
+  The following dependencies have been updated:
+  - `@typescript-eslint/parser`: `^8.57.1` → `^8.58.1`
+  - `@typescript-eslint/utils`: `^8.57.1` → `^8.58.1`
+  - `@vitest/eslint-plugin`: `^1.6.12` → `^1.6.15`
+  - `eslint-plugin-unicorn`: `^63.0.0` → `^64.0.0`
+  - `typescript-eslint`: `^8.57.1` → `^8.58.1`
+
 ## 2.4.1
 
 ### Patch Changes
