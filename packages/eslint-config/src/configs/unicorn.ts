@@ -26,6 +26,7 @@ export function unicorn(rulesOverrides: RulesOverrides = {}): Config[] {
           "error",
           { checkArrowFunctions: false },
         ],
+        "unicorn/consistent-template-literal-escape": "error",
         "unicorn/custom-error-definition": "error",
         "unicorn/empty-brace-spaces": "error",
         "unicorn/error-message": "error",
@@ -123,6 +124,7 @@ export function unicorn(rulesOverrides: RulesOverrides = {}): Config[] {
         "unicorn/no-unused-properties": "off",
         "unicorn/no-useless-error-capture-stack-trace": "error",
         "unicorn/no-useless-fallback-in-spread": "error",
+        "unicorn/no-useless-iterator-to-array": "error",
         "unicorn/no-useless-length-check": "error",
         "unicorn/no-useless-promise-resolve-reject": "error",
         "unicorn/no-useless-spread": "error",
@@ -202,6 +204,7 @@ export function unicorn(rulesOverrides: RulesOverrides = {}): Config[] {
         "unicorn/prefer-regexp-test": "error",
         "unicorn/prefer-set-has": "error",
         "unicorn/prefer-set-size": "error",
+        "unicorn/prefer-simple-condition-first": "error",
         "unicorn/prefer-single-call": "error",
         "unicorn/prefer-spread": "error",
         "unicorn/prefer-string-raw": "error",
@@ -228,6 +231,7 @@ export function unicorn(rulesOverrides: RulesOverrides = {}): Config[] {
         // Unless I'm missing something the rule seems broken
         "unicorn/string-content": "off",
         "unicorn/switch-case-braces": ["error", "avoid"],
+        "unicorn/switch-case-break-position": "error",
         "unicorn/template-indent": [
           "warn",
           {
