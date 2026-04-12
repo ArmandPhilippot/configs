@@ -1,5 +1,5 @@
 ---
-"@arphi/eslint-config": major
+"@arphi/eslint-config": patch
 ---
 
 Bumps dependencies.
