@@ -7,7 +7,6 @@
     ":docker",
     ":semanticCommits",
     ":semanticCommitType(ci)",
-    ":separateMultipleMajorReleases",
     ":widenPeerDependencies",
     "docker:pinDigests",
     "group:drupal-core",
