@@ -5,7 +5,6 @@
     ":configMigration",
     ":disableDependencyDashboard",
     ":docker",
-    ":maintainLockFilesWeekly",
     ":semanticCommits",
     ":semanticCommitType(ci)",
     ":separateMultipleMajorReleases",
