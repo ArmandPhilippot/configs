@@ -67,7 +67,7 @@
     "eslint-plugin-no-only-tests": "^3.3.0",
     "eslint-plugin-react-hooks": "^7.0.1",
     "tsdown": "^0.22.1",
-    "typescript": "~5.9.3"
+    "typescript": "~6.0.3"
   },
   "peerDependencies": {
     "astro-eslint-parser": "^1.2.2",
