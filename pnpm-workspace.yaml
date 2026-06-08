@@ -4,8 +4,10 @@ packages:
 minimumReleaseAge: 4320
 minimumReleaseAgeExclude:
   - "@arphi/*"
-  # Renovate security update: renovate@43.4.4
-  - renovate@43.4.4
-onlyBuiltDependencies:
-  - "esbuild"
-  - "unrs-resolver"
+allowBuilds:
+  core-js-pure: false
+  dtrace-provider: false
+  esbuild: false
+  protobufjs: false
+  re2: false
+  unrs-resolver: false

@@ -12,6 +12,7 @@ nonoctal
 nuxt
 pnpmDedupe
 proptypes
+protobufjs
 setstate
 symfony
 textnodes
