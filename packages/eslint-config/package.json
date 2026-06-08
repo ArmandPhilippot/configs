@@ -44,17 +44,17 @@
     "watch": "tsdown --watch"
   },
   "dependencies": {
-    "@eslint-community/eslint-plugin-eslint-comments": "^4.7.1",
+    "@eslint-community/eslint-plugin-eslint-comments": "^4.7.2",
     "@eslint-react/eslint-plugin": "^2.13.0",
     "@eslint/js": "^9.39.4",
-    "@typescript-eslint/parser": "^8.58.1",
-    "@typescript-eslint/utils": "^8.58.1",
+    "@typescript-eslint/parser": "^8.60.1",
+    "@typescript-eslint/utils": "^8.60.1",
     "@vitest/eslint-plugin": "^1.6.19",
-    "eslint-import-resolver-typescript": "^4.4.4",
+    "eslint-import-resolver-typescript": "^4.4.5",
     "eslint-plugin-import-x": "^4.16.2",
     "eslint-plugin-unicorn": "^64.0.0",
     "globals": "^17.6.0",
-    "typescript-eslint": "^8.58.1"
+    "typescript-eslint": "^8.60.1"
   },
   "devDependencies": {
     "@types/node": "^25.8.0",
@@ -64,8 +64,8 @@
     "eslint-plugin-astro": "^1.7.0",
     "eslint-plugin-jsdoc": "^62.9.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
-    "eslint-plugin-no-only-tests": "^3.3.0",
-    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-no-only-tests": "^3.4.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
     "tsdown": "^0.22.1",
     "typescript": "~5.9.3"
   },

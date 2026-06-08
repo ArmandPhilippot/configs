@@ -214,6 +214,7 @@ const config = {
     ],
     "selector-max-pseudo-class": 5,
     "selector-max-universal": [1, { ignoreAfterCombinators: [">", "+", "~"] }],
+    "selector-no-deprecated": true,
     "selector-no-vendor-prefix": [true, { ignoreSelectors: [] }],
     "selector-not-notation": "complex",
     "selector-pseudo-class-no-unknown": [
