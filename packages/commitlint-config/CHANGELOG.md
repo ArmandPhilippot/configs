@@ -1,5 +1,11 @@
 # @arphi/commitlint-config
 
+## 1.0.9
+
+### Patch Changes
+
+- 659f130: Bumps `@commitlint/config-conventional` from `^20.5.0` to `^21.0.2`.
+
 ## 1.0.8
 
 ### Patch Changes
