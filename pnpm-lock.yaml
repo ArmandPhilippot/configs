@@ -59,13 +59,13 @@ importers:
       '@commitlint/config-conventional':
         specifier: ^21.2.0
         version: 21.2.0
+      '@commitlint/types':
+        specifier: ^21.2.0
+        version: 21.2.0
     devDependencies:
       '@commitlint/cli':
         specifier: ^21.2.1
         version: 21.2.1(@types/node@26.2.0)(conventional-commits-parser@7.1.2)(typescript@6.0.3)
-      '@commitlint/types':
-        specifier: ^21.2.0
-        version: 21.2.0
 
   packages/eslint-config:
     dependencies:
