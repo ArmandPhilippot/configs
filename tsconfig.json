@@ -1,5 +1,8 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "extends": ["@arphi/tsconfig"],
+  "compilerOptions": {
+    "types": ["node"]
+  },
   "include": ["packages/**/*"]
 }

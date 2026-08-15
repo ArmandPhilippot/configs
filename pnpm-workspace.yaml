@@ -11,3 +11,7 @@ allowBuilds:
   protobufjs: false
   re2: false
   unrs-resolver: false
+# Workaround: `eslint-plugin-jsx-a11y` is not yet compatible with ESLint 10
+peerDependencyRules:
+  allowedVersions:
+    "eslint-plugin-jsx-a11y>eslint": "10"

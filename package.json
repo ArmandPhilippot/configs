@@ -18,7 +18,7 @@
   },
   "private": true,
   "type": "module",
-  "packageManager": "pnpm@11.5.2+sha512.71c631e382066efc25625d5cf029075de07b61b37f6e27350fbd84b1bda5864c8c1967adc280776b45c30a715c0359a3be08fef42d5bb09e2b99029979692916",
+  "packageManager": "pnpm@11.21.0+sha512.521705bce689924eac72f5a3587122f362689ef6571e55ba80076fd637c11132ecffada26fad4ea79c485bfddbfd3d5a2a5b05805a77e893de71ec8a6cca3bb1",
   "scripts": {
     "ci:release": "changeset publish",
     "ci:version": "changeset version && pnpm install --no-frozen-lockfile",
@@ -39,16 +39,16 @@
     "@arphi/eslint-config": "workspace:*",
     "@arphi/prettier-config": "workspace:*",
     "@arphi/tsconfig": "workspace:*",
-    "@changesets/cli": "^2.31.1",
-    "@commitlint/cli": "^21.0.2",
-    "@eslint/js": "^9.39.4",
-    "@types/node": "^25.9.5",
+    "@changesets/cli": "^3.0.0",
+    "@commitlint/cli": "^21.2.1",
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^26.2.0",
     "cspell": "^10.0.1",
-    "eslint": "^9.39.4",
+    "eslint": "^10.8.1",
     "husky": "^9.1.7",
     "lint-staged": "^17.3.0",
-    "prettier": "3.8.3",
-    "typescript": "~5.9.3",
-    "typescript-eslint": "^8.60.1"
+    "prettier": "3.9.6",
+    "typescript": "6.0.3",
+    "typescript-eslint": "^8.67.0"
   }
 }
