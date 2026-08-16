@@ -1,28 +1,18 @@
-declare type Config =
-  import("@typescript-eslint/utils/ts-eslint").FlatConfig.Config;
-declare const eslintModuleExport = {
-  config: {
-    recommended: {} as Config,
-  },
-  rules: {} as Partial<import("eslint").Linter.RulesRecord>,
-};
-
-declare module "@eslint-community/eslint-plugin-eslint-comments" {
-  export = eslintModuleExport;
-}
-
-declare module "eslint-config-prettier" {
-  export = eslintModuleExport;
-}
+declare type RuleModules = Record<string, import("eslint").Rule.RuleModule>;
+declare type RulesRecord = Partial<import("eslint").Linter.RulesRecord>;
 
 declare module "eslint-plugin-jsx-a11y" {
-  export = eslintModuleExport;
+  const plugin: {
+    rules: RuleModules;
+    flatConfigs: {
+      recommended: { rules: RulesRecord };
+      strict: { rules: RulesRecord };
+    };
+  };
+  export = plugin;
 }
 
 declare module "eslint-plugin-no-only-tests" {
-  export = eslintModuleExport;
-}
-
-declare module "eslint-plugin-react-hooks" {
-  export = eslintModuleExport;
+  const plugin: { rules: RuleModules };
+  export = plugin;
 }

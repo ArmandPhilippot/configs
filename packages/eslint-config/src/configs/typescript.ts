@@ -12,6 +12,10 @@ export async function typescript(
   const tseslint = await import("typescript-eslint");
   const { createTypeScriptImportResolver } =
     await import("eslint-import-resolver-typescript");
+  const recommendedTypeCheckedRules = Object.assign(
+    {},
+    ...tseslint.configs.recommendedTypeChecked.map((config) => config.rules)
+  ) as RulesOverrides;
 
   return [
     {
@@ -32,12 +36,12 @@ export async function typescript(
         "@typescript-eslint": tseslint.plugin,
       },
       rules: {
+        ...recommendedTypeCheckedRules,
         "@typescript-eslint/adjacent-overload-signatures": "error",
         "@typescript-eslint/array-type": [
           "error",
           { default: "array", readonly: "array" },
         ],
-        "@typescript-eslint/await-thenable": "error",
         "@typescript-eslint/ban-ts-comment": [
           "error",
           {
@@ -143,9 +147,6 @@ export async function typescript(
         "@typescript-eslint/member-ordering": "off",
         "@typescript-eslint/method-signature-style": ["error", "property"],
         "@typescript-eslint/naming-convention": "off",
-        "no-array-constructor": "off",
-        "@typescript-eslint/no-array-constructor": "error",
-        "@typescript-eslint/no-array-delete": "error",
         "@typescript-eslint/no-base-to-string": [
           "error",
           { ignoredTypeNames: ["Error", "RegExp", "URL", "URLSearchParams"] },
@@ -162,7 +163,6 @@ export async function typescript(
         "@typescript-eslint/no-deprecated": "warn",
         "no-dupe-class-members": "off",
         "@typescript-eslint/no-dupe-class-members": "error",
-        "@typescript-eslint/no-duplicate-enum-values": "error",
         "@typescript-eslint/no-duplicate-type-constituents": [
           "error",
           { ignoreIntersections: false, ignoreUnions: false },
@@ -178,7 +178,6 @@ export async function typescript(
           "error",
           { fixToUnknown: true, ignoreRestArgs: false },
         ],
-        "@typescript-eslint/no-extra-non-null-assertion": "error",
         "@typescript-eslint/no-extraneous-class": "error",
         "@typescript-eslint/no-floating-promises": [
           "error",
@@ -190,9 +189,6 @@ export async function typescript(
             ignoreVoid: true,
           },
         ],
-        "@typescript-eslint/no-for-in-array": "error",
-        "no-implied-eval": "off",
-        "@typescript-eslint/no-implied-eval": "error",
         "@typescript-eslint/no-import-type-side-effects": "error",
         "@typescript-eslint/no-inferrable-types": [
           "error",
@@ -207,8 +203,6 @@ export async function typescript(
           "error",
           { allowAsThisParameter: false, allowInGenericTypeArguments: true },
         ],
-        "no-loop-func": "off",
-        "@typescript-eslint/no-loop-func": "error",
         "no-magic-numbers": "off",
         "@typescript-eslint/no-magic-numbers": [
           "error",
@@ -229,7 +223,6 @@ export async function typescript(
           "error",
           { checkNever: false },
         ],
-        "@typescript-eslint/no-misused-new": "error",
         "@typescript-eslint/no-misused-promises": [
           "error",
           {
@@ -245,14 +238,12 @@ export async function typescript(
           { allowDeclarations: false, allowDefinitionFiles: true },
         ],
         "@typescript-eslint/no-non-null-asserted-nullish-coalescing": "error",
-        "@typescript-eslint/no-non-null-asserted-optional-chain": "error",
         "@typescript-eslint/no-non-null-assertion": "error",
         "no-redeclare": "off",
         "@typescript-eslint/no-redeclare": [
           "error",
           { builtinGlobals: true, ignoreDeclarationMerge: true },
         ],
-        "@typescript-eslint/no-redundant-type-constituents": "error",
         "@typescript-eslint/no-require-imports": [
           "error",
           { allow: [], allowAsImport: false },
@@ -300,17 +291,7 @@ export async function typescript(
         "@typescript-eslint/no-unnecessary-qualifier": "error",
         "@typescript-eslint/no-unnecessary-template-expression": "error",
         "@typescript-eslint/no-unnecessary-type-arguments": "error",
-        "@typescript-eslint/no-unnecessary-type-assertion": "error",
-        "@typescript-eslint/no-unnecessary-type-constraint": "error",
         "@typescript-eslint/no-unnecessary-type-parameters": "off",
-        "@typescript-eslint/no-unsafe-argument": "error",
-        "@typescript-eslint/no-unsafe-assignment": "error",
-        "@typescript-eslint/no-unsafe-call": "error",
-        "@typescript-eslint/no-unsafe-declaration-merging": "error",
-        "@typescript-eslint/no-unsafe-enum-comparison": "error",
-        "@typescript-eslint/no-unsafe-function-type": "error",
-        "@typescript-eslint/no-unsafe-member-access": "error",
-        "@typescript-eslint/no-unsafe-return": "error",
         // Too restrictive...
         "@typescript-eslint/no-unsafe-type-assertion": "off",
         "@typescript-eslint/no-unsafe-unary-minus": "error",
@@ -353,7 +334,6 @@ export async function typescript(
         "no-useless-constructor": "off",
         "@typescript-eslint/no-useless-constructor": "error",
         "@typescript-eslint/no-useless-empty-export": "error",
-        "@typescript-eslint/no-wrapper-object-types": "error",
         "@typescript-eslint/non-nullable-type-assertion-style": "error",
         "no-throw-literal": "off",
         "@typescript-eslint/only-throw-error": [
@@ -368,7 +348,6 @@ export async function typescript(
           "error",
           { allow: [], prefer: "class-property" },
         ],
-        "@typescript-eslint/prefer-as-const": "error",
         "prefer-destructuring": "off",
         "@typescript-eslint/prefer-destructuring": [
           "error",
@@ -391,7 +370,6 @@ export async function typescript(
           "error",
           { allowBitwiseExpressions: false },
         ],
-        "@typescript-eslint/prefer-namespace-keyword": "error",
         "@typescript-eslint/prefer-nullish-coalescing": [
           "error",
           {
@@ -457,8 +435,6 @@ export async function typescript(
           "error",
           { ignoreStringArrays: true },
         ],
-        "require-await": "off",
-        "@typescript-eslint/require-await": "error",
         "@typescript-eslint/restrict-plus-operands": [
           "error",
           {
@@ -508,7 +484,6 @@ export async function typescript(
           "error",
           { lib: "always", path: "never", types: "prefer-import" },
         ],
-        "@typescript-eslint/typedef": "off",
         "@typescript-eslint/unbound-method": ["error", { ignoreStatic: false }],
         "@typescript-eslint/unified-signatures": [
           "error",

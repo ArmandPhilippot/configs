@@ -25,11 +25,12 @@ export async function tests(
       ],
       name: "arphi/tests",
       plugins: {
-        "@funboxteam/no-only-tests": noOnlyTestsPlugin,
+        "@funboxteam/no-only-tests": noOnlyTestsPlugin.default,
         vitest: vitestPlugin.default,
       },
       rules: {
-        ...noOnlyTestsPlugin.rules,
+        ...vitestPlugin.default.configs.recommended.rules,
+        "@funboxteam/no-only-tests/no-only-tests": "error",
         "no-param-reassign": "off",
         "vitest/consistent-test-filename": "error",
         "vitest/consistent-test-it": [
@@ -45,18 +46,10 @@ export async function tests(
         ],
         "vitest/max-expects": ["error", { max: 5 }],
         "vitest/max-nested-describe": ["error", { max: 5 }],
-        "vitest/no-alias-methods": "off",
-        "vitest/no-commented-out-tests": "error",
-        "vitest/no-conditional-expect": "error",
-        "vitest/no-conditional-in-test": "off",
         "vitest/no-conditional-tests": "error",
         "vitest/no-disabled-tests": "error",
         "vitest/no-duplicate-hooks": "error",
         "vitest/no-focused-tests": ["error", { fixable: false }],
-        "vitest/no-hooks": "off",
-        "vitest/no-identical-title": "error",
-        "vitest/no-import-node-test": "error",
-        "vitest/no-interpolation-in-snapshots": "error",
         "vitest/no-large-snapshots": [
           "error",
           {
@@ -65,8 +58,6 @@ export async function tests(
           },
         ],
         "vitest/no-mocks-import": "off",
-        "vitest/no-restricted-matchers": "off",
-        "vitest/no-restricted-vi-methods": "off",
         "vitest/no-standalone-expect": [
           "error",
           {
@@ -105,23 +96,15 @@ export async function tests(
         "vitest/prefer-spy-on": "error",
         "vitest/prefer-strict-boolean-matchers": "error",
         "vitest/prefer-strict-equal": "error",
-        "vitest/prefer-to-be-falsy": "off",
         "vitest/prefer-to-be-object": "error",
-        "vitest/prefer-to-be-truthy": "off",
-        "vitest/prefer-to-be": "off",
         "vitest/prefer-to-contain": "error",
         "vitest/prefer-to-have-length": "error",
         "vitest/prefer-todo": "error",
         "vitest/prefer-vi-mocked": "error",
-        "vitest/require-hook": "off",
-        "vitest/require-local-test-context-for-concurrent-snapshots": "error",
-        "vitest/require-mock-type-parameters": "off",
         "vitest/require-to-throw-message": "warn",
-        "vitest/require-top-level-describe": "off",
         "@typescript-eslint/unbound-method": "off",
         // The rule is not yet available: vitest-dev/eslint-plugin-vitest#591
         "vitest/unbound-method": "off",
-        "vitest/valid-describe-callback": "error",
         "vitest/valid-expect-in-promise": "off",
         "vitest/valid-expect": [
           "error",
@@ -130,14 +113,6 @@ export async function tests(
             asyncMatchers: [],
             minArgs: 1,
             maxArgs: 1,
-          },
-        ],
-        "vitest/valid-title": [
-          "error",
-          {
-            allowArguments: false,
-            disallowedWords: [],
-            ignoreTypeOfDescribeName: false,
           },
         ],
         ...rulesOverrides,

@@ -15,11 +15,10 @@ export function imports(rulesOverrides: RulesOverrides = {}): Config[] {
         "import-x": importPlugin,
       },
       rules: {
+        ...importPlugin.configs["flat/recommended"].rules,
         // I'd prefer a smarter option: prefer top-level unless...
         "import-x/consistent-type-specifier-style": "off",
-        "import-x/default": "error",
         "import-x/dynamic-import-chunkname": "off",
-        "import-x/export": "error",
         "import-x/exports-last": "off",
         "import-x/extensions": "off",
         "import-x/first": "error",
@@ -29,7 +28,6 @@ export function imports(rulesOverrides: RulesOverrides = {}): Config[] {
           "error",
           { considerComments: true, count: 1, exactCount: true },
         ],
-        "import-x/named": "error",
         // Too slow.
         "import-x/namespace": "off",
         "import-x/no-absolute-path": "error",
