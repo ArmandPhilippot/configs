@@ -12,12 +12,27 @@ export async function astro(
 ): Promise<Config[]> {
   const astroParser = await import("astro-eslint-parser");
   const astroPlugin = await import("eslint-plugin-astro");
-  const jsxA11yPlugin = await import("eslint-plugin-jsx-a11y");
   const tseslint = await import("typescript-eslint");
   const jsxA11yRules = getJsxA11yRules();
-  const astroA11yRules = Object.fromEntries(
-    Object.entries(jsxA11yRules).map(([key, value]) => [
-      key.replace("jsx-a11y", "astro/jsx-a11y"),
+  /*
+   * `eslint-plugin-astro` re-exports `eslint-plugin-jsx-a11y`'s rules under
+   * its own `astro` plugin, keyed as `jsx-a11y/<rule>`. Re-registering them
+   * here under the `jsx-a11y` plugin key keeps the familiar `jsx-a11y/<rule>`
+   * IDs (matching `eslint-plugin-jsx-a11y`'s own docs) while still using the
+   * implementations wired for Astro's AST.
+   */
+  const astroJsxA11yPlugin = {
+    rules: Object.fromEntries(
+      Object.entries(astroPlugin.rules)
+        .filter(([key]) => key.startsWith("jsx-a11y/"))
+        .map(([key, rule]) => [key.replace("jsx-a11y/", ""), rule])
+    ),
+  };
+  const astroA11yRecommendedRules = Object.fromEntries(
+    Object.entries(
+      astroPlugin.configs["flat/jsx-a11y-recommended"].at(-1)?.rules ?? {}
+    ).map(([key, value]) => [
+      key.replace("astro/jsx-a11y/", "jsx-a11y/"),
       value,
     ])
   );
@@ -36,37 +51,29 @@ export async function astro(
       },
       name: "arphi/astro",
       plugins: {
-        "jsx-a11y": jsxA11yPlugin,
         astro: astroPlugin,
+        "jsx-a11y": astroJsxA11yPlugin,
       },
       processor: "astro/client-side-ts",
       rules: {
+        ...astroPlugin.configs.recommended.find(
+          (config) => config.name === "astro/recommended"
+        )?.rules,
+        ...astroA11yRecommendedRules,
         /* This rule is triggered when defining a function in Props type... but
          * a function is valid to define the expected type for children for
          * example so it's best to disable it.  */
         "no-unused-vars": "off",
-        "astro/missing-client-only-directive-value": "error",
-        "astro/no-conflict-set-directives": "error",
-        "astro/no-deprecated-astro-canonicalurl": "error",
-        "astro/no-deprecated-astro-fetchcontent": "error",
-        "astro/no-deprecated-getentrybyslug": "error",
-        "astro/no-exports-from-components": "error",
-        "astro/no-set-html-directive": "off",
         "astro/no-set-text-directive": "error",
         // It doesn't seem to work with some use cases (e.g. dynamic tags).
         "astro/no-unused-css-selector": "off",
-        "astro/no-unused-define-vars-in-style": "error",
-        "astro/prefer-class-list-directive": "off",
-        "astro/prefer-object-class-list": "off",
-        "astro/prefer-split-class-list": "off",
         "astro/sort-attributes": [
           "error",
           { type: "alphabetical", order: "asc", ignoreCase: true },
         ],
-        "astro/valid-compile": "error",
         // An Astro component doesn't necessarily use import/export.
         "import-x/unambiguous": "off",
-        ...astroA11yRules,
+        ...jsxA11yRules,
         ...rulesOverrides,
       },
     },

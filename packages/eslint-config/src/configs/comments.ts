@@ -15,12 +15,8 @@ export function comments(rulesOverrides: RulesOverrides = {}): Config[] {
         "@eslint-community/eslint-comments": commentsPlugin,
       },
       rules: {
-        "@eslint-community/eslint-comments/disable-enable-pair": "error",
-        "@eslint-community/eslint-comments/no-aggregating-enable": "error",
-        "@eslint-community/eslint-comments/no-duplicate-disable": "error",
-        "@eslint-community/eslint-comments/no-unlimited-disable": "error",
+        ...commentsPlugin.configs.recommended.rules,
         "@eslint-community/eslint-comments/no-unused-disable": "error",
-        "@eslint-community/eslint-comments/no-unused-enable": "error",
         "@eslint-community/eslint-comments/require-description": [
           "warn",
           { ignore: ["eslint-enable"] },

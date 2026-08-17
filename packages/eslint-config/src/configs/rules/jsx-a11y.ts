@@ -1,7 +1,7 @@
 import type { RulesOverrides } from "../../types";
 
 /**
- * Retrieve the JSX A11y rules.
+ * Retrieve the deviations from `eslint-plugin-jsx-a11y`'s `recommended` preset.
  *
  * @returns {RulesOverrides} The customized JSX A11y rules.
  */
@@ -37,9 +37,6 @@ export function getJsxA11yRules(): RulesOverrides {
         aspects: ["noHref", "invalidHref", "preferButton"],
       },
     ],
-    "jsx-a11y/aria-activedescendant-has-tabindex": "error",
-    "jsx-a11y/aria-props": "error",
-    "jsx-a11y/aria-proptypes": "error",
     "jsx-a11y/aria-role": [
       "error",
       {
@@ -47,14 +44,12 @@ export function getJsxA11yRules(): RulesOverrides {
         ignoreNonDOM: true,
       },
     ],
-    "jsx-a11y/aria-unsupported-elements": "error",
     "jsx-a11y/autocomplete-valid": [
       "error",
       {
         inputComponents: ["Field", "FormField", "Input", "TextField"],
       },
     ],
-    "jsx-a11y/click-events-have-key-events": "error",
     // Doesn't seem to work as expected at least with Astro
     "jsx-a11y/control-has-associated-label": "off",
     "jsx-a11y/heading-has-content": [
@@ -63,27 +58,11 @@ export function getJsxA11yRules(): RulesOverrides {
         components: ["Heading", "H1", "H2", "H3", "H4", "H5", "H6"],
       },
     ],
-    "jsx-a11y/html-has-lang": "error",
-    "jsx-a11y/iframe-has-title": "error",
     "jsx-a11y/img-redundant-alt": [
       "error",
       {
         components: ["Image", "Img", "NextImage"],
         words: ["image", "photo", "picture"],
-      },
-    ],
-    "jsx-a11y/interactive-supports-focus": [
-      "error",
-      {
-        tabbable: [
-          "button",
-          "checkbox",
-          "link",
-          "searchbox",
-          "spinbutton",
-          "switch",
-          "textbox",
-        ],
       },
     ],
     // Doesn't seem to work as expected at least with Astro
@@ -114,7 +93,6 @@ export function getJsxA11yRules(): RulesOverrides {
         ],
       },
     ],
-    "jsx-a11y/no-access-key": "error",
     "jsx-a11y/no-aria-hidden-on-focusable": "error",
     "jsx-a11y/no-autofocus": [
       "error",
@@ -168,38 +146,12 @@ export function getJsxA11yRules(): RulesOverrides {
         td: ["gridcell"],
       },
     ],
-    "jsx-a11y/no-noninteractive-tabindex": [
-      "error",
-      {
-        tags: [],
-        roles: ["tabpanel"],
-        allowExpressionValues: true,
-      },
-    ],
     "jsx-a11y/no-redundant-roles": [
       "error",
       {
         nav: ["navigation"],
       },
     ],
-    "jsx-a11y/no-static-element-interactions": [
-      "error",
-      {
-        handlers: [
-          "onClick",
-          "onMouseDown",
-          "onMouseUp",
-          "onKeyPress",
-          "onKeyDown",
-          "onKeyUp",
-        ],
-        allowExpressionValues: true,
-      },
-    ],
     "jsx-a11y/prefer-tag-over-role": "warn",
-    "jsx-a11y/role-has-required-aria-props": "error",
-    "jsx-a11y/role-supports-aria-props": "error",
-    "jsx-a11y/scope": "error",
-    "jsx-a11y/tabindex-no-positive": "error",
   };
 }

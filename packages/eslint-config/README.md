@@ -10,7 +10,7 @@ npm install --save-dev @arphi/eslint-config
 
 ## Usage
 
-In your ESLint configuration file (ie. `eslint.config.js`):
+In your ESLint configuration file (ie. `eslint.config.js`), add:
 
 ```js
 import arphi from "@arphi/eslint-config";
@@ -18,15 +18,15 @@ import arphi from "@arphi/eslint-config";
 export default arphi();
 ```
 
-This will enable rules for JavaScript, ESLint comments and imports.
+This will enable rules for JavaScript, ESLint comments and imports. Optionally, you can enable [additional presets](#optional-presets) to extend the configuration.
 
-### Optional configurations
+## Optional presets
 
-When you enable additional configurations in your ESLint configuration file, you might need to restart the ESLint server in your editor to be able to see any changes.
+When you enable additional presets in your ESLint configuration file, you may need to restart the ESLint server in your editor for the changes to take effect.
 
-#### Typescript
+### Typescript
 
-To enable ESLint for TypeScript files, you can pass the following flag:
+To enable ESLint for [TypeScript](https://www.typescriptlang.org/) files, pass the following flag:
 
 ```js
 import arphi from "@arphi/eslint-config";
@@ -34,9 +34,9 @@ import arphi from "@arphi/eslint-config";
 export default arphi({ typescript: true });
 ```
 
-#### Astro
+### Astro
 
-To enable ESLint for Astro files, you can pass the following flag:
+To enable ESLint for [Astro](https://astro.build/) files, pass the following flag:
 
 ```js
 import arphi from "@arphi/eslint-config";
@@ -44,17 +44,17 @@ import arphi from "@arphi/eslint-config";
 export default arphi({ astro: true });
 ```
 
-The Astro configuration uses the following plugins, you might need to install them:
+The Astro preset uses the following plugins, you might need to install them:
 
 ```sh
-npm i -D eslint-plugin-astro
+npm i -D eslint-plugin-astro astro-eslint-parser eslint-plugin-jsx-a11y
 ```
 
-See also: [Typescript](#typescript)
+When you write TypeScript with Astro, you want to also enable the [Typescript](#typescript) preset.
 
-#### React
+### React
 
-To enable ESLint for React files, you can pass the following flag:
+To enable ESLint for [React](https://reactjs.org/) files, pass the following flag:
 
 ```js
 import arphi from "@arphi/eslint-config";
@@ -62,17 +62,17 @@ import arphi from "@arphi/eslint-config";
 export default arphi({ react: true });
 ```
 
-The React configuration uses the following plugins, you might need to install them:
+The React preset uses the following plugins, you might need to install them:
 
 ```sh
-npm i -D @eslint-react/eslint-plugin eslint-plugin-react-hooks
+npm i -D @eslint-react/eslint-plugin eslint-plugin-react-hooks eslint-plugin-jsx-a11y
 ```
 
-See also: [Typescript](#typescript)
+When you write TypeScript with React, you want to also enable the [Typescript](#typescript) preset.
 
-#### JSDoc
+### JSDoc
 
-To enable ESLint for JSDoc, you can pass the following flag:
+To enable ESLint for [JSDoc](https://jsdoc.app/), pass the following flag:
 
 ```js
 import arphi from "@arphi/eslint-config";
@@ -80,15 +80,15 @@ import arphi from "@arphi/eslint-config";
 export default arphi({ jsdoc: true });
 ```
 
-The configuration for JSDoc uses the following plugins, you might need to install them:
+The JSDoc preset uses the following plugins, you might need to install them:
 
 ```sh
 npm i -D eslint-plugin-jsdoc
 ```
 
-#### Prettier
+### Prettier
 
-Some rules might be conflicting with Prettier. If you're using Prettier and notice some conflicts, instead of overriding the rules manually you can enable the Prettier flag:
+Some rules may conflict with [Prettier](https://prettier.io/). If you use Prettier and encounter conflicts, instead of manually overriding the rules, you can enable the Prettier flag:
 
 ```js
 import arphi from "@arphi/eslint-config";
@@ -96,15 +96,15 @@ import arphi from "@arphi/eslint-config";
 export default arphi({ prettier: true });
 ```
 
-The configuration for Prettier uses the following plugin, you might need to install it:
+The Prettier preset uses the following plugin, you might need to install it:
 
 ```sh
 npm i -D eslint-config-prettier
 ```
 
-#### Tests
+### Tests
 
-To enable ESLint for your tests files written with Vitest, you can pass the following flag:
+To enable ESLint for your test files written with [Vitest](https://vitest.dev/), pass the following flag:
 
 ```js
 import arphi from "@arphi/eslint-config";
@@ -112,17 +112,17 @@ import arphi from "@arphi/eslint-config";
 export default arphi({ tests: true });
 ```
 
-The configuration for tests uses the following plugins, you might need to install them:
+The Tests preset uses the following plugins, you might need to install them:
 
 ```sh
 npm i -D @vitest/eslint-plugin eslint-plugin-no-only-tests
 ```
 
-See also: [Typescript](#typescript)
+When you write TypeScript with Vitest, you want to also enable the [Typescript](#typescript) preset.
 
-### Custom configurations
+## Customizing the configuration
 
-If you need some configurations not covered by the optional ones, you can pass one or more custom configurations after the first argument:
+If you need some configurations not covered by the optional presets, you can pass one or more custom config objects after the first argument:
 
 ```js
 import arphi from "@arphi/eslint-config";
@@ -141,6 +141,22 @@ export default arphi(
     rules: {},
   }
 );
+```
+
+## Known issues
+
+### `eslint-plugin-jsx-a11y` peer warning on ESLint 10
+
+`eslint-plugin-jsx-a11y`, used by the [Astro](#astro) and [React](#react) presets, still declares `eslint@9` as its highest supported peer version. It should work fine with ESLint 10 in practice, but your package manager may report an unmet peer dependency for it.
+
+This is a harmless, non-blocking warning. If you want to silence it, tell your package manager to trust the mismatch.
+
+The following example shows how to suppress the warning for `pnpm` in your `pnpm-workspace.yaml`:
+
+```yaml
+peerDependencyRules:
+  allowedVersions:
+    "eslint-plugin-jsx-a11y>eslint": "10"
 ```
 
 ## Acknowledgments

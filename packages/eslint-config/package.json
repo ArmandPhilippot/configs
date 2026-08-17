@@ -37,7 +37,7 @@
     "dist"
   ],
   "engines": {
-    "node": ">=20.19.1"
+    "node": "^22.13.0 || >=24"
   },
   "scripts": {
     "build": "tsdown --clean --dts",
@@ -45,39 +45,37 @@
   },
   "dependencies": {
     "@eslint-community/eslint-plugin-eslint-comments": "^4.7.2",
-    "@eslint-react/eslint-plugin": "^2.13.0",
-    "@eslint/js": "^9.39.4",
-    "@typescript-eslint/parser": "^8.60.1",
-    "@typescript-eslint/utils": "^8.60.1",
-    "@vitest/eslint-plugin": "^1.6.19",
+    "@eslint-react/eslint-plugin": "^5.18.4",
+    "@typescript-eslint/parser": "^8.67.0",
+    "@typescript-eslint/utils": "^8.67.0",
+    "@vitest/eslint-plugin": "^1.6.27",
     "eslint-import-resolver-typescript": "^4.4.5",
-    "eslint-plugin-import-x": "^4.16.2",
-    "eslint-plugin-unicorn": "^64.0.0",
-    "globals": "^17.6.0",
-    "typescript-eslint": "^8.60.1"
+    "eslint-plugin-import-x": "^4.17.1",
+    "eslint-plugin-unicorn": "^73.0.0",
+    "globals": "^17.11.0",
+    "typescript-eslint": "^8.67.0"
   },
   "devDependencies": {
-    "@types/node": "^25.9.5",
-    "astro-eslint-parser": "^1.4.0",
-    "eslint": "^9.39.4",
+    "@types/node": "^26.2.0",
+    "astro-eslint-parser": "^3.0.0",
+    "eslint": "^10.8.1",
     "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-astro": "^1.7.0",
-    "eslint-plugin-jsdoc": "^63.0.1",
+    "eslint-plugin-astro": "^3.1.0",
+    "eslint-plugin-jsdoc": "^64.1.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-no-only-tests": "^3.4.0",
-    "eslint-plugin-react-hooks": "^7.1.1",
     "tsdown": "^0.22.14",
-    "typescript": "~5.9.3"
+    "typescript": "6.0.3"
   },
   "peerDependencies": {
-    "astro-eslint-parser": "^1.2.2",
-    "eslint": ">=9.39.2",
+    "astro-eslint-parser": "^3.0.0",
+    "eslint": "^10.4.0",
     "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-astro": "^1.5.0",
-    "eslint-plugin-jsdoc": "^62.5.0",
+    "eslint-plugin-astro": "^3.1.0",
+    "eslint-plugin-jsdoc": "^64.1.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
-    "eslint-plugin-no-only-tests": "^3.3.0",
-    "eslint-plugin-react-hooks": "^7.0.1"
+    "eslint-plugin-no-only-tests": "^3.4.0",
+    "typescript": "^5.9.0 || ^6.0.0"
   },
   "peerDependenciesMeta": {
     "astro-eslint-parser": {
@@ -96,9 +94,6 @@
       "optional": true
     },
     "eslint-plugin-no-only-tests": {
-      "optional": true
-    },
-    "eslint-plugin-react-hooks": {
       "optional": true
     }
   }
