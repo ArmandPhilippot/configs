@@ -14,14 +14,28 @@ export async function astro(
   const astroPlugin = await import("eslint-plugin-astro");
   const tseslint = await import("typescript-eslint");
   const jsxA11yRules = getJsxA11yRules();
-  const astroA11yRules = Object.fromEntries(
-    Object.entries(jsxA11yRules).map(([key, value]) => [
-      key.replace("jsx-a11y", "astro/jsx-a11y"),
+  /*
+   * `eslint-plugin-astro` re-exports `eslint-plugin-jsx-a11y`'s rules under
+   * its own `astro` plugin, keyed as `jsx-a11y/<rule>`. Re-registering them
+   * here under the `jsx-a11y` plugin key keeps the familiar `jsx-a11y/<rule>`
+   * IDs (matching `eslint-plugin-jsx-a11y`'s own docs) while still using the
+   * implementations wired for Astro's AST.
+   */
+  const astroJsxA11yPlugin = {
+    rules: Object.fromEntries(
+      Object.entries(astroPlugin.rules)
+        .filter(([key]) => key.startsWith("jsx-a11y/"))
+        .map(([key, rule]) => [key.replace("jsx-a11y/", ""), rule])
+    ),
+  };
+  const astroA11yRecommendedRules = Object.fromEntries(
+    Object.entries(
+      astroPlugin.configs["flat/jsx-a11y-recommended"].at(-1)?.rules ?? {}
+    ).map(([key, value]) => [
+      key.replace("astro/jsx-a11y/", "jsx-a11y/"),
       value,
     ])
   );
-  const astroA11yRecommendedRules =
-    astroPlugin.configs["flat/jsx-a11y-recommended"].at(-1)?.rules;
 
   return [
     {
@@ -38,6 +52,7 @@ export async function astro(
       name: "arphi/astro",
       plugins: {
         astro: astroPlugin,
+        "jsx-a11y": astroJsxA11yPlugin,
       },
       processor: "astro/client-side-ts",
       rules: {
@@ -58,7 +73,7 @@ export async function astro(
         ],
         // An Astro component doesn't necessarily use import/export.
         "import-x/unambiguous": "off",
-        ...astroA11yRules,
+        ...jsxA11yRules,
         ...rulesOverrides,
       },
     },
