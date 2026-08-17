@@ -6,7 +6,7 @@ Updates the `react` preset to extend [`@eslint-react/eslint-plugin`](https://esl
 
 You may see new lint results, since `@eslint-react` rules that weren't explicitly configured before are now inherited from its `recommended` preset.
 
-`@eslint-react/eslint-plugin` was also bumped from v2 to v5. Sub-namespaced rule IDs (`dom/*`, `web-api/*`, `naming-convention/*`, `hooks-extra/*`) were flattened into hyphenated top-level names, for example:
+`@eslint-react/eslint-plugin` was also bumped from `^2.13.0` to `^5.18.6`. Sub-namespaced rule IDs (`dom/*`, `web-api/*`, `naming-convention/*`, `hooks-extra/*`) were flattened into hyphenated top-level names, for example:
 
 ```diff
 import arphi from "@arphi/eslint-config";
