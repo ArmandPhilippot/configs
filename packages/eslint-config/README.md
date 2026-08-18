@@ -18,7 +18,7 @@ import arphi from "@arphi/eslint-config";
 export default arphi();
 ```
 
-This will enable rules for JavaScript, ESLint comments and imports. Optionally, you can enable [additional presets](#optional-presets) to extend the configuration.
+This will enable rules for JavaScript, ESLint comments and imports. Optionally, you can enable [additional presets](#optional-presets) to extend the configuration, or [flags](#optional-flags) to adapt it to a specific context.
 
 ## Optional presets
 
@@ -86,22 +86,6 @@ The JSDoc preset uses the following plugins, you might need to install them:
 npm i -D eslint-plugin-jsdoc
 ```
 
-### Prettier
-
-Some rules may conflict with [Prettier](https://prettier.io/). If you use Prettier and encounter conflicts, instead of manually overriding the rules, you can enable the Prettier flag:
-
-```js
-import arphi from "@arphi/eslint-config";
-
-export default arphi({ prettier: true });
-```
-
-The Prettier preset uses the following plugin, you might need to install it:
-
-```sh
-npm i -D eslint-config-prettier
-```
-
 ### Tests
 
 To enable ESLint for your test files written with [Vitest](https://vitest.dev/), pass the following flag:
@@ -119,6 +103,40 @@ npm i -D @vitest/eslint-plugin eslint-plugin-no-only-tests
 ```
 
 When you write TypeScript with Vitest, you want to also enable the [Typescript](#typescript) preset.
+
+## Optional flags
+
+Unlike the presets above, these flags don't add new rules. They adjust the existing rules for a specific context. As with presets, you may need to restart the ESLint server in your editor after enabling one.
+
+### Prettier
+
+Some rules may conflict with [Prettier](https://prettier.io/). If you use Prettier and encounter conflicts, instead of manually overriding the rules, you can enable the Prettier flag:
+
+```js
+import arphi from "@arphi/eslint-config";
+
+export default arphi({ prettier: true });
+```
+
+This flag uses the following plugin, you might need to install it:
+
+```sh
+npm i -D eslint-config-prettier
+```
+
+### Monorepo
+
+Some rules only look at the `package.json` of the directory ESLint was started from, which doesn't work well in a monorepo/workspace.
+
+If you lint from the workspace root, enable this flag to disable the affected rules:
+
+```js
+import arphi from "@arphi/eslint-config";
+
+export default arphi({ monorepo: true });
+```
+
+For example, [`jsdoc/imports-as-dependencies`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/imports-as-dependencies.md) only reads `process.cwd()/package.json`, so it can't see a dependency declared in a nested package's own `package.json`.
 
 ## Customizing the configuration
 
