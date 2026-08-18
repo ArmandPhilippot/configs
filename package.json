@@ -26,11 +26,13 @@
     "fix:formatting": "prettier . --write",
     "fix:scripts": "eslint --fix .",
     "lint": "pnpm run \"/^lint:.*/\"",
+    "lint:deprecated-rules": "pnpm --filter @arphi/eslint-config lint:deprecated-rules",
     "lint:formatting": "prettier . --check",
     "lint:scripts": "eslint .",
     "lint:spelling": "cspell \"**\" --no-progress",
     "lint:types": "tsc --noEmit",
     "test": "pnpm run \"/^test:.*/\"",
+    "test:eslint-config": "pnpm --filter @arphi/eslint-config test",
     "test:renovate": "pnpm --filter @arphi/renovate-config test",
     "prepare": "husky && pnpm --filter @arphi/eslint-config build"
   },

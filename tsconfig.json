@@ -4,5 +4,6 @@
   "compilerOptions": {
     "types": ["node"]
   },
+  "exclude": ["**/dist"],
   "include": ["packages/**/*"]
 }

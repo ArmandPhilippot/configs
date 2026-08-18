@@ -41,6 +41,8 @@
   },
   "scripts": {
     "build": "tsdown --clean --dts",
+    "lint:deprecated-rules": "tsdown --clean --dts --out-dir .lint-deprecated-rules/dist && node scripts/check-deprecated-rules.mjs",
+    "test": "vitest run",
     "watch": "tsdown --watch"
   },
   "dependencies": {
@@ -65,7 +67,8 @@
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-no-only-tests": "^3.4.0",
     "tsdown": "^0.22.14",
-    "typescript": "6.0.3"
+    "typescript": "6.0.3",
+    "vitest": "^4.1.10"
   },
   "peerDependencies": {
     "astro-eslint-parser": "^3.0.0",
