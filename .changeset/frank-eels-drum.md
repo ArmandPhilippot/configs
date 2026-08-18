@@ -10,6 +10,10 @@ You may see new lint results: `unicorn` now inherits many rules from [`eslint-pl
 
 Two new ESLint core rules are now enabled: [`no-unassigned-vars`](https://eslint.org/docs/latest/rules/no-unassigned-vars) and [`preserve-caught-error`](https://eslint.org/docs/latest/rules/preserve-caught-error).
 
+#### Comments
+
+The deprecated [`@eslint-community/eslint-comments/no-unused-disable`](https://eslint-community.github.io/eslint-plugin-eslint-comments/rules/no-unused-disable.html) rule has been removed. Unused `eslint-disable` comments are still reported via the enabled ESLint's `linterOptions.reportUnusedDisableDirectives` option, which is already enabled.
+
 #### Unicorn
 
 The following rules were removed or renamed upstream:
