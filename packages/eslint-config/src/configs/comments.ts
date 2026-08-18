@@ -16,7 +16,6 @@ export function comments(rulesOverrides: RulesOverrides = {}): Config[] {
       },
       rules: {
         ...commentsPlugin.configs.recommended.rules,
-        "@eslint-community/eslint-comments/no-unused-disable": "error",
         "@eslint-community/eslint-comments/require-description": [
           "warn",
           { ignore: ["eslint-enable"] },
