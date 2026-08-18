@@ -5,6 +5,7 @@ import { ignores as ignoresConfig } from "./configs/ignores";
 import { imports } from "./configs/imports";
 import { javascript } from "./configs/javascript";
 import { jsdoc } from "./configs/jsdoc";
+import { monorepo } from "./configs/monorepo";
 import { prettier } from "./configs/prettier";
 import { react } from "./configs/react";
 import { tests } from "./configs/tests";
@@ -48,12 +49,12 @@ function loadRequiredConfigs(
 /**
  * Load the optional configurations.
  *
- * @param {Omit<Partial<OptionalConfigs>, "prettier">} configs - Configs to enable.
+ * @param {Omit<Partial<OptionalConfigs>, "prettier" | "monorepo">} configs - Configs to enable.
  * @param {ConfigOptions["overrides"]} overrides - The config overrides.
  * @returns {Promise<Config[]>} The optional configurations.
  */
 async function loadOptionalConfigs(
-  configs: Omit<Partial<OptionalConfigs>, "prettier">,
+  configs: Omit<Partial<OptionalConfigs>, "prettier" | "monorepo">,
   overrides: ConfigOptions["overrides"]
 ): Promise<Config[]> {
   const configLoaders: [
@@ -79,18 +80,21 @@ async function loadOptionalConfigs(
  * Load the configs that should appear last.
  *
  * @param {ConfigOptions["prettier"]} enablePrettier - Activate Prettier or not.
+ * @param {ConfigOptions["monorepo"]} isMonorepo - Disable monorepo-flaky rules or not.
  * @param {ConfigOptions["overrides"]} overrides - The config overrides.
  * @returns {Promise<Config[]>} The footer configurations.
  */
 async function loadFooterConfigs(
   enablePrettier: boolean,
+  isMonorepo: boolean,
   overrides: ConfigOptions["overrides"]
 ): Promise<Config[]> {
+  const monorepoConfig = isMonorepo ? monorepo(overrides?.monorepo) : [];
   const prettierConfig = enablePrettier
     ? await prettier(overrides?.prettier)
     : [];
 
-  return [...disables(), ...prettierConfig];
+  return [...disables(), ...monorepoConfig, ...prettierConfig];
 }
 
 /**
@@ -104,6 +108,7 @@ export default async function arphi(
   {
     ignores,
     overrides,
+    monorepo: isMonorepo = false,
     prettier: enablePrettier = false,
     ...optional
   }: ConfigOptions = {},
@@ -111,7 +116,7 @@ export default async function arphi(
 ): Promise<Config[]> {
   const [optionalConfigs, footerConfigs] = await Promise.all([
     loadOptionalConfigs(optional, overrides),
-    loadFooterConfigs(enablePrettier, overrides),
+    loadFooterConfigs(enablePrettier, isMonorepo, overrides),
   ]);
 
   return [

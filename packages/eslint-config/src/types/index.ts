@@ -16,7 +16,11 @@ export type OptionalConfigs = {
    */
   jsdoc: boolean;
   /**
-   * Enable Prettier configuration.
+   * Disable rules known to misbehave in a monorepo/workspace layout.
+   */
+  monorepo: boolean;
+  /**
+   * Disable rules that conflict with Prettier.
    */
   prettier: boolean;
   /**
@@ -56,6 +60,10 @@ type Overrides = {
    * Override the JSDoc rules.
    */
   jsdoc: RulesOverrides;
+  /**
+   * Override the monorepo rules.
+   */
+  monorepo: RulesOverrides;
   /**
    * Override the Prettier rules.
    */

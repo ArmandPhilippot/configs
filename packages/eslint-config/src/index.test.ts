@@ -45,6 +45,7 @@ describe("arphi factory", () => {
         "arphi/jsdoc",
         "arphi/tests",
         "arphi/prettier",
+        "arphi/monorepo",
       ])
     );
   });
@@ -56,6 +57,7 @@ describe("arphi factory", () => {
     ["jsdoc", "arphi/jsdoc"],
     ["tests", "arphi/tests"],
     ["prettier", "arphi/prettier"],
+    ["monorepo", "arphi/monorepo"],
   ] as const)("includes %s's config when enabled", async (flag, name) => {
     expect.assertions(1);
 
@@ -97,6 +99,17 @@ describe("arphi factory", () => {
     const prettierIndex = names.indexOf("arphi/prettier");
 
     expect(prettierIndex).toBeGreaterThan(disablesIndex);
+  });
+
+  it("appends monorepo after the disables footer", async () => {
+    expect.assertions(1);
+
+    const config = await arphi({ monorepo: true });
+    const names = configNames(config);
+    const disablesIndex = names.indexOf("arphi/disables/cjs");
+    const monorepoIndex = names.indexOf("arphi/monorepo");
+
+    expect(monorepoIndex).toBeGreaterThan(disablesIndex);
   });
 
   it("places user configs between the optional presets and the footer", async () => {
