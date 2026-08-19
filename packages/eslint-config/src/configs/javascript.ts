@@ -129,7 +129,7 @@ export function javascript(rulesOverrides: RulesOverrides = {}): Config[] {
           { checkLoops: "allExceptWhileTrue" },
         ],
         "no-constructor-return": "error",
-        // I think it's more readable using continue than wrapping with if.
+        // More readable than wrapping the remaining logic in an "if".
         "no-continue": "off",
         "no-control-regex": "error",
         "no-debugger": "error",
@@ -216,7 +216,7 @@ export function javascript(rulesOverrides: RulesOverrides = {}): Config[] {
         "no-multi-assign": ["error", { ignoreNonDeclaration: false }],
         "no-multi-str": "error",
         "no-negated-condition": "error",
-        // Prefer the version provided with unicorn plugin
+        // Superseded by unicorn/no-nested-ternary.
         "no-nested-ternary": "off",
         "no-new": "error",
         "no-new-func": "error",
@@ -269,7 +269,7 @@ export function javascript(rulesOverrides: RulesOverrides = {}): Config[] {
         "no-unassigned-vars": "error",
         "no-undef": ["error", { typeof: false }],
         "no-undef-init": "error",
-        // Too restrictive with third-party modules types
+        // With exactOptionalPropertyTypes, matching third-party types like `x?: T | undefined` requires explicitly assigning "undefined".
         "no-undefined": "off",
         "no-underscore-dangle": [
           "error",
@@ -369,7 +369,6 @@ export function javascript(rulesOverrides: RulesOverrides = {}): Config[] {
         "prefer-destructuring": [
           "error",
           {
-            // Might need to disable this because of unicorn/no-unreadable-array-destructuring
             array: true,
             object: true,
           },

@@ -60,12 +60,10 @@ export async function astro(
           (config) => config.name === "astro/recommended"
         )?.rules,
         ...astroA11yRecommendedRules,
-        /* This rule is triggered when defining a function in Props type... but
-         * a function is valid to define the expected type for children for
-         * example so it's best to disable it.  */
+        // Triggers on function types in Props (e.g. typing `children` as a function), which is a valid Astro pattern.
         "no-unused-vars": "off",
         "astro/no-set-text-directive": "error",
-        // It doesn't seem to work with some use cases (e.g. dynamic tags).
+        // Doesn't work with dynamic tags.
         "astro/no-unused-css-selector": "off",
         "astro/sort-attributes": [
           "error",
@@ -97,10 +95,9 @@ export async function astro(
       files: ["**/*.ts"],
       name: "arphi/astro/disables-ts",
       rules: {
-        /* There is a parser issue (see ota-meshi/eslint-plugin-astro#341 and
-         * ota-meshi/eslint-plugin-astro#348), I guess this affects most of the
-         * `no-unsafe` rules. So when importing an Astro component in a test
-         * file ESLint complains about any. */
+        /* Parser issue (ota-meshi/eslint-plugin-astro#341, #348): imported
+         * Astro components are typed as `any`, triggering the `no-unsafe`
+         * rules. */
         "@typescript-eslint/no-unsafe-argument": "off",
         "@typescript-eslint/no-unsafe-assignment": "off",
         "@typescript-eslint/no-unsafe-call": "off",
@@ -112,7 +109,7 @@ export async function astro(
       files: ["**/*.test.ts"],
       name: "arphi/astro/disables-tests",
       rules: {
-        /* It seems there is parser issue with this one too. While using Astro generic types, well-typed values are inferred as `any` by this rule. */
+        // Same parser issue (ota-meshi/eslint-plugin-astro#341, #348): Astro generics are inferred as `any`.
         "@typescript-eslint/restrict-template-expressions": "off",
       },
     },

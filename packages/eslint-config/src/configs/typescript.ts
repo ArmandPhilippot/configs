@@ -89,15 +89,8 @@ export async function typescript(
           "error",
           { fixMixedExportsWithInlineTypeSpecifier: true },
         ],
-        // Possible conflict with verbatimModuleSyntax:
-        /* "@typescript-eslint/consistent-type-imports": [
-          "error",
-          {
-            disallowTypeAnnotations: false,
-            fixStyle: "separate-type-imports",
-            prefer: "type-imports",
-          },
-        ], */
+        // Redundant with verbatimModuleSyntax, which TypeScript already enforces; the two report duplicate errors.
+        "@typescript-eslint/consistent-type-imports": "off",
         "default-param-last": "off",
         "@typescript-eslint/default-param-last": "error",
         "dot-notation": "off",
@@ -110,33 +103,8 @@ export async function typescript(
             allowIndexSignaturePropertyAccess: false,
           },
         ],
-        // Not sure about this one...
-        /* "@typescript-eslint/explicit-function-return-type": [
-          "error",
-          {
-            allowConciseArrowFunctionExpressionsStartingWithVoid: false,
-            allowDirectConstAssertionInArrowFunctions: true,
-            allowedNames: [],
-            allowExpressions: false,
-            allowFunctionsWithoutTypeParameters: false,
-            allowHigherOrderFunctions: true,
-            allowIIFEs: true,
-            allowTypedFunctionExpressions: true,
-          },
-        ], */
-        /* I prefer JavaScript private fields. */
+        // Prefer JavaScript private fields (#field) over accessibility modifiers.
         "@typescript-eslint/explicit-member-accessibility": "off",
-        // Not sure about this one...
-        /* "@typescript-eslint/explicit-module-boundary-types": [
-          "error",
-          {
-            allowArgumentsExplicitlyTypedAsAny: false,
-            allowDirectConstAssertionInArrowFunctions: true,
-            allowedNames: [],
-            allowHigherOrderFunctions: true,
-            allowTypedFunctionExpressions: true,
-          },
-        ], */
         "init-declarations": "off",
         "@typescript-eslint/init-declarations": ["error", "always"],
         "max-params": "off",
@@ -292,7 +260,7 @@ export async function typescript(
         "@typescript-eslint/no-unnecessary-template-expression": "error",
         "@typescript-eslint/no-unnecessary-type-arguments": "error",
         "@typescript-eslint/no-unnecessary-type-parameters": "off",
-        // Too restrictive...
+        // Disallows all narrowing assertions, including safe ones for untyped/external data.
         "@typescript-eslint/no-unsafe-type-assertion": "off",
         "@typescript-eslint/no-unsafe-unary-minus": "error",
         "no-unused-expressions": "off",
@@ -352,7 +320,6 @@ export async function typescript(
         "@typescript-eslint/prefer-destructuring": [
           "error",
           {
-            // Might need to disable this because of unicorn/no-unreadable-array-destructuring
             array: true,
             object: true,
           },

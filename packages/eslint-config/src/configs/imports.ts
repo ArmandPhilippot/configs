@@ -16,27 +16,18 @@ export function imports(rulesOverrides: RulesOverrides = {}): Config[] {
       },
       rules: {
         ...importPlugin.configs["flat/recommended"].rules,
-        // I'd prefer a smarter option: prefer top-level unless...
+        // Only supports one global style; can't mix top-level and inline per case.
         "import-x/consistent-type-specifier-style": "off",
-        "import-x/dynamic-import-chunkname": "off",
-        "import-x/exports-last": "off",
-        "import-x/extensions": "off",
         "import-x/first": "error",
-        "import-x/group-exports": "off",
-        "import-x/max-dependencies": "off",
         "import-x/newline-after-import": [
           "error",
           { considerComments: true, count: 1, exactCount: true },
         ],
-        // Too slow.
+        // Resolves and parses every imported module; slow on larger codebases (see un-ts/eslint-plugin-import-x#201).
         "import-x/namespace": "off",
         "import-x/no-absolute-path": "error",
         "import-x/no-amd": "error",
-        "import-x/no-anonymous-default-export": "off",
-        "import-x/no-commonjs": "off",
         "import-x/no-cycle": "error",
-        "import-x/no-default-export": "off",
-        "import-x/no-deprecated": "off",
         "import-x/no-duplicates": [
           "error",
           { considerQueryString: true, "prefer-inline": true },
@@ -53,24 +44,17 @@ export function imports(rulesOverrides: RulesOverrides = {}): Config[] {
           },
         ],
         "import-x/no-import-module-exports": "error",
-        "import-x/no-internal-modules": "off",
         "import-x/no-mutable-exports": "error",
         "import-x/no-named-as-default": "error",
         "import-x/no-named-as-default-member": "error",
         "import-x/no-named-default": "error",
-        "import-x/no-named-export": "off",
-        "import-x/no-namespace": "off",
-        "import-x/no-nodejs-modules": "off",
         "import-x/no-relative-packages": "error",
-        "import-x/no-relative-parent-imports": "off",
-        // Too restrictive with third-party modules
+        // Renaming a default import is normal for third-party packages we don't control the export name of.
         "import-x/no-rename-default": "off",
-        "import-x/no-restricted-paths": "off",
         "import-x/no-self-import": "error",
         "import-x/no-unassigned-import": ["error", { allow: ["**/*.css"] }],
-        // Can't make it works properly (virtual modules, mjs...)
+        // Can't resolve virtual/framework-generated module specifiers (e.g. Astro's `astro:content`).
         "import-x/no-unresolved": "off",
-        "import-x/no-unused-modules": "off",
         "import-x/no-useless-path-segments": "warn",
         "import-x/no-webpack-loader-syntax": "error",
         "import-x/order": [
@@ -84,7 +68,6 @@ export function imports(rulesOverrides: RulesOverrides = {}): Config[] {
             groups: ["builtin", "external", "parent", "sibling", "index"],
           },
         ],
-        "import-x/prefer-default-export": "off",
         "import-x/unambiguous": "warn",
         ...rulesOverrides,
       },

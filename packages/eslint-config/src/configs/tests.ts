@@ -1,6 +1,23 @@
 import type { Config, RulesOverrides } from "../types";
 
 const GLOB_EXT = "?([cm])[jt]s?(x)";
+const GLOB_TS_EXT = "?([cm])ts?(x)";
+
+/**
+ * Build the test file glob patterns for a given extension.
+ *
+ * @param {string} ext - The extension glob to match.
+ * @returns {string[]} The globs matching test, spec, and benchmark files.
+ */
+function testFilePatterns(ext: string): string[] {
+  return [
+    `**/__tests__/**/*.${ext}`,
+    `**/*.spec.${ext}`,
+    `**/*.test.${ext}`,
+    `**/*.bench.${ext}`,
+    `**/*.benchmark.${ext}`,
+  ];
+}
 
 /**
  * Configure the tests rules.
@@ -16,13 +33,7 @@ export async function tests(
 
   return [
     {
-      files: [
-        `**/__tests__/**/*.${GLOB_EXT}`,
-        `**/*.spec.${GLOB_EXT}`,
-        `**/*.test.${GLOB_EXT}`,
-        `**/*.bench.${GLOB_EXT}`,
-        `**/*.benchmark.${GLOB_EXT}`,
-      ],
+      files: testFilePatterns(GLOB_EXT),
       name: "arphi/tests",
       plugins: {
         "@funboxteam/no-only-tests": noOnlyTestsPlugin.default,
@@ -102,9 +113,6 @@ export async function tests(
         "vitest/prefer-todo": "error",
         "vitest/prefer-vi-mocked": "error",
         "vitest/require-to-throw-message": "warn",
-        "@typescript-eslint/unbound-method": "off",
-        // The rule is not yet available: vitest-dev/eslint-plugin-vitest#591
-        "vitest/unbound-method": "off",
         "vitest/valid-expect-in-promise": "off",
         "vitest/valid-expect": [
           "error",
@@ -115,6 +123,22 @@ export async function tests(
             maxArgs: 1,
           },
         ],
+      },
+    },
+    {
+      files: testFilePatterns(GLOB_TS_EXT),
+      name: "arphi/tests/typed",
+      rules: {
+        // Vitest-aware unbound-method understands vi.fn() mocks; requires type info, so only enabled for TS test files.
+        // Kept at "warn" until proven reliable in real-world use.
+        "@typescript-eslint/unbound-method": "off",
+        "vitest/unbound-method": ["warn", { ignoreStatic: false }],
+      },
+    },
+    {
+      files: testFilePatterns(GLOB_EXT),
+      name: "arphi/tests/overrides",
+      rules: {
         ...rulesOverrides,
       },
     },
