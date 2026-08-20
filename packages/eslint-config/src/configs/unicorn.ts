@@ -81,6 +81,7 @@ export function unicorn(rulesOverrides: RulesOverrides = {}): Config[] {
         "unicorn/no-unsafe-string-replacement": "error",
         "unicorn/no-useless-else": "error",
         "unicorn/no-useless-recursion": "error",
+        // Conflicts with init-declarations: flags "let x = undefined;", which init-declarations requires.
         "unicorn/no-useless-undefined": "off",
         "unicorn/prefer-abort-signal-any": "error",
         "unicorn/prefer-array-iterable-methods": "error",

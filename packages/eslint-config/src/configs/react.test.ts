@@ -34,12 +34,68 @@ describe("react preset", () => {
   it("applies rule overrides", async () => {
     expect.assertions(1);
 
-    const config = await react({
-      "@eslint-react/dom-no-missing-button-type": "off",
-    });
+    const config = [
+      ...(await typescript()),
+      ...(await react({ "@eslint-react/dom-no-missing-button-type": "off" })),
+    ];
+    const code = "const El = () => <button>Click</button>;\n";
+    const { messages } = await lintCode(code, config, TSX_ANCHOR);
 
-    expect(config[0]?.rules?.["@eslint-react/dom-no-missing-button-type"]).toBe(
-      "off"
+    expect(messages.map((message) => message.ruleId)).not.toContain(
+      "@eslint-react/dom-no-missing-button-type"
+    );
+  });
+
+  it("resolves cleanly on plain JSX with no typed parser (no-implicit-key is TS-only)", async () => {
+    expect.assertions(1);
+
+    const config = await react();
+    const code = 'const El = () => <button type="button">Click</button>;\n';
+    const { messages } = await lintCode(code, config, "sample.jsx");
+
+    expect(messages.filter((message) => message.fatal)).toStrictEqual([]);
+  });
+
+  it("flags an implicit key spread via @eslint-react/no-implicit-key on TSX files", async () => {
+    expect.assertions(1);
+
+    const config = [...(await typescript()), ...(await react())];
+    const code =
+      "const items: { key: string }[] = [];\n" +
+      "const El = () => (\n" +
+      "  <ul>\n" +
+      "    {items.map((item) => (\n" +
+      "      <li {...item} />\n" +
+      "    ))}\n" +
+      "  </ul>\n" +
+      ");\n";
+    const { messages } = await lintCode(code, config, TSX_ANCHOR);
+
+    expect(messages.map((message) => message.ruleId)).toContain(
+      "@eslint-react/no-implicit-key"
+    );
+  });
+
+  it("applies rule overrides to TS-only rules like @eslint-react/no-implicit-key", async () => {
+    expect.assertions(1);
+
+    const config = [
+      ...(await typescript()),
+      ...(await react({ "@eslint-react/no-implicit-key": "off" })),
+    ];
+    const code =
+      "const items: { key: string }[] = [];\n" +
+      "const El = () => (\n" +
+      "  <ul>\n" +
+      "    {items.map((item) => (\n" +
+      "      <li {...item} />\n" +
+      "    ))}\n" +
+      "  </ul>\n" +
+      ");\n";
+    const { messages } = await lintCode(code, config, TSX_ANCHOR);
+
+    expect(messages.map((message) => message.ruleId)).not.toContain(
+      "@eslint-react/no-implicit-key"
     );
   });
 });

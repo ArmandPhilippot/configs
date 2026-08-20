@@ -1,6 +1,9 @@
 import type { Config, RulesOverrides } from "../types";
 import { getJsxA11yRules } from "./rules/jsx-a11y";
 
+const GLOB_EXT = "?([cm])[jt]sx";
+const GLOB_TS_EXT = "?([cm])tsx";
+
 /**
  * Configure the React rules.
  *
@@ -15,7 +18,7 @@ export async function react(
 
   return [
     {
-      files: ["**/*.?([cm])[jt]sx"],
+      files: [`**/*.${GLOB_EXT}`],
       languageOptions: {
         parserOptions: {
           ecmaFeatures: {
@@ -60,7 +63,6 @@ export async function react(
         "@eslint-react/no-context-provider": "error",
         "@eslint-react/no-duplicate-key": "error",
         "@eslint-react/no-forward-ref": "error",
-        "@eslint-react/no-implicit-key": "error",
         "@eslint-react/no-leaked-conditional-rendering": "error",
         "@eslint-react/no-missing-component-display-name": "error",
         "@eslint-react/no-missing-context-display-name": "error",
@@ -84,6 +86,20 @@ export async function react(
         "@eslint-react/web-api-no-leaked-timeout": "error",
         ...jsxA11yPlugin.default.flatConfigs.recommended.rules,
         ...getJsxA11yRules(),
+      },
+    },
+    {
+      files: [`**/*.${GLOB_TS_EXT}`],
+      name: "arphi/react/typed",
+      rules: {
+        // Requires type information (spread-prop analysis); crashes on plain JSX with no typed parser.
+        "@eslint-react/no-implicit-key": "error",
+      },
+    },
+    {
+      files: [`**/*.${GLOB_EXT}`],
+      name: "arphi/react/overrides",
+      rules: {
         ...rulesOverrides,
       },
     },
