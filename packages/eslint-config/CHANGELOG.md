@@ -1,5 +1,251 @@
 # @arphi/eslint-config
 
+## 3.0.0
+
+### Major Changes
+
+- f36ae3e: Raises the minimum supported ESLint, Node.js, and TypeScript versions.
+  
+  The minimum supported versions are now:
+  
+  - `^10.4.0` for ESLint. Support for ESLint 9 has been dropped as it reached end of life on 2026-08-06.
+  - `^22.13.0 || >=24` for Node.js.
+  - `^5.9.0 || ^6.0.0` for TypeScript. This is now an explicit, required peer dependency.
+- f36ae3e: Updates the `tests` preset to extend [`@vitest/eslint-plugin`](https://github.com/vitest-dev/eslint-plugin-vitest#rules)'s own `recommended` preset.
+  
+  You may see new lint results. Two new rules have been added to the `@vitest/eslint-plugin` plugin: [`no-unneeded-async-expect-function`](https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/no-unneeded-async-expect-function.md) and [`prefer-called-exactly-once-with`](https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/prefer-called-exactly-once-with.md).
+- f36ae3e: Updates the `jsdoc` preset to extend [`eslint-plugin-jsdoc`](https://github.com/gajus/eslint-plugin-jsdoc#rules)'s own `flat/recommended` preset.
+  
+  You may see new lint results, since rules that weren't explicitly configured before are now inherited from that preset.
+- f36ae3e: Updates the default config rules, regardless of which optional presets you turn on.
+  
+  You may see new lint results: `unicorn` now inherits many rules from [`eslint-plugin-unicorn`'s own `unopinionated` preset](https://github.com/sindresorhus/eslint-plugin-unicorn#rules) that weren't explicitly configured before.
+  
+  #### JavaScript
+  
+  Two new ESLint core rules are now enabled: [`no-unassigned-vars`](https://eslint.org/docs/latest/rules/no-unassigned-vars) and [`preserve-caught-error`](https://eslint.org/docs/latest/rules/preserve-caught-error).
+  
+  #### Comments
+  
+  The deprecated [`@eslint-community/eslint-comments/no-unused-disable`](https://eslint-community.github.io/eslint-plugin-eslint-comments/rules/no-unused-disable.html) rule has been removed. Unused `eslint-disable` comments are still reported via the enabled ESLint's `linterOptions.reportUnusedDisableDirectives` option, which is already enabled.
+  
+  #### Unicorn
+  
+  The following rules were removed or renamed upstream:
+  
+  - [`unicorn/better-regex`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v73.0.0/docs/deleted-and-deprecated-rules.md#better-regex): removed by the plugin, no replacement.
+  - [`unicorn/no-hex-escape`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v73.0.0/docs/deleted-and-deprecated-rules.md#no-hex-escape) becomes [`unicorn/prefer-unicode-code-point-escapes`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-unicode-code-point-escapes.md).
+  - [`unicorn/no-array-for-each`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v73.0.0/docs/deleted-and-deprecated-rules.md#no-array-for-each) becomes [`unicorn/no-for-each`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-for-each.md).
+  - [`unicorn/prefer-dom-node-dataset`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/v73.0.0/docs/deleted-and-deprecated-rules.md#prefer-dom-node-dataset) becomes [`unicorn/dom-node-dataset`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/dom-node-dataset.md).
+  
+  The renamed rules above are still enabled under their new name through the preset, so there's no coverage loss. But, you may need to update any overrides in your own config that reference the old names.
+  
+  The following rules are now following the preset's own severity/options instead of this config's previous custom tuning:
+  
+  - [`unicorn/expiring-todo-comments`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/expiring-todo-comments.md): the severity changed from `warn` to `error`
+  - [`unicorn/prefer-logical-operator-over-ternary`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-logical-operator-over-ternary.md): the severity changed from `warn` to `error`
+  - [`unicorn/prefer-number-properties`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-number-properties.md): still `error`, but the `checkInfinity` and `checkNaN` options now default to `false` instead of `true`
+  
+  If you want any of these back at their previous severity or options, override them explicitly:
+  
+  ```js
+  import arphi from "@arphi/eslint-config";
+  
+  export default arphi({
+    overrides: {
+      unicorn: {
+        "unicorn/expiring-todo-comments": "warn",
+        "unicorn/prefer-logical-operator-over-ternary": "warn",
+        "unicorn/prefer-number-properties": [
+          "error",
+          { checkInfinity: true, checkNaN: true },
+        ],
+      },
+    },
+  });
+  ```
+  
+  Some new rules have been added explicitly on top of the preset. Read [the plugin's own documentation](https://github.com/sindresorhus/eslint-plugin-unicorn#rules) for their details and options:
+  
+  - `consistent-class-member-order`
+  - `no-array-concat-in-loop`
+  - `no-array-splice`
+  - `no-duplicate-if-branches`
+  - `no-duplicate-loops`
+  - `no-duplicate-set-values`
+  - `no-loop-iterable-mutation`
+  - `no-object-methods-with-collections`
+  - `no-return-array-push`
+  - `no-selector-as-dom-name`
+  - `no-uncalled-method`
+  - `no-undeclared-class-members`
+  - `no-unnecessary-boolean-comparison`
+  - `no-unnecessary-splice`
+  - `no-unreadable-for-of-expression`
+  - `no-unsafe-property-key`
+  - `no-unsafe-string-replacement`
+  - `no-useless-else`
+  - `no-useless-recursion`
+  - `prefer-abort-signal-any`
+  - `prefer-array-iterable-methods`
+  - `prefer-array-slice`
+  - `prefer-continue`
+  - `prefer-dom-node-html-methods`
+  - `prefer-error-is-error`
+  - `prefer-group-by`
+  - `prefer-hoisting-branch-code`
+  - `prefer-location-assign`
+  - `prefer-object-destructuring-defaults`
+  - `prefer-observer-apis`
+  - `prefer-private-class-fields`
+  - `prefer-promise-try`
+  - `prefer-set-methods`
+  - `prefer-single-object-destructuring`
+  - `prefer-smaller-scope`
+- f36ae3e: Rebuilds each preset based on the predefined presets of its underlying plugins.
+  
+  Previously, each preset manually listed every rule. As the list grows, it becomes harder to keep track of rules that have been removed, deprecated, or updated.
+  
+  Each existing preset is now based on one of the predefined presets of its underlying plugins. If any of its rules are faulty or irrelevant to the project, they are manually disabled. Rules not included in the predefined preset continue to be enabled manually.
+  
+  As a result, you may see new lint results on code that passed before, since presets bring in rules that weren't explicitly configured here previously.
+  
+  Please review the extended presets to see how this affects your project and how to adjust or disable these rules.
+  
+  The base configuration still manually configures ESLint rules and now extends:
+  
+  - [`@eslint-community/eslint-plugin-eslint-comments` recommended rules](https://eslint-community.github.io/eslint-plugin-eslint-comments/rules/)
+  - [`eslint-plugin-import-x` recommended rules](https://github.com/un-ts/eslint-plugin-import-x#rules)
+  - [`eslint-plugin-unicorn` unopinionated rules](https://github.com/sindresorhus/eslint-plugin-unicorn#rules)
+  
+  And here is the mapping for each preset:
+  
+  - `astro` extends [`eslint-plugin-astro`'s recommended](https://ota-meshi.github.io/eslint-plugin-astro/rules/) and [JSX A11y rules](https://ota-meshi.github.io/eslint-plugin-astro/rules/#a11y-extension-rules)
+  - `jsdoc` extends [`eslint-plugin-jsdoc` recommended rules](https://github.com/gajus/eslint-plugin-jsdoc#rules)
+  - `react` extends [`@eslint-react/eslint-plugin`](https://eslint-react.xyz/docs/presets) and [`eslint-plugin-jsx-a11y` recommended rules](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y#supported-rules)
+  - `tests` extends [`@vitest/eslint-plugin` recommended rules](https://github.com/vitest-dev/eslint-plugin-vitest#rules)
+  - `typescript` extends [`typescript-eslint` recommended type-checked rules](https://typescript-eslint.io/users/configs#recommended-type-checked)
+- f36ae3e: Updates the `astro` preset to extend [`eslint-plugin-astro`](https://ota-meshi.github.io/eslint-plugin-astro/rules/)'s own `recommended` and `flat/jsx-a11y-recommended` presets.
+  
+  You may see new lint results, since rules that weren't explicitly configured before are now inherited from those presets.
+  
+  [`astro/valid-compile`](https://ota-meshi.github.io/eslint-plugin-astro/rules/valid-compile/) was also removed as it was deprecated by `eslint-plugin-astro` in favor of running `astro check` instead.
+- f36ae3e: Updates the `typescript` preset to extend [`typescript-eslint`'s own `recommendedTypeChecked` preset](https://typescript-eslint.io/users/configs#recommended-type-checked).
+  
+  You may see new lint results, since rules that weren't explicitly configured before are now inherited from that preset.
+- f36ae3e: Updates the `react` preset to extend [`@eslint-react/eslint-plugin`](https://eslint-react.xyz/docs/presets)'s own `recommended` preset.
+  
+  You may see new lint results, since `@eslint-react` rules that weren't explicitly configured before are now inherited from its `recommended` preset.
+  
+  `@eslint-react/eslint-plugin` was also bumped from `^2.13.0` to `^5.18.6`. Sub-namespaced rule IDs (`dom/*`, `web-api/*`, `naming-convention/*`, `hooks-extra/*`) were flattened into hyphenated top-level names, for example:
+  
+  ```diff
+  import arphi from "@arphi/eslint-config";
+  
+  export default arphi({
+    react: true,
+    overrides: {
+      react: {
+  -      "@eslint-react/dom/no-missing-button-type": "off"
+  +      "@eslint-react/dom-no-missing-button-type": "off"
+      },
+    },
+  });
+  ```
+  
+  The hooks rules also moved out of the separate `eslint-plugin-react-hooks` package into `@eslint-react` itself, for example:
+  
+  ```diff
+  import arphi from "@arphi/eslint-config";
+  
+  export default arphi({
+    react: true,
+    overrides: {
+      react: {
+  -      "react-hooks/exhaustive-deps": "off"
+  +      "@eslint-react/exhaustive-deps": "off"
+      },
+    },
+  });
+  ```
+  
+  If your own config overrides a rule by its old ID, ESLint will throw a configuration error as soon as it lints a file, rather than silently ignoring it. See the [plugin's own changelog](https://github.com/Rel1cx/eslint-react/blob/main/CHANGELOG.md) for the full rename mapping.
+  
+  The plugin itself also removed several rules, without replacing them:
+  
+  - `no-complex-conditional-rendering`
+  - `no-duplicate-jsx-props`
+  - `no-redundant-should-component-update`
+  - `no-unnecessary-use-callback`
+  - `no-unnecessary-use-memo`
+  - `no-useless-forward-ref`
+  - `prefer-destructuring-assignment`
+  - `prefer-namespace-import`
+  - `prefer-read-only-props`
+  - `prefer-use-state-lazy-initialization`
+  - `naming-convention/component-name`
+  - `jsx-uses-vars`.
+  
+  The [`@eslint-react/no-unused-state`](https://eslint-react.xyz/docs/rules/no-unused-state) rule has also been removed from this preset. `@eslint-react/eslint-plugin` itself marks it experimental and not recommended for production use.
+
+### Minor Changes
+
+- e584a5f: Adds a `monorepo` flag that disables rules known to misbehave in a monorepo/workspace layout.
+  
+  This is useful in cases where ESLint is run from the root of a monorepo/workspace, but the `package.json` for a nested package is not visible to ESLint's process.
+  
+  For example, [`jsdoc/imports-as-dependencies`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/imports-as-dependencies.md) is not able to see dependencies declared in a nested package's own `package.json` and reports false positives.
+  
+  If you are working in a monorepo/workspace and linting from the root, enable this flag to disable the affected rules:
+  
+  ```js
+  import arphi from "@arphi/eslint-config";
+  
+  export default arphi({ monorepo: true });
+  ```
+- f36ae3e: Enables [`jsdoc/imports-as-dependencies`](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/imports-as-dependencies.md) at `warn` in the `jsdoc` preset.
+  
+  If you want the previous behavior back, disable it via the `jsdoc` override:
+  
+  ```js
+  import arphi from "@arphi/eslint-config";
+  
+  export default arphi({
+    jsdoc: true,
+    overrides: {
+      jsdoc: {
+        "jsdoc/imports-as-dependencies": "off",
+      },
+    },
+  });
+  ```
+- 7ea6205: Enables [`vitest/unbound-method`](https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/unbound-method.md) at `warn` in the `tests` preset.
+  
+  This applies for TypeScript test files only, in place of `@typescript-eslint/unbound-method` which flags legitimate Vitest mock patterns.
+  
+  If you want the previous behavior back, disable it via the `tests` override:
+  
+  ```js
+  import arphi from "@arphi/eslint-config";
+  
+  export default arphi({
+    tests: true,
+    overrides: {
+      tests: {
+        "vitest/unbound-method": "off",
+      },
+    },
+  });
+  ```
+
+### Patch Changes
+
+- f36ae3e: Fixes [`@funboxteam/no-only-tests/no-only-tests`](https://github.com/levibuzolic/eslint-plugin-no-only-tests#readme) being silently non-functional in the `tests` preset.
+- 7ea6205: Fixes [`@eslint-react/no-implicit-key`](https://eslint-react.xyz/docs/rules/no-implicit-key) crashing ESLint.
+  
+  This rule requires type information that only a typed TSX parser provides. On any plain JSX file (or TSX file used without the `typescript` preset), it would crash ESLint. It's now only enabled for TSX files.
+- f36ae3e: Documents the optional dependencies to be installed that were not listed in the packages to be installed for each preset.
+
 ## 2.5.1
 
 ### Patch Changes
