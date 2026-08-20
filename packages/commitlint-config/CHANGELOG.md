@@ -1,5 +1,17 @@
 # @arphi/commitlint-config
 
+## 1.0.10
+
+### Patch Changes
+
+- f36ae3e: Fixes a missing dependency issue with some package managers.
+  
+  Previously, depending on your package manager, you could hit a `Cannot find module '@commitlint/types'` error when linting a commit message. `@commitlint/types` is now installed automatically with this package.
+- f36ae3e: Bumps dependencies.
+  
+  - `@commitlint/config-conventional`: `^21.0.2` → `^21.2.0`
+  - `@commitlint/cli` peer requirement: `>=20.4.1` → `>=21.0.0`, to match the major version now required by `@commitlint/config-conventional`
+
 ## 1.0.9
 
 ### Patch Changes
