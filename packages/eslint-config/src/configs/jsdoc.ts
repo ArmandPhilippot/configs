@@ -41,7 +41,13 @@ export async function jsdoc(
         "jsdoc/check-values": "error",
         "jsdoc/empty-tags": "error",
         "jsdoc/implements-on-classes": "error",
-        "jsdoc/imports-as-dependencies": "warn",
+        /*
+         * Disabled: only detects types via pkg.types/typings or an explicit
+         * "types" condition in exports. Packages that rely on TS's implicit
+         * sibling-".d.ts" resolution (e.g. astro) are false-flagged as
+         * missing @types/<pkg>, and the rule has no option to allowlist them.
+         */
+        "jsdoc/imports-as-dependencies": "off",
         "jsdoc/informative-docs": "warn",
         "jsdoc/match-description": "error",
         "jsdoc/multiline-blocks": "error",

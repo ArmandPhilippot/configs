@@ -10,13 +10,11 @@ export function monorepo(rulesOverrides: RulesOverrides = {}): Config[] {
   return [
     {
       name: "arphi/monorepo",
+      /*
+       * Rules that turn out to misbehave specifically in a monorepo/workspace
+       * layout. No rules are forced off here at the moment.
+       */
       rules: {
-        /*
-         * Reads `process.cwd()/package.json` once per run, so from a
-         * workspace root it can't see dependencies declared in a package's
-         * own package.json and reports false positives.
-         */
-        "jsdoc/imports-as-dependencies": "off",
         ...rulesOverrides,
       },
     },
