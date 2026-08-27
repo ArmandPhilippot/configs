@@ -33,4 +33,17 @@ describe("jsdoc preset", () => {
 
     expect(config[0]?.rules?.["jsdoc/require-param"]).toBe("off");
   });
+
+  it("disables jsdoc/imports-as-dependencies by default", async () => {
+    expect.assertions(1);
+
+    const config = await jsdoc();
+    const code =
+      "/** @type {import('lodash').LoDashStatic} */\nconst a = {};\n";
+    const { messages } = await lintCode(code, config, "sample.js");
+
+    expect(messages.map((message) => message.ruleId)).not.toContain(
+      "jsdoc/imports-as-dependencies"
+    );
+  });
 });
