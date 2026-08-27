@@ -30,4 +30,16 @@ describe("unicorn preset", () => {
 
     expect(config[0]?.rules?.["unicorn/catch-error-name"]).toBe("off");
   });
+
+  it("allows named imports from node:path via unicorn/import-style", async () => {
+    expect.assertions(1);
+
+    const config = unicorn();
+    const code = 'import { resolve } from "node:path";\nresolve(".");\n';
+    const { messages } = await lintCode(code, config, "sample.js");
+
+    expect(messages.map((message) => message.ruleId)).not.toContain(
+      "unicorn/import-style"
+    );
+  });
 });
