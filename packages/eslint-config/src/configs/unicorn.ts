@@ -61,6 +61,12 @@ export function unicorn(rulesOverrides: RulesOverrides = {}): Config[] {
         ],
         "unicorn/isolated-functions": "error",
         "unicorn/no-array-concat-in-loop": "error",
+        /*
+         * Disabled: this rule goes against `@e18e/eslint-plugin`
+         * recommendations. Using `Array.from().fill()` is usually more
+         * readable and performant.
+         */
+        "unicorn/no-array-from-fill": "off",
         "unicorn/no-array-reduce": ["error", { allowSimpleOperations: true }],
         "unicorn/no-array-splice": "error",
         "unicorn/no-await-expression-member": "error",
