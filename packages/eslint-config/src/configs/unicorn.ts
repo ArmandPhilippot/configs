@@ -16,6 +16,11 @@ export function unicorn(rulesOverrides: RulesOverrides = {}): Config[] {
       },
       rules: {
         ...eslintPluginUnicorn.configs.unopinionated.rules,
+        /*
+         * Disabled: this rule reports false positives for variables that are
+         * not DOM nodes.
+         */
+        "unicorn/better-dom-traversing": "off",
         "unicorn/catch-error-name": ["error", { ignore: [], name: "error" }],
         "unicorn/consistent-assert": "error",
         "unicorn/consistent-class-member-order": "error",
