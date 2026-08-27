@@ -44,10 +44,10 @@ export function unicorn(rulesOverrides: RulesOverrides = {}): Config[] {
             checkImport: true,
             checkRequire: true,
             styles: {
-              "node:util": {
+              util: {
                 named: true,
               },
-              "node:path": {
+              path: {
                 default: true,
                 named: true,
               },
