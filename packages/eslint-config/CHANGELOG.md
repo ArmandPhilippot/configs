@@ -1,5 +1,77 @@
 # @arphi/eslint-config
 
+## 3.1.0
+
+### Minor Changes
+
+- 2b17213: Adds [`@e18e/eslint-plugin`](https://github.com/e18e/eslint-plugin) as a new always-enabled preset.
+  
+  Its recommended rules are now enabled by default to help modernize code and improve runtime performance. As with the other presets, the rules can be overridden:
+  
+  ```diff
+  import arphi from "@arphi/eslint-config";
+  
+  export default arphi({
+    overrides: {
+  +    e18e: {
+  +      "e18e/prefer-date-now": "off"
+  +    },
+    },
+  });
+  ```
+  
+  A few recommended rules are disabled out of the box:
+  
+  - `e18e/prefer-string-fromcharcode` conflicts with `unicorn/prefer-code-point` (opposite autofixes).
+  - `e18e/prefer-includes`, `e18e/prefer-date-now`, `e18e/prefer-regex-test`, `e18e/prefer-array-some`, `e18e/prefer-array-at`, `e18e/prefer-array-to-reversed` and `e18e/prefer-array-to-sorted` duplicate an already-enabled unicorn rule that rewrites to the same API.
+  
+  Re-enable any of them through the `e18e` overrides if you want the extra reporting.
+
+### Patch Changes
+
+- f7e7cb1: Disables `unicorn/no-array-from-fill` globally.
+  
+  This rule was introduced in v3.0.0 and conflicts with [`@e18e/eslint-plugin`](https://github.com/e18e/eslint-plugin/tree/main) recommendations. Using `Array.from().fill()` is usually more readable and performant than `new Array().fill()`.
+  
+  If you want to preserve the previous behavior, update your configuration:
+  
+  ```diff
+  import arphi from "@arphi/eslint-config";
+  
+  export default arphi({
+    overrides: {
+      unicorn: {
+  +      "unicorn/no-array-from-fill": "error"
+      },
+    },
+  });
+  ```
+- da28ffa: Fixes a unicorn rule reporting false positives for non-DOM nodes.
+  
+  The `unicorn/better-dom-traversing` is now globally disabled. It reports false positives for variables that are not DOM nodes, which is common in a Node.js environment.
+  
+  If your project is a browser environment and you want to preserve the previous behavior, update your configuration:
+  
+  ```diff
+  import arphi from "@arphi/eslint-config";
+  
+  export default arphi({
+    overrides: {
+      unicorn: {
+  +      "unicorn/better-dom-traversing": "error"
+      },
+    },
+  });
+  ```
+- bb4d89e: Fixes `unicorn/import-style` silently ignoring its `styles` override for Node builtins.
+  
+  The `styles` option was keyed with `"node:path"` / `"node:util"`, but `eslint-plugin-unicorn` strips the protocol prefix since [`eslint-plugin-unicorn#3207`](https://github.com/sindresorhus/eslint-plugin-unicorn/pull/3207). The override never matched and the plugin's stricter built-in default applied instead. Keys are now `path` / `util`.
+- 03d7e5c: Disables `jsdoc/imports-as-dependencies` in the `jsdoc` preset.
+  
+  The v3.0.0 release enabled `jsdoc/imports-as-dependencies` by default. This rule is now disabled again as it reports too many false positives. It only recognizes a package's types via `pkg.types`/`pkg.typings` or an explicit `"types"` condition in `exports`. This means packages relying on TypeScript's implicit sibling-`.d.ts` resolution are false-flagged.
+  
+  The `monorepo` preset no longer disables this rule itself, since it's now off by default.
+
 ## 3.0.0
 
 ### Major Changes
