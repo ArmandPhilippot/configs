@@ -27,6 +27,7 @@ describe("arphi factory", () => {
         "arphi/comments",
         "arphi/imports",
         "arphi/unicorn",
+        "arphi/e18e",
       ])
     );
   });

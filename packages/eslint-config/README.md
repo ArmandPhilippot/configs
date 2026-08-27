@@ -18,7 +18,7 @@ import arphi from "@arphi/eslint-config";
 export default arphi();
 ```
 
-This will enable rules for JavaScript, ESLint comments and imports. Optionally, you can enable [additional presets](#optional-presets) to extend the configuration, or [flags](#optional-flags) to adapt it to a specific context.
+This will enable rules for JavaScript, [comments](https://github.com/eslint-community/eslint-plugin-eslint-comments), [imports](https://github.com/un-ts/eslint-plugin-import-x), [`eslint-plugin-unicorn`](https://github.com/sindresorhus/eslint-plugin-unicorn) and [`@e18e/eslint-plugin`](https://github.com/e18e/eslint-plugin). Optionally, you can enable [additional presets](#optional-presets) to extend the configuration, or [flags](#optional-flags) to adapt it to a specific context.
 
 ## Optional presets
 

@@ -49,6 +49,10 @@ type Overrides = {
    */
   comments: RulesOverrides;
   /**
+   * Override the e18e rules.
+   */
+  e18e: RulesOverrides;
+  /**
    * Override the imports rules.
    */
   imports: RulesOverrides;
