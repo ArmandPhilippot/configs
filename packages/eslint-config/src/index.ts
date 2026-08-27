@@ -1,6 +1,7 @@
 import { astro } from "./configs/astro";
 import { comments } from "./configs/comments";
 import { disables } from "./configs/disables";
+import { e18e } from "./configs/e18e";
 import { ignores as ignoresConfig } from "./configs/ignores";
 import { imports } from "./configs/imports";
 import { javascript } from "./configs/javascript";
@@ -29,12 +30,20 @@ function loadRequiredConfigs(
   ignores: ConfigOptions["ignores"],
   overrides: ConfigOptions["overrides"]
 ): Config[] {
-  const [ignoreResult, jsResult, commentResult, importResult, unicornResult] = [
+  const [
+    ignoreResult,
+    jsResult,
+    commentResult,
+    importResult,
+    unicornResult,
+    e18eResult,
+  ] = [
     ignoresConfig(ignores),
     javascript(overrides?.javascript),
     comments(overrides?.comments),
     imports(overrides?.imports),
     unicorn(overrides?.unicorn),
+    e18e(overrides?.e18e),
   ];
 
   return [
@@ -43,6 +52,7 @@ function loadRequiredConfigs(
     ...commentResult,
     ...importResult,
     ...unicornResult,
+    ...e18eResult,
   ];
 }
 
