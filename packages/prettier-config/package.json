@@ -31,7 +31,7 @@
   "main": "index.js",
   "exports": "./index.js",
   "devDependencies": {
-    "prettier": "^3.9.6"
+    "prettier": "^3.9.7"
   },
   "peerDependencies": {
     "prettier": "^3.8.1"
