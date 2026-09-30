@@ -104,8 +104,8 @@ importers:
         specifier: ^26.6.2
         version: 26.6.2
       astro-eslint-parser:
-        specifier: ^3.1.0
-        version: 3.1.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(supports-color@10.2.2)
+        specifier: ^3.2.0
+        version: 3.2.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(supports-color@10.2.2)
       eslint:
         specifier: ^10.8.1
         version: 10.8.1(jiti@2.6.1)(supports-color@10.2.2)
@@ -1701,8 +1701,8 @@ packages:
     resolution: {integrity: sha512-Z7tMw1ytTXt5jqMcOP+OQteU1VuNK9Y02uuJtKQ1Sv69jXQKKg5cibLwGJow8yzZP+eAc18EmLGPal0bp36rvQ==}
     engines: {node: '>=8'}
 
-  astro-eslint-parser@3.1.0:
-    resolution: {integrity: sha512-lS5qlx401Q1ZUhQ44XQnM4uT2qI6hA0H+vstrd841xGVxunFOs0ut3DWJGYHK1l7mxRxQdDi1j53pfE7/AyGlA==}
+  astro-eslint-parser@3.2.0:
+    resolution: {integrity: sha512-WavQUarfgwSbpCq4xsdcIBdX5KArfI2d6DD8EIloJIMthnB1508iNpx4C77EhUyMd03LpEt8HAPzwF/cG0V39g==}
     engines: {node: ^22.22.3 || ^24.16.0 || >=26.3.0}
 
   async-function@1.0.0:
@@ -5037,7 +5037,7 @@ snapshots:
 
   astral-regex@2.0.0: {}
 
-  astro-eslint-parser@3.1.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(supports-color@10.2.2):
+  astro-eslint-parser@3.2.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(supports-color@10.2.2):
     dependencies:
       '@astrojs/compiler-rs': 0.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)
       '@typescript-eslint/scope-manager': 8.67.0
@@ -5562,7 +5562,7 @@ snapshots:
       '@eslint-community/eslint-utils': 4.10.1(eslint@10.8.1(jiti@2.6.1)(supports-color@10.2.2))
       '@jridgewell/sourcemap-codec': 1.5.5
       '@typescript-eslint/types': 8.67.0
-      astro-eslint-parser: 3.1.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(supports-color@10.2.2)
+      astro-eslint-parser: 3.2.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(supports-color@10.2.2)
       eslint: 10.8.1(jiti@2.6.1)(supports-color@10.2.2)
       espree: 11.2.0
       globals: 17.11.0
