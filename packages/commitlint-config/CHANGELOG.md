@@ -1,5 +1,14 @@
 # @arphi/commitlint-config
 
+## 1.0.11
+
+### Patch Changes
+
+- c5b0e15: Bumps dependencies.
+  
+  - `@commitlint/config-conventional`: `^21.2.0` => `^21.2.4`,
+  - `@commitlint/types`: `^21.2.0` => `^21.2.3`
+
 ## 1.0.10
 
 ### Patch Changes
